@@ -3109,14 +3109,14 @@ What do you know about me and my job here at Microsoft?</span>
 
   // ── EXPAND / COLLAPSE ALL ──
   function expandOneLevel(btn) {
-    // Open all category and demo <details>, but leave row collapsibles (Setup/Files/Steps) collapsed
-    const catDetails = document.querySelectorAll('details[id^="cat"], details[id^="demo"], details[id="demo-tools"]');
+    // Open only top-level category <details>, leave demos and rows collapsed
+    const catDetails = document.querySelectorAll('details[id^="cat"]');
     const anyOpen = Array.from(catDetails).some(d => d.open);
     catDetails.forEach(d => d.open = !anyOpen);
-    // Keep all collapsible rows collapsed regardless
+    // Ensure all demo details and collapsible rows stay collapsed
+    document.querySelectorAll('details[id^="demo"], details[id="demo-tools"]').forEach(d => d.open = false);
     document.querySelectorAll('.collapsible-row').forEach(r => r.classList.add('collapsed'));
     btn.textContent = anyOpen ? 'Expand 1 Level' : 'Collapse 1 Level';
-    // Reset Expand All button label
     document.querySelector('[onclick="toggleAll(this)"]').textContent = 'Expand All';
   }
 
