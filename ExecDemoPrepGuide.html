@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ABS Executive Demos 101</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --blue: #0078D4;
@@ -18,14 +16,14 @@
     --green-border: #34A853;
     --orange: #FEF0E7;
     --orange-border: #E97316;
-    --gray-50: #F8F9FA;
-    --gray-100: #F1F3F4;
-    --gray-200: #E8EAED;
-    --gray-400: #9AA0A6;
-    --gray-600: #5F6368;
-    --gray-800: #202124;
-    --mono: 'DM Mono', monospace;
-    --sans: 'DM Sans', sans-serif;
+    --gray-50: #FAF9F8;
+    --gray-100: #F3F2F1;
+    --gray-200: #EDEBE9;
+    --gray-400: #A19F9D;
+    --gray-600: #605E5C;
+    --gray-800: #201F1E;
+    --mono: 'Cascadia Mono', 'Consolas', monospace;
+    --sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,7 +32,7 @@
     font-family: var(--sans);
     font-size: 13px;
     color: var(--gray-800);
-    background: #F0F2F5;
+    background: #F3F2F1;
     line-height: 1.5;
   }
 
@@ -43,41 +41,57 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: #2B4A6B;
-    color: white;
-    padding: 16px 20px;
+    background: white;
+    color: var(--gray-800);
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    height: 48px;
+    border-bottom: 1px solid var(--gray-200);
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
   }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-right: 12px;
+    border-right: 1px solid var(--gray-200);
+  }
+  .header-logo svg { display: block; }
   .site-header h1 {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: .06em;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-800);
+    letter-spacing: 0;
   }
   .site-header span {
     font-size: 11px;
-    opacity: .7;
-    font-weight: 300;
+    color: var(--gray-400);
+    font-weight: 400;
   }
   .expand-all-btn {
     font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    background: rgba(255,255,255,.1);
-    color: white;
-    border: 1px solid rgba(255,255,255,.22);
-    border-radius: 4px;
-    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 400;
+    background: white;
+    color: var(--gray-800);
+    border: 1px solid var(--gray-200);
+    border-radius: 2px;
+    padding: 5px 12px;
     cursor: pointer;
-    transition: background .15s;
+    transition: background .1s, border-color .1s;
   }
-  .expand-all-btn:hover { background: rgba(255,255,255,.2); }
+  .expand-all-btn:hover { background: var(--gray-50); border-color: var(--gray-400); }
 
-  .edit-btn { background: rgba(255,255,255,.1) !important; border-color: rgba(255,255,255,.28) !important; color: white !important; }
-  .edit-btn:hover { background: rgba(255,255,255,.2) !important; color: white !important; }
-  .edit-btn.active { background: #D0E8FF !important; color: #1A3A5C !important; border-color: #90BEE0 !important; font-weight: 600 !important; }
+  .edit-btn { background: white !important; border-color: var(--gray-200) !important; color: var(--gray-800) !important; }
+  .edit-btn:hover { background: var(--gray-50) !important; border-color: var(--gray-400) !important; }
+  .edit-btn.active { background: var(--blue-light) !important; color: var(--blue-dark) !important; border-color: var(--blue) !important; font-weight: 600 !important; }
 
   /* ── EDIT MODE ── */
   body.edit-mode .editable {
@@ -135,8 +149,8 @@
   }
   .discard-btn:hover { background: rgba(0,0,0,.05); }
 
-  .word-btn { background: #2B579A !important; border-color: #1E3F73 !important; color: white !important; font-weight: 600 !important; }
-  .word-btn:hover { background: #1E3F73 !important; }
+  .word-btn { background: var(--blue) !important; border-color: var(--blue-dark) !important; color: white !important; font-weight: 600 !important; }
+  .word-btn:hover { background: var(--blue-dark) !important; }
 
   /* ── FLOW BAR ── */
   .flow-bar {
@@ -172,37 +186,39 @@
   }
 
   /* ── MAIN LAYOUT ── */
-  .main { max-width: 860px; margin: 0 auto; padding: 12px 16px 40px; }
+  .main { max-width: 900px; margin: 0 auto; padding: 16px 16px 40px; }
 
   /* ── CATEGORY BLOCK ── */
   .category {
     margin-bottom: 8px;
-    border-radius: 6px;
+    border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
   }
 
   .cat-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 14px;
-    background: var(--blue);
-    color: white;
+    padding: 10px 14px;
+    background: #EFF6FC;
+    color: var(--blue-dark);
     cursor: pointer;
     user-select: none;
     list-style: none;
+    border-left: 3px solid var(--blue);
   }
   .cat-header::-webkit-details-marker { display: none; }
   .cat-title {
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: .08em;
+    letter-spacing: .06em;
     text-transform: uppercase;
   }
   .cat-chevron {
     font-size: 10px;
     transition: transform .2s;
+    color: var(--blue);
   }
   details[open] > .cat-header .cat-chevron { transform: rotate(180deg); }
   .main > details > summary.cat-header { border-radius: 4px; }
@@ -212,7 +228,7 @@
     background: white;
     border: 1px solid var(--gray-200);
     border-top: none;
-    border-radius: 0 0 6px 6px;
+    border-radius: 0 0 4px 4px;
   }
   .main > details { margin-bottom: 8px; }
   .part-header + details { margin-bottom: 8px; }
@@ -268,9 +284,9 @@
     padding: 10px 12px 14px 12px;
     display: grid;
     gap: 6px;
-    background: #F4F7FB;
+    background: #FAFAFA;
     border-top: 1px solid var(--gray-200);
-    border-bottom: 3px solid var(--blue);
+    border-bottom: 2px solid var(--blue);
     border-left: 3px solid var(--blue);
     border-right: 1px solid var(--gray-200);
     border-radius: 0 0 4px 4px;
@@ -387,16 +403,17 @@
 
   /* ── PART HEADERS ── */
   .part-header {
-    background: #1A3A5C;
-    color: white;
-    padding: 7px 16px;
+    background: white;
+    color: var(--gray-600);
+    padding: 18px 4px 6px 4px;
     font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .12em;
+    font-weight: 600;
+    letter-spacing: .10em;
     text-transform: uppercase;
-    margin-top: 20px;
+    margin-top: 8px;
     margin-bottom: 0;
-    border-radius: 4px 4px 0 0;
+    border-radius: 0;
+    border-bottom: 2px solid var(--blue);
   }
   .part-header + details > summary.cat-header { border-radius: 0; }
   .part-header:first-child { margin-top: 0; }
@@ -642,9 +659,10 @@
 
   /* ── DEMO SET BUILDER ── */
   .demo-builder {
-    background: #F8FBFF;
-    border-bottom: 2px solid var(--blue);
+    background: white;
+    border-bottom: 1px solid var(--gray-200);
     padding: 12px 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
   }
   .builder-header {
     display: flex;
@@ -831,10 +849,21 @@
 
 <!-- STICKY HEADER -->
 <div class="site-header">
-  <div>
-    <h1>ABS EXECUTIVE DEMOS 101</h1>
+  <div class="header-left">
+    <div class="header-logo">
+      <!-- Microsoft logo squares -->
+      <svg width="20" height="20" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="10" height="10" fill="#F25022"/>
+        <rect x="11" y="0" width="10" height="10" fill="#7FBA00"/>
+        <rect x="0" y="11" width="10" height="10" fill="#00A4EF"/>
+        <rect x="11" y="11" width="10" height="10" fill="#FFB900"/>
+      </svg>
+    </div>
+    <h1>ABS Executive Demos 101</h1>
+    <span style="color:var(--gray-200);">|</span>
+    <span>M365 Copilot &amp; Agents</span>
   </div>
-  <div style="display:flex;gap:8px;align-items:center;">
+  <div style="display:flex;gap:6px;align-items:center;">
     <button class="expand-all-btn" onclick="expandOneLevel(this)">Expand 1 Level</button>
     <button class="expand-all-btn" onclick="toggleAll(this)">Expand All</button>
     <button class="expand-all-btn edit-btn" id="edit-toggle-btn" onclick="toggleEditMode()">✏️ Edit</button>
