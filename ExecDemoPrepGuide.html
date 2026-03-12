@@ -696,7 +696,7 @@
 
   .builder-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 8px;
   }
   .builder-cat {
@@ -861,7 +861,7 @@
   <span class="flow-arrow">›</span>
   <span class="flow-pill" onclick="scrollTo('cat3')">3. Copilot for Teamwork</span>
   <span class="flow-arrow">›</span>
-  <span class="flow-pill" onclick="scrollTo('cat4')">4. Studio</span>
+  <span class="flow-pill" onclick="scrollTo('cat4')">4. Copilot Studio</span>
   <span class="flow-arrow">›</span>
   <span class="flow-pill" onclick="scrollTo('cat5')">5. Agent 365</span>
   <span class="flow-arrow">›</span>
@@ -909,19 +909,19 @@
       <label class="demo-check"><input type="checkbox" data-demo="demo15" data-cat="cat2" checked onchange="onCheckChange()"><span>Outlook</span></label>
     </div>
 
-    <div class="builder-cat">
-      <div class="builder-cat-label">3. Teamwork</div>
-      <label class="demo-check"><input type="checkbox" data-demo="demo6" data-cat="cat3" checked onchange="onCheckChange()"><span>Facilitator Agent</span></label>
-    </div>
-
-    <div class="builder-cat">
-      <div class="builder-cat-label">4. Studio</div>
-      <label class="demo-check"><input type="checkbox" data-demo="demo7" data-cat="cat4" checked onchange="onCheckChange()"><span>Pets at Home</span></label>
-    </div>
-
-    <div class="builder-cat">
-      <div class="builder-cat-label">5. Agent 365</div>
-      <label class="demo-check"><input type="checkbox" data-demo="demo8" data-cat="cat5" checked onchange="onCheckChange()"><span>A365 Clickthrough</span></label>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div class="builder-cat">
+        <div class="builder-cat-label">3. Teamwork</div>
+        <label class="demo-check"><input type="checkbox" data-demo="demo6" data-cat="cat3" checked onchange="onCheckChange()"><span>Facilitator Agent</span></label>
+      </div>
+      <div class="builder-cat">
+        <div class="builder-cat-label">4. Copilot Studio</div>
+        <label class="demo-check"><input type="checkbox" data-demo="demo7" data-cat="cat4" checked onchange="onCheckChange()"><span>Pets at Home</span></label>
+      </div>
+      <div class="builder-cat">
+        <div class="builder-cat-label">5. Agent 365</div>
+        <label class="demo-check"><input type="checkbox" data-demo="demo8" data-cat="cat5" checked onchange="onCheckChange()"><span>A365 Clickthrough</span></label>
+      </div>
     </div>
 
     <div class="builder-cat">
@@ -932,13 +932,6 @@
       <label class="demo-check"><input type="checkbox" data-demo="demo19" data-cat="cat6" checked onchange="onCheckChange()"><span>D365 Service</span></label>
     </div>
 
-  </div>
-
-  <!-- Active set preview -->
-  <div class="builder-preview" id="builder-preview" style="display:none">
-    <span class="preview-label">YOUR SET:</span>
-    <span id="preview-tags"></span>
-    <span class="preview-count" id="preview-count"></span>
   </div>
 </div>
 
@@ -2748,24 +2741,8 @@ What do you know about me and my job here at Microsoft?</span>
 
   function onCheckChange() {
     const checked = getChecked();
-    const preview = document.getElementById('builder-preview');
-    const previewTags = document.getElementById('preview-tags');
-    const previewCount = document.getElementById('preview-count');
     const applyBtn = document.getElementById('apply-btn');
-
-    if (checked.length === 0) {
-      preview.style.display = 'none';
-      applyBtn.disabled = true;
-      return;
-    }
-
-    applyBtn.disabled = false;
-    previewTags.innerHTML = checked.map(c => {
-      const demo = DEMOS.find(d => d.id === c.id);
-      return `<span class="preview-tag">${demo ? demo.title : c.id}</span>`;
-    }).join(' ');
-    previewCount.textContent = `${checked.length} demo${checked.length !== 1 ? 's' : ''} selected`;
-    preview.style.display = 'flex';
+    applyBtn.disabled = checked.length === 0;
   }
 
   // ── EXEC SHORTLIST ── (update this array to set which demos are included)
