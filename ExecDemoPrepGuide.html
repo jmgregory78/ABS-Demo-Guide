@@ -523,6 +523,14 @@
   .collapsible-row.collapsed .row-content { display: none; }
   .collapsible-row.collapsed { grid-template-columns: 1fr; }
   .collapsible-row.collapsed .row-label { border-right: none; border-radius: 4px; width: 100%; }
+  .collapsible-row.collapsed .row-label::after {
+    content: "click to expand";
+    font-size: 9px;
+    font-weight: 400;
+    color: var(--gray-400);
+    margin-left: 8px;
+    font-style: italic;
+  }
   .row-hint { display: none; }
 
   /* ── WARNING BAR ── */
