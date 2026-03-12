@@ -844,11 +844,13 @@
   <span class="flow-arrow">›</span>
   <span class="flow-pill" onclick="scrollTo('cat2')">2. Agent Mode</span>
   <span class="flow-arrow">›</span>
-  <span class="flow-pill" onclick="scrollTo('cat3')">3 · Copilot for Teamwork</span>
+  <span class="flow-pill" onclick="scrollTo('cat3')">3. Copilot for Teamwork</span>
   <span class="flow-arrow">›</span>
   <span class="flow-pill" onclick="scrollTo('cat4')">4. Studio</span>
   <span class="flow-arrow">›</span>
-  <span class="flow-pill" onclick="scrollTo('cat5')"> 5. Agent 365</span>
+  <span class="flow-pill" onclick="scrollTo('cat5')">5. Agent 365</span>
+  <span class="flow-arrow">›</span>
+  <span class="flow-pill" onclick="scrollTo('cat6')">6. Biz Apps</span>
 </div>
 
 <!-- DEMO SET BUILDER -->
@@ -858,9 +860,10 @@
       <span class="builder-title">🎯 Build My Demo Set</span>
       <span class="builder-subtitle">Check the demos you're running — everything else hides. Then export your personalized guide.</span>
     </div>
-    <div style="display:flex;gap:8px;align-items:center;">
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
       <button class="builder-action-btn select-all-btn" onclick="selectAllDemos()">Select All</button>
       <button class="builder-action-btn clear-btn" onclick="clearAllDemos()">Clear</button>
+      <button class="builder-action-btn" style="background:#F0F7EE;border-color:#7DB87A;color:#2D6B2A;font-weight:600;" onclick="applyExecShortlist()">⭐ Exec Shortlist</button>
       <button class="builder-action-btn apply-btn" id="apply-btn" onclick="applyDemoSet()">▶ Apply My Set</button>
       <button class="builder-action-btn reset-btn" id="reset-btn" style="display:none" onclick="resetDemoSet()">✕ Show All</button>
     </div>
@@ -896,7 +899,7 @@
     </div>
 
     <div class="builder-cat">
-      <div class="builder-cat-label">3 · Copilot for Teamwork</div>
+      <div class="builder-cat-label">3. Copilot for Teamwork</div>
       <label class="demo-check"><input type="checkbox" data-demo="demo6" data-cat="cat3" checked onchange="onCheckChange()"><span>Facilitator &amp; Teams Mode</span></label>
     </div>
 
@@ -2706,21 +2709,21 @@ What do you know about me and my job here at Microsoft?</span>
     { id: 'demo1',  cat: 'cat1', title: 'Work IQ Demo' },
     { id: 'demo2',  cat: 'cat1', title: 'WXPO Agents' },
     { id: 'demo3',  cat: 'cat1', title: 'Cowork' },
-    { id: 'demo4-parent', cat: 'cat1', title: 'Agent Builder' },
-    { id: 'demo5',  cat: 'cat2', title: 'Word Agent (Chat)' },
-    { id: 'demo9',  cat: 'cat2', title: 'Excel Agent (Chat)' },
-    { id: 'demo10', cat: 'cat2', title: 'PowerPoint Agent (Chat)' },
-    { id: 'demo11', cat: 'cat2', title: 'Outlook Agent (Chat)' },
+    { id: 'demo4',  cat: 'cat1', title: 'Agent Builder' },
+    { id: 'demo5',  cat: 'cat1', title: 'Word Agent in Chat' },
+    { id: 'demo9',  cat: 'cat1', title: 'Excel Agent in Chat' },
+    { id: 'demo10', cat: 'cat1', title: 'PPT Agent in Chat' },
+    { id: 'demo11', cat: 'cat1', title: 'Outlook Agent in Chat' },
     { id: 'demo12', cat: 'cat2', title: 'Word — Agent Mode' },
     { id: 'demo13', cat: 'cat2', title: 'Excel — Agent Mode' },
-    { id: 'demo14', cat: 'cat2', title: 'PowerPoint — Agent Mode' },
+    { id: 'demo14', cat: 'cat2', title: 'PPT — Agent Mode' },
     { id: 'demo15', cat: 'cat2', title: 'Outlook — Agent Mode' },
-    { id: 'demo6',  cat: 'cat3', title: 'Facilitator & Teams Mode' },
+    { id: 'demo6',  cat: 'cat3', title: 'Facilitator Agent in Teams' },
     { id: 'demo7',  cat: 'cat4', title: 'Pets at Home Clickthrough' },
-    { id: 'demo8',  cat: 'cat5', title: 'A365 Clickthrough' },
+    { id: 'demo8',  cat: 'cat5', title: 'Agent 365 Clickthrough' },
     { id: 'demo16', cat: 'cat6', title: 'M365 Sales Agent' },
-    { id: 'demo17', cat: 'cat6', title: 'D365 Sales Qualification Agent' },
-    { id: 'demo18', cat: 'cat6', title: 'D365 Sales Research Agent' },
+    { id: 'demo17', cat: 'cat6', title: 'Sales Qualification Agent' },
+    { id: 'demo18', cat: 'cat6', title: 'Sales Research Agent' },
     { id: 'demo19', cat: 'cat6', title: 'D365 Service Agent' },
   ];
 
@@ -2752,6 +2755,16 @@ What do you know about me and my job here at Microsoft?</span>
     }).join(' ');
     previewCount.textContent = `${checked.length} demo${checked.length !== 1 ? 's' : ''} selected`;
     preview.style.display = 'flex';
+  }
+
+  // ── EXEC SHORTLIST ── (update this array to set which demos are included)
+  const EXEC_SHORTLIST = ['demo1','demo2','demo4','demo6','demo13','demo16','demo17'];
+
+  function applyExecShortlist() {
+    document.querySelectorAll('.demo-check input[type="checkbox"]').forEach(cb => {
+      cb.checked = EXEC_SHORTLIST.includes(cb.dataset.demo);
+    });
+    onCheckChange();
   }
 
   function selectAllDemos() {
