@@ -235,7 +235,7 @@
 
   /* ── DEMO BLOCK ── */
   .demo {
-    border-bottom: 1px solid var(--gray-100);
+    border-bottom: 2px solid var(--gray-200);
   }
   .demo:last-child { border-bottom: none; }
 
@@ -253,16 +253,40 @@
   .demo-header:hover { background: var(--gray-50); }
   .demo-header::-webkit-details-marker { display: none; }
 
+  /* ── DEMO STATUS BADGE ── */
+  .demo-status {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1.5px solid var(--gray-200);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 11px;
+    transition: all .2s;
+  }
+  .demo-status.complete {
+    background: #E6F4EA;
+    border-color: #34A853;
+    color: #1A7A35;
+  }
+  .demo-status.partial {
+    background: #FFF8E1;
+    border-color: #F0C800;
+    color: #7B5800;
+  }
   .demo-num {
-    font-size: 9px;
-    font-weight: 700;
-    color: white;
-    background: var(--blue);
-    border-radius: 3px;
-    padding: 2px 7px;
-    min-width: 36px;
-    text-align: center;
-    letter-spacing: .03em;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray-400);
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    min-width: unset;
+    text-align: left;
+    letter-spacing: 0;
     flex-shrink: 0;
     white-space: nowrap;
   }
@@ -281,16 +305,15 @@
   details[open] > .demo-header .demo-chevron { transform: rotate(180deg); }
 
   .demo-body {
-    padding: 10px 12px 14px 12px;
+    padding: 10px 12px 10px 12px;
     display: grid;
     gap: 6px;
     background: #FAFAFA;
-    border-top: 1px solid var(--gray-200);
-    border-bottom: 2px solid var(--blue);
-    border-left: 3px solid var(--blue);
-    border-right: 1px solid var(--gray-200);
-    border-radius: 0 0 4px 4px;
-    margin: 0 6px 6px 6px;
+    border: 1px solid var(--gray-200);
+    border-top: none;
+    border-bottom: none;
+    border-radius: 0;
+    margin: 0 6px 0 6px;
   }
 
   /* ── ROW ── */
@@ -432,10 +455,7 @@
   }
 
   /* ── APP BADGE COLORS ── */
-  .app-word { background: #2B579A !important; min-width:auto; padding: 1px 8px !important; color: white !important; }
-  .app-excel { background: #217346 !important; min-width:auto; padding: 1px 8px !important; }
-  .app-ppt   { background: #B7472A !important; min-width:auto; padding: 1px 8px !important; }
-  .app-outlook { background: #0072C6 !important; min-width:auto; padding: 1px 8px !important; }
+  .app-icon { width: 28px; height: 28px; flex-shrink: 0; display: block; }
 
   /* ── VISUAL REFERENCE ── */
   .vis-ref-section { margin-top: 8px; border: 1px solid var(--gray-200); border-radius: 4px; overflow: hidden; }
@@ -464,7 +484,8 @@
   .vis-ref-caption { font-size: 9px; color: var(--gray-400); margin-top: 3px; font-style: italic; }
 
   /* ── SIM LINK ROW ── */
-  .sim-link-row { background: #F0F7FF; border: 1px solid #BDD7EE; border-radius: 4px; padding: 5px 10px; display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+  .sim-link-row { background: #F0F7FF; border: 1px solid var(--gray-200); border-top: none; border-radius: 0; padding: 6px 10px; display: flex; align-items: center; gap: 8px; margin: 0 6px 0 6px; }
+  .demo-card-cap { height: 1px; background: var(--gray-200); margin: 0 6px 8px 6px; }
   .sim-link-label { font-size: 10px; font-weight: 700; color: var(--blue-dark); letter-spacing:.04em; white-space:nowrap; flex-shrink:0; }
   .sim-link-input { flex:1; font-family: var(--sans); font-size:11px; border: 1px solid var(--gray-200); border-radius:3px; padding:3px 7px; color: var(--blue); min-width:0; }
   .sim-link-input:focus { outline: 1px solid var(--blue); border-color: var(--blue); }
@@ -864,8 +885,8 @@
     <span>M365 Copilot &amp; Agents</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center;">
-    <button class="expand-all-btn" onclick="expandOneLevel(this)">Expand 1 Level</button>
-    <button class="expand-all-btn" onclick="toggleAll(this)">Expand All</button>
+    <button class="expand-all-btn" onclick="expandAll()">Show More</button>
+    <button class="expand-all-btn" onclick="collapseAll()">Show Less</button>
     <button class="expand-all-btn edit-btn" id="edit-toggle-btn" onclick="toggleEditMode()">✏️ Edit</button>
     <button class="expand-all-btn word-btn" onclick="exportWord()">📄 Export to Word</button>
   </div>
@@ -915,7 +936,7 @@
     </div>
 
     <div class="builder-cat">
-      <div class="builder-cat-label">2. Agent Mode</div>
+      <div class="builder-cat-label">2. Core Apps</div>
       <label class="demo-check"><input type="checkbox" data-demo="demo12" data-cat="cat2" checked onchange="onCheckChange()"><span>Word</span></label>
       <label class="demo-check"><input type="checkbox" data-demo="demo13" data-cat="cat2" checked onchange="onCheckChange()"><span>Excel</span></label>
       <label class="demo-check"><input type="checkbox" data-demo="demo14" data-cat="cat2" checked onchange="onCheckChange()"><span>PowerPoint</span></label>
@@ -990,7 +1011,7 @@
               <div class="demo-title">Work IQ Demo</div>
               <div class="demo-tagline">Land the value of Work IQ as the intelligence layer — Copilot knows you.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -1031,12 +1052,12 @@ What do you know about me and my job here at Microsoft?</span>
                 <span class="copy-hint">Click to copy</span>
               </div>
             </div></div>
-          </div>
             <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
               <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo1" onkeydown="if(event.key==='Enter')openSim('demo1')">
               <button class="sim-link-go" onclick="openSim('demo1')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
         </details>
       </div>
 
@@ -1049,7 +1070,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-title">WXPO Agents from Copilot Chat</div>
               <div class="demo-tagline">Most powerful example for each Word, Excel, PowerPoint &amp; Outlook agent.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -1069,12 +1090,12 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="prompts-body">
               <div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts per agent here.</span></div>
             </div></div>
-          </div>
             <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
               <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo2" onkeydown="if(event.key==='Enter')openSim('demo2')">
               <button class="sim-link-go" onclick="openSim('demo2')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
 
         </details>
       </div>
@@ -1084,12 +1105,12 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="demo5">
           <summary class="demo-header">
-            <span class="demo-num app-word">Word</span>
+            <svg class="app-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#2B579A"/><text x="24" y="34" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="700" fill="white" text-anchor="middle">W</text></svg>
             <div style="flex:1">
               <div class="demo-title">Word Agent in Copilot Chat</div>
               <div class="demo-tagline">Show how Copilot Chat can act on Word documents without leaving the chat interface.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -1110,6 +1131,7 @@ What do you know about me and my job here at Microsoft?</span>
               <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo5" onkeydown="if(event.key==='Enter')openSim('demo5')">
               <button class="sim-link-go" onclick="openSim('demo5')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
             <div class="image-upload-area" data-demo="demo5"><button class="add-image-btn" onclick="triggerImageUpload('demo5')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo5')"><div class="uploaded-images" id="images-demo5"></div></div>
           </div>
         </details>
@@ -1118,12 +1140,12 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="demo9">
           <summary class="demo-header">
-            <span class="demo-num app-excel">Excel</span>
+            <svg class="app-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#217346"/><text x="24" y="34" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="700" fill="white" text-anchor="middle">X</text></svg>
             <div style="flex:1">
               <div class="demo-title">Excel Agent in Copilot Chat</div>
               <div class="demo-tagline">Show how Copilot Chat can analyze, transform, and act on Excel data directly from chat.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -1144,6 +1166,7 @@ What do you know about me and my job here at Microsoft?</span>
               <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo9" onkeydown="if(event.key==='Enter')openSim('demo9')">
               <button class="sim-link-go" onclick="openSim('demo9')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
             <div class="image-upload-area" data-demo="demo9"><button class="add-image-btn" onclick="triggerImageUpload('demo9')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo9')"><div class="uploaded-images" id="images-demo9"></div></div>
           </div>
         </details>
@@ -1152,12 +1175,12 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="demo10">
           <summary class="demo-header">
-            <span class="demo-num app-ppt">PPT</span>
+            <svg class="app-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#B7472A"/><text x="24" y="34" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="700" fill="white" text-anchor="middle">P</text></svg>
             <div style="flex:1">
               <div class="demo-title">PowerPoint Agent in Copilot Chat</div>
               <div class="demo-tagline">Show how Copilot Chat can build, redesign, or summarize PowerPoint presentations on command.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -1178,6 +1201,7 @@ What do you know about me and my job here at Microsoft?</span>
               <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo10" onkeydown="if(event.key==='Enter')openSim('demo10')">
               <button class="sim-link-go" onclick="openSim('demo10')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
             <div class="image-upload-area" data-demo="demo10"><button class="add-image-btn" onclick="triggerImageUpload('demo10')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo10')"><div class="uploaded-images" id="images-demo10"></div></div>
           </div>
         </details>
@@ -1186,12 +1210,12 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="demo11">
           <summary class="demo-header">
-            <span class="demo-num app-outlook">Outlook</span>
+            <svg class="app-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#0072C6"/><text x="24" y="34" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="700" fill="white" text-anchor="middle">O</text></svg>
             <div style="flex:1">
-              <div class="demo-title">Outlook Agent in Copilot Chat</div>
+              <div class="demo-title">Outlook Skill in Copilot Chat</div>
               <div class="demo-tagline">Show how Copilot Chat can draft, summarize, and act on email directly from the chat pane.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -1212,6 +1236,7 @@ What do you know about me and my job here at Microsoft?</span>
               <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo11" onkeydown="if(event.key==='Enter')openSim('demo11')">
               <button class="sim-link-go" onclick="openSim('demo11')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
             <div class="image-upload-area" data-demo="demo11"><button class="add-image-btn" onclick="triggerImageUpload('demo11')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo11')"><div class="uploaded-images" id="images-demo11"></div></div>
           </div>
         </details>
@@ -1224,34 +1249,79 @@ What do you know about me and my job here at Microsoft?</span>
             <span class="demo-num">1.3</span>
             <div style="flex:1">
               <div class="demo-title">Cowork</div>
-              <div class="demo-tagline">Show real-time AI collaboration and task orchestration across your team.</div>
+              <div class="demo-tagline">Orchestrate a multi-asset customer prep package — briefing doc, data Excel, and presentation — all from one prompt.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
-              <div class="row-content">Open <strong>Cowork</strong> in M365 or Teams. Sign in as the demo executive. <span class="placeholder">Add environment URL here.</span></div>
+              <div class="row-content">
+                <p>Open the following files <strong>before the demo</strong> so they're available in Work IQ context:</p>
+                <ul class="bullets" style="margin-top:6px;">
+                  <li><strong>Customer Brief Template.docx</strong></li>
+                  <li><strong>Zava Sales Performance.xlsx</strong></li>
+                </ul>
+                <p style="margin-top:6px;">Open <strong>Cowork (Weave)</strong> and have the attach panel ready. Prepare a <strong>pre-baked version</strong> tab in the background with all 3 assets already created — use this as a fallback to show the finished output.</p>
+                <div style="background:#FFF8E1;border:1px solid #FFE082;border-radius:4px;padding:8px 10px;margin-top:8px;font-size:11px;">
+                  ⚠️ <strong>Known bug:</strong> Interrupting mid-CoT may kill previous tasks. When practicing, send the interrupt prompt <em>after</em> all 3 assets have been created. In a live demo, you can interrupt mid-CoT for the preferred experience — but verify this works beforehand.
+                </div>
+              </div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">📁 Files <span class="row-chevron">▾</span></div>
-              <div class="row-content"><span class="placeholder">Add specific files / environment URL here.</span></div>
+              <div class="row-content">
+                <ul class="bullets">
+                  <li><a href="https://microsoft.sharepoint.com/:w:/s/ABSdemos/IQBsgUx_OClbTbEnq1ozHwVlAYMN1i_ym0GZqEoc2x8acG8?e=VvBmFH" target="_blank">Customer Brief Template.docx</a></li>
+                  <li><a href="https://microsoft.sharepoint.com/:x:/s/ABSdemos/IQD6NVSxf15RS4EPcY9IdqOKAeKjX5wgZZo8WzE_uJe5edY?e=dUjgna" target="_blank">Zava Sales Performance.xlsx</a></li>
+                  <li>Pre-baked output tab (all 3 assets created) — open in background before demo</li>
+                </ul>
+              </div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">▶️ Steps <span class="row-chevron">▾</span><span class="row-hint">step by step</span></div>
-              <div class="row-content"><span class="placeholder">Add step-by-step demo flow here.</span></div>
+              <div class="row-content">
+                <ol class="steps">
+                  <li>Open Cowork. Enter the <strong>main prompt</strong> (see Prompts below).</li>
+                  <li>Click <strong>"Attach cloud files"</strong> (MSIT tenant) or type <strong>"/"</strong> (Charles demo tenant) and attach <strong>Customer Brief Template.docx</strong>.</li>
+                  <li>Watch the <strong>Chain of Thought</strong> run — let it go for ~1 minute. Use this time for your talk track. <em>Do not click "Progress" — nothing shows up there yet.</em></li>
+                  <li>Send the <strong>interrupt prompt</strong> (schedule focus time + customer update email). If practicing, wait until all 3 assets are created first.</li>
+                  <li>Review the <strong>calendar invite</strong> and click <strong>Send</strong>.</li>
+                  <li>Review the <strong>draft email</strong> and click <strong>Send</strong> (may appear as "Save Draft").</li>
+                  <li>Switch to your <strong>pre-baked version</strong> tab to show all 3 completed assets.</li>
+                  <li>Click through each asset:
+                    <ul class="bullets" style="margin-top:4px;">
+                      <li><strong>Word doc</strong> — show the final output, then click the original template to demonstrate it adapted it well</li>
+                      <li><strong>Excel</strong> — verify graphs for usage and sales trends look good</li>
+                      <li><strong>PPT</strong> — check for decent visualizations and graphics</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
             </div>
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Copy / Paste Prompts — click any prompt to copy<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body">
-              <div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div>
-            </div></div>
-          </div>
+                <div class="prompt-item" onclick="copyPrompt(this)"><span class="copy-hint">copy</span>
+                  <span class="prompt-tag">MAIN PROMPT (with Excel)</span>
+                  <span class="prompt-text">Help me prepare for my customer meeting with Zava by pulling together relevant emails, calendar items, and file context into a briefing document based on the attached template as well as create an Excel overview of customer data with graphs of usage and sales trends over time. Finally create a client-ready presentation that includes why we are differentiated from competition, opportunities, and next steps.</span>
+                </div>
+                <div class="prompt-item" onclick="copyPrompt(this)"><span class="copy-hint">copy</span>
+                  <span class="prompt-tag">ALTERNATE PROMPT (if no Excel)</span>
+                  <span class="prompt-text">Help me prepare for my customer meeting with Zava by pulling together relevant emails, calendar items, and file context into a briefing document based on the example attached. Finally create a client-ready presentation that includes why we are differentiated from competition, opportunities, and next steps.</span>
+                </div>
+                <div class="prompt-item" onclick="copyPrompt(this)"><span class="copy-hint">copy</span>
+                  <span class="prompt-tag">INTERRUPT PROMPT</span>
+                  <span class="prompt-text">Also schedule focus time for me to prep tomorrow morning for 30 minutes. And send a customer update email with status updates, findings summaries, proposals for me to send to Nirja on the account team.</span>
+                </div>
+              </div>
+            </div>
             <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
-              <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo3" onkeydown="if(event.key==='Enter')openSim('demo3')">
+              <input class="sim-link-input" type="url" value="https://demos.microsoft.com/app/present/6051#/0/0" id="sim-demo3" onkeydown="if(event.key==='Enter')openSim('demo3')">
               <button class="sim-link-go" onclick="openSim('demo3')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
         </details>
       </div>
 
@@ -1265,7 +1335,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-title">Agent Builder</div>
               <div class="demo-tagline">Show how anyone can create a no-code AI agent in minutes from Copilot Chat.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body" style="padding:0;">
 
@@ -1278,7 +1348,7 @@ What do you know about me and my job here at Microsoft?</span>
                             <div class="demo-title">CELA Marketing Agent <span style="font-size:9px;font-weight:500;background:#EEF4FB;color:#1A4A7A;border-radius:10px;padding:2px 7px;margin-left:6px;vertical-align:middle;">Easier</span></div>
                             <div class="demo-tagline">Single-URL agent that reviews marketing copy for legal compliance — quick to build, great story.</div>
                           </div>
-                          <span class="demo-chevron">▾</span>
+                          <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
                         </summary>
                         <div class="demo-body">
                           <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -1332,6 +1402,7 @@ What do you know about me and my job here at Microsoft?</span>
                           <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo4" onkeydown="if(event.key='Enter')openSim('demo4')">
                           <button class="sim-link-go" onclick="openSim('demo4')">Open ↗</button>
                         </div>
+            <div class="demo-card-cap"></div>
                       </details>
             </div>
 
@@ -1344,7 +1415,7 @@ What do you know about me and my job here at Microsoft?</span>
                             <div class="demo-title">Customer Engagement Agent <span style="font-size:9px;font-weight:500;background:#E8F4E8;color:#1A6B1A;border-radius:10px;padding:2px 7px;margin-left:6px;vertical-align:middle;">Advanced</span></div>
                             <div class="demo-tagline">Multi-source agent using Teams chat + Word doc as knowledge — rich, realistic scenario.</div>
                           </div>
-                          <span class="demo-chevron">▾</span>
+                          <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
                         </summary>
                         <div class="demo-body">
                           <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -1398,6 +1469,7 @@ What do you know about me and my job here at Microsoft?</span>
                           <input class="sim-link-input" type="url" value="https://demos.microsoft.com/app/present/6009#/0/0" id="sim-demo4b" onkeydown="if(event.key='Enter')openSim('demo4b')">
                           <button class="sim-link-go" onclick="openSim('demo4b')">Open ↗</button>
                         </div>
+            <div class="demo-card-cap"></div>
                       </details>
                     </div>
               
@@ -1416,7 +1488,7 @@ What do you know about me and my job here at Microsoft?</span>
   <!-- ══════════════════════════════════ -->
 <details id="cat2">
     <summary class="cat-header">
-      <span class="cat-title">2. Core Apps — Agent Mode</span>
+      <span class="cat-title">2. Core Apps</span>
       <span class="cat-chevron">▾</span>
     </summary>
     <div class="cat-body">
@@ -1427,12 +1499,12 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="demo12">
           <summary class="demo-header">
-            <span class="demo-num app-word">2.2.1 · Word</span>
+            <svg class="app-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#2B579A"/><text x="24" y="34" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="700" fill="white" text-anchor="middle">W</text></svg>
             <div style="flex:1">
               <div class="demo-title">Word — Copilot Agent Mode (MBR Demo)</div>
               <div class="demo-tagline">Copilot reads your emails &amp; chats, then rewrites your Monthly Business Review report in seconds — no copy-paste required.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
 
@@ -1656,6 +1728,7 @@ What do you know about me and my job here at Microsoft?</span>
               <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo12" onkeydown="if(event.key==='Enter')openSim('demo12')">
               <button class="sim-link-go" onclick="openSim('demo12')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
 
             <!-- IMAGE UPLOAD -->
             <div class="image-upload-area" data-demo="demo12">
@@ -1671,12 +1744,12 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="demo13">
           <summary class="demo-header">
-            <span class="demo-num app-excel">2.2.2 · Excel</span>
+            <svg class="app-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#217346"/><text x="24" y="34" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="700" fill="white" text-anchor="middle">X</text></svg>
             <div style="flex:1">
               <div class="demo-title">Excel — Copilot Agent Mode</div>
               <div class="demo-tagline">Autonomous data analysis, formula generation, and insight surfacing in Excel Agent Mode.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -1719,12 +1792,12 @@ What do you know about me and my job here at Microsoft?</span>
                   <span class="copy-hint">Click to copy</span>
                 </div>
               </div>
-            </div>
-            <div class="sim-link-row">
+              <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
               <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo13" onkeydown="if(event.key==='Enter')openSim('demo13')">
               <button class="sim-link-go" onclick="openSim('demo13')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
             <div class="image-upload-area" data-demo="demo13"><button class="add-image-btn" onclick="triggerImageUpload('demo13')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo13')"><div class="uploaded-images" id="images-demo13"></div></div>
 
             <div class="vis-ref-section collapsed" id="excel-vis-panel">
@@ -1752,12 +1825,12 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="demo14">
           <summary class="demo-header">
-            <span class="demo-num app-ppt">2.2.3 · PPT</span>
+            <svg class="app-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#B7472A"/><text x="24" y="34" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="700" fill="white" text-anchor="middle">P</text></svg>
             <div style="flex:1">
               <div class="demo-title">PowerPoint — Copilot Agent Mode</div>
               <div class="demo-tagline">Build, restructure, and design entire presentations using Copilot Agent Mode in PowerPoint.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -1778,6 +1851,7 @@ What do you know about me and my job here at Microsoft?</span>
               <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo14" onkeydown="if(event.key==='Enter')openSim('demo14')">
               <button class="sim-link-go" onclick="openSim('demo14')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
             <div class="image-upload-area" data-demo="demo14"><button class="add-image-btn" onclick="triggerImageUpload('demo14')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo14')"><div class="uploaded-images" id="images-demo14"></div></div>
           </div>
         </details>
@@ -1786,12 +1860,12 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="demo15">
           <summary class="demo-header">
-            <span class="demo-num app-outlook">2.2.4 · Outlook</span>
+            <svg class="app-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#0072C6"/><text x="24" y="34" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="700" fill="white" text-anchor="middle">O</text></svg>
             <div style="flex:1">
               <div class="demo-title">Outlook — Copilot Agent Mode</div>
               <div class="demo-tagline">Autonomous email drafting, triage, and scheduling using Copilot Agent Mode in Outlook.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -1812,6 +1886,7 @@ What do you know about me and my job here at Microsoft?</span>
               <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo15" onkeydown="if(event.key==='Enter')openSim('demo15')">
               <button class="sim-link-go" onclick="openSim('demo15')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
             <div class="image-upload-area" data-demo="demo15"><button class="add-image-btn" onclick="triggerImageUpload('demo15')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo15')"><div class="uploaded-images" id="images-demo15"></div></div>
           </div>
         </details>
@@ -1837,7 +1912,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-title">Facilitator Agent in Teams</div>
               <div class="demo-tagline">A live meeting with confederates — Copilot Facilitator tracks the agenda, assigns tasks, creates documents, and coordinates agents in real time.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
 
@@ -2061,6 +2136,7 @@ What do you know about me and my job here at Microsoft?</span>
               <input class="sim-link-input" type="url" value="https://demos.microsoft.com/microsoft/play/5149/facilitator-agent#/0/0" id="sim-demo6" onkeydown="if(event.key==='Enter')openSim('demo6')">
               <button class="sim-link-go" onclick="openSim('demo6')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
 
             <!-- IMAGE UPLOAD -->
             <div class="image-upload-area" data-demo="demo6">
@@ -2092,7 +2168,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-title">Pets at Home — PowerPoint Clickthrough</div>
               <div class="demo-tagline" style="color:#E97316;font-style:normal;font-weight:500;">⚠️ Temporary · To be replaced with AON demo ASAP</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="warning-bar">⚠️ <span>Replace with AON demo as soon as available. Confirm the latest clickthrough link before each session.</span></div>
@@ -2108,12 +2184,12 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="row-label">▶️ Steps <span class="row-chevron">▾</span><span class="row-hint">step by step</span></div>
               <div class="row-content"><span class="placeholder">Add clickthrough narrative / click flow here.</span></div>
             </div>
-          </div>
             <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
               <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo7" onkeydown="if(event.key==='Enter')openSim('demo7')">
               <button class="sim-link-go" onclick="openSim('demo7')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
         </details>
       </div>
     </div>
@@ -2136,7 +2212,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-title">A365 Clickthrough</div>
               <div class="demo-tagline">Show centralized AI governance, deployment, and control for IT &amp; admin personas.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -2151,12 +2227,12 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="row-label">▶️ Steps <span class="row-chevron">▾</span><span class="row-hint">step by step</span></div>
               <div class="row-content"><span class="placeholder">Add clickthrough narrative / click flow here.</span></div>
             </div>
-          </div>
             <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
               <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo8" onkeydown="if(event.key==='Enter')openSim('demo8')">
               <button class="sim-link-go" onclick="openSim('demo8')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
         </details>
       </div>
     </div>
@@ -2177,12 +2253,12 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="demo16">
           <summary class="demo-header">
-            <span class="demo-num" style="background:#742774;">6.1</span>
+            <span class="demo-num">6.1</span>
             <div style="flex:1">
               <div class="demo-title">Sales Agent in Microsoft 365</div>
               <div class="demo-tagline">Show how Copilot surfaces rich sales context and accelerates seller productivity — all within M365.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -2192,7 +2268,7 @@ What do you know about me and my job here at Microsoft?</span>
                   <div style="display:flex;gap:8px;align-items:flex-start;"><div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div><div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Reboot your PC in the morning before the session.</div></div>
                   <div style="display:flex;gap:8px;align-items:flex-start;"><div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div><div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Set display to <strong>16:9 aspect ratio, 1080×1920 at 125% scale</strong>. You may need to reset this when connecting to production equipment.</div></div>
                   <div style="display:flex;gap:8px;align-items:flex-start;"><div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div><div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Ensure <strong>ZoomIt</strong> is running and you have practiced using it.</div></div>
-                  <div style="display:flex;gap:8px;align-items:flex-start;"><div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">4</div><div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Open the simulation link below. Load it in <strong>Tab 5</strong> before the session.</div></div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;"><div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">4</div><div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Open the simulation link below. Open the simulation link below before the session.</div></div>
                 </div>
               </div>
             </div>
@@ -2212,12 +2288,12 @@ What do you know about me and my job here at Microsoft?</span>
             <div class="prompts-section collapsed">
               <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div></div>
-            </div>
-            <div class="sim-link-row">
+              <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
               <input class="sim-link-input" type="url" value="https://aka.ms/sca_demo" id="sim-demo16" onkeydown="if(event.key==='Enter')openSim('demo16')">
               <button class="sim-link-go" onclick="openSim('demo16')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
             <div class="image-upload-area" data-demo="demo16"><button class="add-image-btn" onclick="triggerImageUpload('demo16')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo16')"><div class="uploaded-images" id="images-demo16"></div></div>
           </div>
         </details>
@@ -2227,19 +2303,19 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="demo17">
           <summary class="demo-header">
-            <span class="demo-num" style="background:#742774;">6.2</span>
+            <span class="demo-num">6.2</span>
             <div style="flex:1">
               <div class="demo-title">D365 Sales Qualification Agent</div>
               <div class="demo-tagline">AI agent automatically enriches and qualifies inbound leads — no lead falls through the cracks.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
               <div class="row-content">
                 <div style="display:flex;flex-direction:column;gap:6px;">
-                  <div style="display:flex;gap:8px;align-items:flex-start;"><div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div><div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Load the simulation link below in <strong>Tab 6</strong> before the session.</div></div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;"><div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div><div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Load the simulation link below before the session.</div></div>
                   <div style="display:flex;gap:8px;align-items:flex-start;"><div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div><div style="font-size:11px;color:var(--gray-800);line-height:1.6;">This demo covers both the <strong>seller experience</strong> (inbound lead) and the <strong>admin/IT experience</strong> (agent configuration).</div></div>
                 </div>
               </div>
@@ -2267,12 +2343,12 @@ What do you know about me and my job here at Microsoft?</span>
             <div class="prompts-section collapsed">
               <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div></div>
-            </div>
-            <div class="sim-link-row">
+              <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
               <input class="sim-link-input" type="url" value="https://aka.ms/sqa_guided" id="sim-demo17" onkeydown="if(event.key==='Enter')openSim('demo17')">
               <button class="sim-link-go" onclick="openSim('demo17')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
             <div class="image-upload-area" data-demo="demo17"><button class="add-image-btn" onclick="triggerImageUpload('demo17')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo17')"><div class="uploaded-images" id="images-demo17"></div></div>
           </div>
         </details>
@@ -2282,17 +2358,17 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="demo18">
           <summary class="demo-header">
-            <span class="demo-num" style="background:#742774;">6.3</span>
+            <span class="demo-num">6.3</span>
             <div style="flex:1">
               <div class="demo-title">D365 Sales Research Agent</div>
               <div class="demo-tagline">For sales leaders — AI agent builds dynamic research blueprints from D365 data and surfaces pipeline insights in real time.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
-              <div class="row-content">Load the simulation link below in <strong>Tab 7</strong> before the session. This demo is for the sales leader persona.</div>
+              <div class="row-content">Load the simulation link below before the session. This demo is for the sales leader persona.</div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)"><div class="row-label">📁 Files <span class="row-chevron">▾</span></div><div class="row-content">
               <a href="https://microsoft.sharepoint.com/:w:/t/AgileDemoAppDevelopment/Ec6gEgY1fhtEnr6-_qR8i-4BHqH_mob-vCyEG3D9Eq0yIA?e=IRyGJX" target="_blank" style="color:var(--blue);font-weight:500;">📄 Demo 3.2 — Sales Research Agent Script (SharePoint)</a>
@@ -2313,12 +2389,12 @@ What do you know about me and my job here at Microsoft?</span>
             <div class="prompts-section collapsed">
               <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div></div>
-            </div>
-            <div class="sim-link-row">
+              <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
               <input class="sim-link-input" type="url" value="https://aka.ms/sra_demo" id="sim-demo18" onkeydown="if(event.key==='Enter')openSim('demo18')">
               <button class="sim-link-go" onclick="openSim('demo18')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
             <div class="image-upload-area" data-demo="demo18"><button class="add-image-btn" onclick="triggerImageUpload('demo18')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo18')"><div class="uploaded-images" id="images-demo18"></div></div>
           </div>
         </details>
@@ -2328,17 +2404,17 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="demo19">
           <summary class="demo-header">
-            <span class="demo-num" style="background:#742774;">6.4</span>
+            <span class="demo-num">6.4</span>
             <div style="flex:1">
               <div class="demo-title">D365 Service Agent</div>
               <div class="demo-tagline">For service agents — Copilot surfaces full case context, sentiment tracking, and AI-suggested resolutions in real time.</div>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
-              <div class="row-content">Load the simulation link below in <strong>Tab 8</strong> before the session. Animations in this demo are slow — have your talk track ready to fill the time.</div>
+              <div class="row-content">Load the simulation link below before the session. Animations in this demo are slow — have your talk track ready to fill the time.</div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)"><div class="row-label">📁 Files <span class="row-chevron">▾</span></div><div class="row-content">
               <a href="https://microsoft.sharepoint.com/:w:/t/AgileDemoAppDevelopment/EWWfF_HaGzFOh4KznF0kOiUBeQF9D1GA5U1ozPA7VTkULQ?e=8NhP5p" target="_blank" style="color:var(--blue);font-weight:500;">📄 Demo 3.3 — D365 Service Agent Script (SharePoint)</a>
@@ -2361,12 +2437,12 @@ What do you know about me and my job here at Microsoft?</span>
             <div class="prompts-section collapsed">
               <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div></div>
-            </div>
-            <div class="sim-link-row">
+              <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
               <input class="sim-link-input" type="url" value="https://aka.ms/CSclickthroughdemo" id="sim-demo19" onkeydown="if(event.key==='Enter')openSim('demo19')">
               <button class="sim-link-go" onclick="openSim('demo19')">Open ↗</button>
             </div>
+            <div class="demo-card-cap"></div>
             <div class="image-upload-area" data-demo="demo19"><button class="add-image-btn" onclick="triggerImageUpload('demo19')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo19')"><div class="uploaded-images" id="images-demo19"></div></div>
           </div>
         </details>
@@ -2389,12 +2465,12 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="tool1">
           <summary class="demo-header">
-            <span class="demo-num" style="background:#555;">7.1</span>
+            <span class="demo-num">7.1</span>
             <div style="flex:1">
               <div class="demo-title" style="display:inline;">ZoomIt</div>
               <span class="demo-tagline" style="margin-left:8px;">Screen zoom and annotation tool for live demos.</span>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div style="padding:12px 14px 10px;">
@@ -2490,12 +2566,12 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="tool2">
           <summary class="demo-header">
-            <span class="demo-num" style="background:#555;">7.2</span>
+            <span class="demo-num">7.2</span>
             <div style="flex:1">
               <div class="demo-title" style="display:inline;">Auto Hotkey</div>
               <span class="demo-tagline" style="margin-left:8px;">Custom keyboard shortcuts for writing prompts.</span>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div style="padding:12px 14px 14px;">
@@ -2611,12 +2687,12 @@ What do you know about me and my job here at Microsoft?</span>
       <div class="demo">
         <details id="tool3">
           <summary class="demo-header">
-            <span class="demo-num" style="background:#555;">7.3</span>
+            <span class="demo-num">7.3</span>
             <div style="flex:1">
               <div class="demo-title" style="display:inline;">Windows Clipboard History</div>
               <span class="demo-tagline" style="margin-left:8px;">Pre-load longer prompts into clipboard history for instant paste.</span>
             </div>
-            <span class="demo-chevron">▾</span>
+            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
             <div style="padding:12px 14px 14px;">
@@ -2730,7 +2806,7 @@ What do you know about me and my job here at Microsoft?</span>
     { id: 'demo5',  cat: 'cat1', title: 'Word Agent in Chat' },
     { id: 'demo9',  cat: 'cat1', title: 'Excel Agent in Chat' },
     { id: 'demo10', cat: 'cat1', title: 'PPT Agent in Chat' },
-    { id: 'demo11', cat: 'cat1', title: 'Outlook Agent in Chat' },
+    { id: 'demo11', cat: 'cat1', title: 'Outlook Skill in Chat' },
     { id: 'demo12', cat: 'cat2', title: 'Word — Agent Mode' },
     { id: 'demo13', cat: 'cat2', title: 'Excel — Agent Mode' },
     { id: 'demo14', cat: 'cat2', title: 'PPT — Agent Mode' },
@@ -2980,7 +3056,7 @@ What do you know about me and my job here at Microsoft?</span>
 
     const cats = [
       { id: 'cat1', title: '1. Copilot App' },
-      { id: 'cat2', title: '2. Agent Mode' },
+      { id: 'cat2', title: '2. Core Apps' },
       { id: 'cat3', title: '3. Copilot for Teamwork' },
       { id: 'cat4', title: '4. Studio' },
       { id: 'cat5', title: '5. Agent 365' },
@@ -3129,24 +3205,30 @@ What do you know about me and my job here at Microsoft?</span>
     });
   }
 
-  // ── EXPAND / COLLAPSE ALL ──
-  function expandOneLevel(btn) {
-    // Open only top-level category <details>, leave demos and rows collapsed
-    const catDetails = document.querySelectorAll('details[id^="cat"]');
-    const anyOpen = Array.from(catDetails).some(d => d.open);
-    catDetails.forEach(d => d.open = !anyOpen);
-    // Ensure all demo details and collapsible rows stay collapsed
-    document.querySelectorAll('details[id^="demo"], details[id="demo-tools"]').forEach(d => d.open = false);
-    document.querySelectorAll('.collapsible-row').forEach(r => r.classList.add('collapsed'));
-    btn.textContent = anyOpen ? 'Expand 1 Level' : 'Collapse 1 Level';
-    document.querySelector('[onclick="toggleAll(this)"]').textContent = 'Expand All';
+  // ── SHOW MORE / SHOW LESS (layer by layer) ──
+  // Levels: 0 = all collapsed, 1 = sections open, 2 = demos open, 3 = rows open
+  let expandLevel = 0;
+
+  function expandAll() {
+    expandLevel = Math.min(expandLevel + 1, 3);
+    applyExpandLevel();
   }
 
-  function toggleAll(btn) {
-    const allDetails = document.querySelectorAll('details');
-    const anyOpen = Array.from(allDetails).some(d => d.open);
-    allDetails.forEach(d => d.open = !anyOpen);
-    btn.textContent = anyOpen ? 'Expand All' : 'Collapse All';
+  function collapseAll() {
+    expandLevel = Math.max(expandLevel - 1, 0);
+    applyExpandLevel();
+  }
+
+  function applyExpandLevel() {
+    // Level 1+: open category sections
+    document.querySelectorAll('details[id^="cat"]').forEach(d => d.open = expandLevel >= 1);
+    // Level 2+: open demo details
+    document.querySelectorAll('details[id^="demo"], details[id="demo-tools"]').forEach(d => d.open = expandLevel >= 2);
+    // Level 3: open collapsible rows
+    document.querySelectorAll('.collapsible-row').forEach(r => {
+      if (expandLevel >= 3) r.classList.remove('collapsed');
+      else r.classList.add('collapsed');
+    });
   }
 
   // ── SCROLL TO ──
@@ -3155,8 +3237,44 @@ What do you know about me and my job here at Microsoft?</span>
     if (el) { el.open = true; el.scrollIntoView({ behavior:'smooth', block:'start' }); }
   }
 
+  // ── DEMO STATUS BADGES ──
+  function updateDemoStatusBadges() {
+    document.querySelectorAll('.demo details[id^="demo"]').forEach(demoEl => {
+      const badge = demoEl.querySelector('.demo-status');
+      if (!badge) return;
+      const body = demoEl.querySelector('.demo-body');
+      if (!body) return;
+
+      // Count placeholder elements in this demo body
+      const placeholders = body.querySelectorAll('.placeholder');
+      // Count prompt items that are real (have prompt-text with actual content)
+      const promptItems = body.querySelectorAll('.prompt-item .prompt-text');
+      const hasRealPrompts = [...promptItems].some(p => p.textContent.trim().length > 5);
+      // Count steps
+      const steps = body.querySelectorAll('ol.steps li');
+      const hasSteps = steps.length > 0;
+
+      if (placeholders.length === 0 && (hasRealPrompts || hasSteps)) {
+        badge.classList.add('complete');
+        badge.classList.remove('partial');
+        badge.textContent = '✓';
+        badge.title = 'Content complete';
+      } else if (placeholders.length > 0 && (hasRealPrompts || hasSteps)) {
+        badge.classList.add('partial');
+        badge.classList.remove('complete');
+        badge.textContent = '~';
+        badge.title = 'Partially complete';
+      } else {
+        badge.classList.remove('complete', 'partial');
+        badge.textContent = '';
+        badge.title = 'No content yet';
+      }
+    });
+  }
+
   // Init
   onCheckChange();
+  updateDemoStatusBadges();
 </script>
 
 <!-- LIGHTBOX -->
