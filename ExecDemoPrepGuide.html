@@ -696,7 +696,7 @@
 
   .builder-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 8px;
   }
   .builder-cat {
@@ -723,6 +723,11 @@
     padding: 4px 8px 2px 8px;
     border-top: 1px solid var(--gray-100);
     margin-top: 2px;
+  }
+  .builder-subcat-indent {
+    border-left: 2px solid var(--blue);
+    margin: 0 4px 4px 10px;
+    border-radius: 0 0 3px 3px;
   }
   .demo-check {
     display: flex;
@@ -881,22 +886,23 @@
 
   <div class="builder-grid">
 
-    <!-- ROW 1 -->
     <div class="builder-cat">
       <div class="builder-cat-label">1. Copilot App</div>
       <label class="demo-check"><input type="checkbox" data-demo="demo1" data-cat="cat1" checked onchange="onCheckChange()"><span>Work IQ Demo</span></label>
       <label class="demo-check"><input type="checkbox" data-demo="demo2" data-cat="cat1" checked onchange="onCheckChange()"><span>WXPO Agents</span></label>
+      <div class="builder-subcat-indent">
+        <div class="builder-subcat-label">Agents in Chat</div>
+        <label class="demo-check"><input type="checkbox" data-demo="demo5"  data-cat="cat1" checked onchange="onCheckChange()"><span>Word</span></label>
+        <label class="demo-check"><input type="checkbox" data-demo="demo9"  data-cat="cat1" checked onchange="onCheckChange()"><span>Excel</span></label>
+        <label class="demo-check"><input type="checkbox" data-demo="demo10" data-cat="cat1" checked onchange="onCheckChange()"><span>PowerPoint</span></label>
+        <label class="demo-check"><input type="checkbox" data-demo="demo11" data-cat="cat1" checked onchange="onCheckChange()"><span>Outlook</span></label>
+      </div>
       <label class="demo-check"><input type="checkbox" data-demo="demo3" data-cat="cat1" checked onchange="onCheckChange()"><span>Cowork</span></label>
       <label class="demo-check"><input type="checkbox" data-demo="demo4" data-cat="cat1" checked onchange="onCheckChange()"><span>Agent Builder</span></label>
-      <div class="builder-subcat-label">↳ Agents in Chat</div>
-      <label class="demo-check"><input type="checkbox" data-demo="demo5"  data-cat="cat1" checked onchange="onCheckChange()"><span>Word</span></label>
-      <label class="demo-check"><input type="checkbox" data-demo="demo9"  data-cat="cat1" checked onchange="onCheckChange()"><span>Excel</span></label>
-      <label class="demo-check"><input type="checkbox" data-demo="demo10" data-cat="cat1" checked onchange="onCheckChange()"><span>PowerPoint</span></label>
-      <label class="demo-check"><input type="checkbox" data-demo="demo11" data-cat="cat1" checked onchange="onCheckChange()"><span>Outlook</span></label>
     </div>
 
     <div class="builder-cat">
-      <div class="builder-cat-label">2. Core Apps — Agent Mode</div>
+      <div class="builder-cat-label">2. Agent Mode</div>
       <label class="demo-check"><input type="checkbox" data-demo="demo12" data-cat="cat2" checked onchange="onCheckChange()"><span>Word</span></label>
       <label class="demo-check"><input type="checkbox" data-demo="demo13" data-cat="cat2" checked onchange="onCheckChange()"><span>Excel</span></label>
       <label class="demo-check"><input type="checkbox" data-demo="demo14" data-cat="cat2" checked onchange="onCheckChange()"><span>PowerPoint</span></label>
@@ -904,27 +910,26 @@
     </div>
 
     <div class="builder-cat">
-      <div class="builder-cat-label">6. Biz Apps</div>
-      <label class="demo-check"><input type="checkbox" data-demo="demo16" data-cat="cat6" checked onchange="onCheckChange()"><span>M365 Sales Agent</span></label>
-      <label class="demo-check"><input type="checkbox" data-demo="demo17" data-cat="cat6" checked onchange="onCheckChange()"><span>Sales Qualification Agent</span></label>
-      <label class="demo-check"><input type="checkbox" data-demo="demo18" data-cat="cat6" checked onchange="onCheckChange()"><span>Sales Research Agent</span></label>
-      <label class="demo-check"><input type="checkbox" data-demo="demo19" data-cat="cat6" checked onchange="onCheckChange()"><span>D365 Service Agent</span></label>
-    </div>
-
-    <!-- ROW 2 -->
-    <div class="builder-cat">
-      <div class="builder-cat-label">3. Copilot for Teamwork</div>
-      <label class="demo-check"><input type="checkbox" data-demo="demo6" data-cat="cat3" checked onchange="onCheckChange()"><span>Facilitator Agent in Teams</span></label>
+      <div class="builder-cat-label">3. Teamwork</div>
+      <label class="demo-check"><input type="checkbox" data-demo="demo6" data-cat="cat3" checked onchange="onCheckChange()"><span>Facilitator Agent</span></label>
     </div>
 
     <div class="builder-cat">
       <div class="builder-cat-label">4. Studio</div>
-      <label class="demo-check"><input type="checkbox" data-demo="demo7" data-cat="cat4" checked onchange="onCheckChange()"><span>Pets at Home Clickthrough</span></label>
+      <label class="demo-check"><input type="checkbox" data-demo="demo7" data-cat="cat4" checked onchange="onCheckChange()"><span>Pets at Home</span></label>
     </div>
 
     <div class="builder-cat">
       <div class="builder-cat-label">5. Agent 365</div>
       <label class="demo-check"><input type="checkbox" data-demo="demo8" data-cat="cat5" checked onchange="onCheckChange()"><span>A365 Clickthrough</span></label>
+    </div>
+
+    <div class="builder-cat">
+      <div class="builder-cat-label">6. Biz Apps</div>
+      <label class="demo-check"><input type="checkbox" data-demo="demo16" data-cat="cat6" checked onchange="onCheckChange()"><span>M365 Sales Agent</span></label>
+      <label class="demo-check"><input type="checkbox" data-demo="demo17" data-cat="cat6" checked onchange="onCheckChange()"><span>Sales Qualification</span></label>
+      <label class="demo-check"><input type="checkbox" data-demo="demo18" data-cat="cat6" checked onchange="onCheckChange()"><span>Sales Research</span></label>
+      <label class="demo-check"><input type="checkbox" data-demo="demo19" data-cat="cat6" checked onchange="onCheckChange()"><span>D365 Service</span></label>
     </div>
 
   </div>
