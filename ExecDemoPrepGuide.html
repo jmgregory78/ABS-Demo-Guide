@@ -1797,8 +1797,8 @@ What do you know about me and my job here at Microsoft?</span>
           <summary class="demo-header">
             <span class="demo-num">3.1</span>
             <div style="flex:1">
-              <div class="demo-title">Facilitator &amp; Teams Meeting Mode</div>
-              <div class="demo-tagline">Show how Copilot runs your meeting for you — live recaps, decisions, action items, and follow-up in seconds.</div>
+              <div class="demo-title">Facilitator Agent in Teams</div>
+              <div class="demo-tagline">A live meeting with confederates — Copilot Facilitator tracks the agenda, assigns tasks, creates documents, and coordinates agents in real time.</div>
             </div>
             <span class="demo-chevron">▾</span>
           </summary>
@@ -1806,24 +1806,44 @@ What do you know about me and my job here at Microsoft?</span>
 
             <!-- SETUP -->
             <div class="row collapsible-row" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
+              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
               <div class="row-content">
-                <div style="display:grid;gap:6px;">
+                <div style="background:#FFF8E1;border:1px solid #FFE082;border-radius:4px;padding:6px 10px;font-size:11px;color:#5A4000;margin-bottom:10px;line-height:1.6;">
+                  ⚠️ <strong>This demo requires 4 live confederates on a pre-scheduled Teams meeting.</strong> Allow time to brief them on the script (Section 4 of the source doc) and rehearse at least once before going live.
+                </div>
+                <div style="display:grid;gap:7px;">
+
+                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;">People Required</div>
+                  <div style="font-size:11px;color:var(--gray-800);line-height:1.8;padding-left:4px;">
+                    <table style="width:100%;font-size:11px;border-collapse:collapse;">
+                      <tr style="background:var(--blue-mid);">
+                        <th style="padding:4px 8px;text-align:left;font-weight:600;border:1px solid var(--gray-200);">Name</th>
+                        <th style="padding:4px 8px;text-align:left;font-weight:600;border:1px solid var(--gray-200);">Role in Demo</th>
+                      </tr>
+                      <tr><td style="padding:4px 8px;border:1px solid var(--gray-200);"><strong>Nirja</strong></td><td style="padding:4px 8px;border:1px solid var(--gray-200);">Main demo lead — runs the demo, @mentions agents</td></tr>
+                      <tr style="background:var(--gray-50);"><td style="padding:4px 8px;border:1px solid var(--gray-200);"><strong>Jason</strong></td><td style="padding:4px 8px;border:1px solid var(--gray-200);">Moderator — opens meeting, reads script, sends chat messages</td></tr>
+                      <tr><td style="padding:4px 8px;border:1px solid var(--gray-200);"><strong>Josh</strong></td><td style="padding:4px 8px;border:1px solid var(--gray-200);">Confederate — speaks from script, @mentions Facilitator to add agenda item, sends chat messages</td></tr>
+                      <tr style="background:var(--gray-50);"><td style="padding:4px 8px;border:1px solid var(--gray-200);"><strong>Joe</strong></td><td style="padding:4px 8px;border:1px solid var(--gray-200);">Confederate — speaks from script, @mentions Facilitator to create timeline document</td></tr>
+                      <tr><td style="padding:4px 8px;border:1px solid var(--gray-200);"><strong>Emily</strong></td><td style="padding:4px 8px;border:1px solid var(--gray-200);">Confederate — speaks from script, sends chat messages</td></tr>
+                    </table>
+                  </div>
+
+                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;margin-top:4px;">Pre-Demo Steps</div>
                   <div style="display:flex;gap:8px;align-items:flex-start;">
                     <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div>
-                    <div>Start a <strong>Teams meeting</strong> using the demo tenant account. You can run this solo or with a colleague on a second device — a second participant makes it feel more live.</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Schedule a <strong>60-minute Teams meeting</strong> with Jason, Josh, Joe, Emily — include the following agenda: Introductions &amp; objectives · ZavaCore product update · ZavaCore announce dates &amp; workback schedule · Q&amp;A.</div>
                   </div>
                   <div style="display:flex;gap:8px;align-items:flex-start;">
                     <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div>
-                    <div>In the meeting toolbar, click <strong>More (…)</strong> → <strong>Copilot</strong> → <strong>Turn on</strong>. Transcription will begin automatically.</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;"><strong>15 minutes before the demo:</strong> All 4 confederates join the meeting with cameras on and start recording. They read through the call script and follow instructions. When Nirja (demo lead) joins, everyone looks engaged at camera.</div>
                   </div>
                   <div style="display:flex;gap:8px;align-items:flex-start;">
                     <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div>
-                    <div>Let 2–3 minutes of conversation happen (or paste the ZavaCore meeting script from the doc below into the chat to simulate prior discussion). Copilot needs some transcript content before the prompts land well.</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Update all names and dates in the script (use CTRL+H). If dates are stale, use Copilot Agent Mode to <em>"progress all dates by X days"</em> in the script document.</div>
                   </div>
                   <div style="display:flex;gap:8px;align-items:flex-start;">
                     <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">4</div>
-                    <div><strong>Optional post-meeting:</strong> Have the <strong>ZavaCore meeting transcript</strong> open in Copilot Chat or Teams after the meeting — this powers the Intelligent Recap and follow-up email steps.</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Ensure the <strong>Facilitator agent</strong> and <strong>EventCoordinator custom agent</strong> and the <strong>Remind 3P agent</strong> are added to the meeting before it starts.</div>
                   </div>
                 </div>
               </div>
@@ -1833,49 +1853,57 @@ What do you know about me and my job here at Microsoft?</span>
             <div class="row">
               <div class="row-label">📁 Files</div>
               <div class="row-content">
-                Teams demo tenant meeting — no pre-staged files required for the live portion.<br>
-                <span style="font-size:10px;color:var(--gray-400);margin-top:3px;display:block;">💡 Tip: Use the ZavaCore meeting script doc to pre-populate transcript context if running solo.</span>
+                Teams meeting — no pre-staged documents required.<br>
+                <span style="font-size:10px;color:var(--gray-400);margin-top:3px;display:block;">The Facilitator will create the workback schedule document live during the demo when Joe @mentions it.</span>
               </div>
             </div>
 
             <!-- STEPS -->
             <div class="row collapsible-row" onclick="toggleRow(this)">
-              <div class="row-label">▶️ Steps <span class="row-chevron">▾</span><span class="row-hint">step by step</span></div>
+              <div class="row-label">▶️ Steps <span class="row-chevron">▾</span></div>
               <div class="row-content">
                 <div style="display:grid;gap:8px;">
 
-                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;margin-bottom:2px;">Part A — Live Meeting (Copilot Facilitator)</div>
-
+                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;">Part 1 — Join &amp; Orient the Audience</div>
                   <div style="display:flex;gap:8px;align-items:flex-start;">
                     <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div>
-                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">With Copilot active in the meeting, narrate a brief scenario — e.g., <em>"We're in a customer strategy review with ZavaCore. Let's say we've been discussing Q3 targets, budget approvals, and a product launch timeline."</em> Speak naturally for 60–90 seconds.</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Before joining, show the audience the meeting agenda — point out it's a basic agenda. Narrate: <em>"It's not a great one, but keep it in mind — it's going to matter in a moment."</em></div>
                   </div>
-
                   <div style="display:flex;gap:8px;align-items:flex-start;">
                     <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div>
-                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Open the <strong>Copilot panel</strong> (right side of the Teams meeting window) and run <strong>Prompt 1</strong> — "What decisions have been made so far?" Let the audience read the output.</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Join the meeting. Show the attendee list — point out <strong>Facilitator is already on the call</strong>. Open the chat and widen the view.</div>
                   </div>
-
                   <div style="display:flex;gap:8px;align-items:flex-start;">
                     <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div>
-                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Run <strong>Prompt 2</strong> — "What action items have come up and who owns them?" Point out that Copilot has tracked speakers and attributed ownership automatically.</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Point out the <strong>agenda at the top of the meeting</strong> — Facilitator has already added it. Show the timeline bar: instructions, objectives, and time tracking per topic. Narrate: <em>"Right now we've just wrapped up the announcement dates."</em></div>
                   </div>
 
+                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;margin-top:4px;">Part 2 — Agenda Item Added by Confederates</div>
                   <div style="display:flex;gap:8px;align-items:flex-start;">
                     <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">4</div>
-                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Run <strong>Prompt 3</strong> — "What questions are still open?" This shows Copilot as a neutral, non-judgmental facilitator catching things the team missed.</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Scroll down in chat — show that <strong>Josh added a 15-minute agenda item</strong> for the ZavaCore press event by @mentioning Facilitator. It now appears in the agenda even though it wasn't in the original invite. Narrate this actively.</div>
                   </div>
 
-                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;margin-top:4px;margin-bottom:2px;">Part B — Post-Meeting Intelligent Recap</div>
-
+                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;margin-top:4px;">Part 3 — Document Created Live</div>
                   <div style="display:flex;gap:8px;align-items:flex-start;">
-                    <div style="background:#5B9BD5;color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">5</div>
-                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">End the meeting. Go to the <strong>Teams Calendar</strong> entry and click <strong>Recap</strong>. Show the auto-generated summary, key points, and chapters Copilot created from the transcript.</div>
+                    <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">5</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Show that <strong>Joe @mentioned Facilitator to create a workback schedule document</strong>. Open it and show the audience. Narrate: <em>"It used only the content from this meeting — not my broader work data. And it's a solid document."</em></div>
                   </div>
 
+                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;margin-top:4px;">Part 4 — Task Assignment</div>
                   <div style="display:flex;gap:8px;align-items:flex-start;">
-                    <div style="background:#5B9BD5;color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">6</div>
-                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">In Copilot Chat, run <strong>Prompt 4</strong> to generate a follow-up email from the meeting. Show it outputs a polished recap ready to send to the customer — names, decisions, and next steps included.</div>
+                    <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">6</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Use <strong>Prompt 1 or Prompt 2</strong> (pick one based on audience) to assign a task to Jason via Facilitator. Show the task appearing in Planner with Jason assigned. Narrate: <em>"Normally I'd have to open Planner manually — now I do it without leaving the meeting."</em></div>
+                  </div>
+
+                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;margin-top:4px;">Part 5 — Custom Agent &amp; 3P Agent</div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">7</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Use <strong>Prompt 3</strong> to @mention the <strong>EventCoordinator custom agent</strong> and ask about registration numbers. This shows a custom-built agent working alongside Facilitator in the same meeting.</div>
+                  </div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">8</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Use <strong>Prompt 4</strong> to @mention <strong>Remind</strong> (3P agent from Microsoft Store). Set a reminder for the team. Narrate: <em>"This is just one example from the Store — I can add more agents to extend what Teams can do."</em></div>
                   </div>
 
                 </div>
@@ -1888,35 +1916,105 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="prompts-body">
 
                 <div class="prompt-item" onclick="copyPrompt(this)">
-                  <span class="prompt-tag">PROMPT 1 — Decisions (Live · in-meeting Copilot panel)</span>
-                  <span class="prompt-text">What decisions have been made so far in this meeting?</span>
+                  <span class="prompt-tag">PROMPT 1 — Task Assignment Alt 1 (check for unassigned tasks first)</span>
+                  <span class="prompt-text">@facilitator – Are there any unassigned tasks?</span>
                   <span class="copy-hint">Click to copy</span>
                 </div>
 
                 <div class="prompt-item" onclick="copyPrompt(this)">
-                  <span class="prompt-tag">PROMPT 2 — Action Items (Live · in-meeting Copilot panel)</span>
-                  <span class="prompt-text">What action items have come up and who owns them?</span>
+                  <span class="prompt-tag">PROMPT 1B — Assign task to Joe (follow-up after Alt 1)</span>
+                  <span class="prompt-text">@facilitator – Assign the first task to Joe</span>
                   <span class="copy-hint">Click to copy</span>
                 </div>
 
                 <div class="prompt-item" onclick="copyPrompt(this)">
-                  <span class="prompt-tag">PROMPT 3 — Open Questions (Live · in-meeting Copilot panel)</span>
-                  <span class="prompt-text">What questions came up in this meeting that haven't been resolved yet?</span>
+                  <span class="prompt-tag">PROMPT 2 — Task Assignment Alt 2 (direct assign)</span>
+                  <span class="prompt-text">@facilitator – Assign for Jason to share the latest draft of the ZavaCore press release</span>
                   <span class="copy-hint">Click to copy</span>
                 </div>
 
                 <div class="prompt-item" onclick="copyPrompt(this)">
-                  <span class="prompt-tag">PROMPT 4 — Follow-up Email (Post-meeting · Copilot Chat)</span>
-                  <span class="prompt-text">Draft a professional follow-up email to the ZavaCore team summarizing today's strategy review. Include: decisions made, action items with owners, and proposed next steps. Keep it concise and executive-ready.</span>
+                  <span class="prompt-tag">PROMPT 3 — Custom Agent (EventCoordinator)</span>
+                  <span class="prompt-text">@EventCoordinator what are the latest registration numbers for the ZavaCore press event?</span>
                   <span class="copy-hint">Click to copy</span>
                 </div>
 
                 <div class="prompt-item" onclick="copyPrompt(this)">
-                  <span class="prompt-tag">PROMPT 5 — Catch-up (Optional · great for latecomers)</span>
-                  <span class="prompt-text">I just joined — what have I missed in the last 10 minutes?</span>
+                  <span class="prompt-tag">PROMPT 4 — 3P Agent (Remind)</span>
+                  <span class="prompt-text">@remind remind everyone 15 minutes before our next meeting to update their weekly tracker.</span>
                   <span class="copy-hint">Click to copy</span>
                 </div>
 
+                <div class="prompt-item" onclick="copyPrompt(this)">
+                  <span class="prompt-tag">CONFEDERATE ACTION — Josh (add agenda item)</span>
+                  <span class="prompt-text">@facilitator – Add a 15-minute agenda topic for discussing the ZavaCore Press Event before we get to Q&A</span>
+                  <span class="copy-hint">Click to copy</span>
+                </div>
+
+                <div class="prompt-item" onclick="copyPrompt(this)">
+                  <span class="prompt-tag">CONFEDERATE ACTION — Joe (create document)</span>
+                  <span class="prompt-text">@facilitator – Create a document with the timeline of activities for the next 4 weeks leading up to the press event, based on what we just discussed</span>
+                  <span class="copy-hint">Click to copy</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- CALL SCRIPT -->
+            <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
+              <div class="row-label" style="font-size:10px;">📜 Call Script <span class="row-chevron">▾</span></div>
+              <div class="row-content">
+                <div style="background:#FFF8E1;border:1px solid #FFE082;border-radius:4px;padding:6px 10px;font-size:11px;color:#5A4000;margin-bottom:10px;line-height:1.6;">
+                  💡 Share this with your confederates. Use CTRL+H to update names. Update dates using Copilot Agent Mode if needed.
+                </div>
+                <div style="display:grid;gap:10px;font-size:11px;line-height:1.7;color:var(--gray-800);">
+
+                  <div><span style="font-weight:700;color:var(--blue-dark);">Jason (Moderator):</span> "Good morning, everyone. Welcome to our ZavaCore launch planning call. I'm Jason, Product Marketing Lead for ZavaCore. Let's start with quick introductions."</div>
+                  <div><span style="font-weight:700;color:var(--blue-dark);">Josh:</span> "Hi all, I'm Josh, Head of Product Development. Excited to be here as we finalize the launch details."</div>
+                  <div><span style="font-weight:700;color:var(--blue-dark);">Joe:</span> "Hello, Joe here, Director of Global Distribution. Looking forward to ensuring our fulfillment and retail rollout is flawless."</div>
+                  <div><span style="font-weight:700;color:var(--blue-dark);">Emily:</span> "Hi everyone, I'm Emily, Communications Manager. I'll be leading our press event and announcement strategy for ZavaCore."</div>
+                  <div><span style="font-weight:700;color:var(--blue-dark);">Jason:</span> "Thank you everyone. The objective of today's meeting is to finalize our launch plans for ZavaCore. Now that we've concluded introductions, let's talk about the Product Timing Update."</div>
+
+                  <div style="background:#E8F0FE;border-left:3px solid var(--blue);padding:6px 10px;border-radius:0 4px 4px 0;font-weight:600;">⚡ ACTION — Josh @mentions Facilitator: "@facilitator – Add a 15-minute agenda topic for discussing the ZavaCore Press Event before we get to Q&A"</div>
+
+                  <div><span style="font-weight:700;color:var(--blue-dark);">Josh:</span> "ZavaCore is on track for launch on April 17. This is our flagship smart mesh athletic apparel line, featuring graphene-infused performance knit, real-time biometric sensors, and a proprietary smartphone app. Development is complete, all SKUs have passed QA, and packaging is being finalized."</div>
+                  <div><span style="font-weight:700;color:var(--blue-dark);">Joe:</span> "Distribution is ready. Our facilities in St. Louis, Charlotte, Vancouver, Montreal, Bergamo, and Borås are set for regional cut, sew, test, and pack."</div>
+                  <div><span style="font-weight:700;color:var(--blue-dark);">Emily:</span> "On the communications side, we're preparing a major press event for launch day, plus a coordinated campaign across digital, retail, and partner channels. Let's walk through the workback schedule."</div>
+
+                  <div style="font-weight:600;color:var(--gray-800);border-top:1px solid var(--gray-200);padding-top:8px;">Workback Schedule (Jason leads — each person reads their milestone)</div>
+                  <div><span style="font-weight:700;color:var(--blue-dark);">Jason:</span> "Here's our proposed timeline with fourteen key milestones leading up to the April 17 launch. There are also two open tasks still unassigned — we'll flag those before we wrap."</div>
+                  <div style="padding-left:8px;border-left:2px solid var(--gray-200);display:grid;gap:4px;">
+                    <div><strong>Emily — Mar 10:</strong> Final QA and compliance sign-off. Every SKU, sensor, and packaging approved. All certifications confirmed.</div>
+                    <div><strong>Josh — Mar 13:</strong> Bulk production and regional fulfillment begins. Woodinville HQ ships to US, Canada, and European facilities.</div>
+                    <div><strong>Joe — Mar 15:</strong> First internal field test with wearable mesh and sensor suite. Live data capture and app sync validation.</div>
+                    <div><strong>Emily — Mar 17:</strong> Finalize retail packaging design and submit for print.</div>
+                    <div><strong>Jason — Mar 19:</strong> Allocate inventory for retail and online. Micro retail stores get initial demo inventory.</div>
+                    <div><strong>Josh — Mar 21:</strong> Virtual onboarding session for regional fulfillment leads.</div>
+                    <div><strong>Joe — Mar 23:</strong> All marketing assets finalized. Website and e-commerce pages updated.</div>
+                    <div><strong>Emily — Mar 25:</strong> Full-stack integration test across ZavaCore app, cloud sync, and analytics dashboard.</div>
+                    <div><strong>Jason — Mar 28:</strong> Press event invitations sent. Social media teasers begin rolling out.</div>
+                    <div><strong>Josh — Mar 30:</strong> Final legal and compliance checkpoint.</div>
+                    <div><strong>Joe — Apr 1:</strong> Retail staff training and demo station setup.</div>
+                    <div><strong>Emily — Apr 6:</strong> Partner and athlete seeding. B2B partners briefed.</div>
+                    <div><strong>Jason — Apr 17:</strong> Launch day! Global press event, live demos, online and retail sales go live.</div>
+                  </div>
+
+                  <div><span style="font-weight:700;color:var(--blue-dark);">Jason:</span> "Before we move to the final topic, there are two open tasks: First, finalize the athlete list for April 6 seeding. Second, confirm demo station setup requirements for the press event and micro retail stores by April 1. Both still unassigned."</div>
+                  <div><span style="font-weight:700;color:var(--blue-dark);">Jason:</span> "Alright, let's transition to our final topic — the press event…"</div>
+
+                  <div style="background:#E8F0FE;border-left:3px solid var(--blue);padding:6px 10px;border-radius:0 4px 4px 0;font-weight:600;">⚡ (NO MORE AUDIO — everyone mute)</div>
+                  <div style="background:#E8F0FE;border-left:3px solid var(--blue);padding:6px 10px;border-radius:0 4px 4px 0;font-weight:600;">⚡ ACTION — Joe @mentions Facilitator in chat: "@facilitator – Create a document with the timeline of activities for the next 4 weeks leading up to the press event, based on what we just discussed"</div>
+
+                  <div style="font-weight:600;color:var(--gray-800);border-top:1px solid var(--gray-200);padding-top:8px;">Chat Messages (paste in chat while muted):</div>
+                  <div style="padding-left:8px;border-left:2px solid var(--gray-200);display:grid;gap:4px;">
+                    <div><strong>Joe:</strong> Just got confirmation from Bergamo — regional teams are ready for the cut, sew, and pack ops. Excited to see the first demo units!</div>
+                    <div><strong>Emily:</strong> I'll share the draft press release by end of day. If anyone has key athlete testimonials to include, DM me!</div>
+                    <div><strong>Josh:</strong> QA passed on all SKUs! 🎉 Thanks to everyone who helped with the sensor integration. Packaging update coming soon.</div>
+                    <div><strong>Jason:</strong> Love the idea of athlete seeding — maybe we can get some early social posts from the teams once they receive their kits?</div>
+                    <div><strong>Josh:</strong> Can we get a quick status check on the demo station setups for San Francisco and Dallas? Want to make sure we're on track for April 1.</div>
+                  </div>
+
+                </div>
               </div>
             </div>
 
