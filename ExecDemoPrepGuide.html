@@ -1392,31 +1392,261 @@ What do you know about me and my job here at Microsoft?</span>
           <summary class="demo-header">
             <span class="demo-num app-word">2.2.1 · Word</span>
             <div style="flex:1">
-              <div class="demo-title">Word — Copilot Agent Mode</div>
-              <div class="demo-tagline">Deep document editing and generation using Copilot Agent Mode inside Word.</div>
+              <div class="demo-title">Word — Copilot Agent Mode (MBR Demo)</div>
+              <div class="demo-tagline">Copilot reads your emails &amp; chats, then rewrites your Monthly Business Review report in seconds — no copy-paste required.</div>
             </div>
             <span class="demo-chevron">▾</span>
           </summary>
           <div class="demo-body">
+
+            <!-- AT A GLANCE -->
+            <div class="row" style="border-color:#BDD7EE;">
+              <div class="row-label" style="background:var(--blue-mid);color:var(--blue-dark);font-size:10px;">📋 At a Glance</div>
+              <div class="row-content" style="background:#F0F7FF;">
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:11px;">
+                  <div><strong style="display:block;color:var(--gray-600);font-size:10px;text-transform:uppercase;letter-spacing:.05em;">Duration</strong>10–15 minutes</div>
+                  <div><strong style="display:block;color:var(--gray-600);font-size:10px;text-transform:uppercase;letter-spacing:.05em;">Audience</strong>Executives, BDMs, M365 evaluators</div>
+                  <div><strong style="display:block;color:var(--gray-600);font-size:10px;text-transform:uppercase;letter-spacing:.05em;">Objective</strong>Agent Mode autonomously updates a live MBR doc from emails &amp; chats</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SETUP -->
             <div class="row collapsible-row" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
-              <div class="row-content">Open <strong>Word</strong> with a relevant document pre-loaded. Enable <strong>Copilot Agent Mode</strong> in the ribbon before the session starts.</div>
+              <div class="row-content">
+                <div style="background:#FFF8E1;border:1px solid #FFE082;border-radius:4px;padding:6px 10px;font-size:11px;color:#5A4000;margin-bottom:10px;line-height:1.6;">
+                  ⚠️ <strong>Allow 15 minutes for first-time setup.</strong> This demo requires pre-staged emails and chat messages in your inbox. Update all yellow-highlighted dates in the email templates if running in a month other than February 2026.
+                </div>
+                <div style="display:grid;gap:7px;">
+
+                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;">Step 1 · File Prep</div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Copy <strong>Marketing MBR.docx</strong> AND a <strong>backup copy</strong> to your personal OneDrive so you have an editable version and a clean restore copy.</div>
+                  </div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Open <strong>Marketing MBR.docx</strong> in Word in your second Edge tab. Keep this tab ready — this is where Agent Mode runs.</div>
+                  </div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Open <strong>M365 Copilot Chat</strong> in your first Edge tab (needed for the optional email discovery opener and V-Team priming).</div>
+                  </div>
+
+                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;margin-top:4px;">Step 2 · Send Emails &amp; Chats (see Section 4 templates)</div>
+                  <div style="font-size:11px;color:var(--gray-800);line-height:1.6;padding-left:4px;">
+                    Send all four messages to yourself before the demo. These are what Agent Mode will read to update the MBR:
+                    <table style="width:100%;margin-top:6px;font-size:11px;border-collapse:collapse;">
+                      <tr style="background:var(--blue-mid);">
+                        <th style="padding:4px 8px;text-align:left;font-weight:600;border:1px solid var(--gray-200);">Message</th>
+                        <th style="padding:4px 8px;text-align:left;font-weight:600;border:1px solid var(--gray-200);">From</th>
+                        <th style="padding:4px 8px;text-align:left;font-weight:600;border:1px solid var(--gray-200);">Purpose</th>
+                      </tr>
+                      <tr>
+                        <td style="padding:4px 8px;border:1px solid var(--gray-200);">Email #1 — MBR Request <span style="color:var(--gray-400);font-style:italic;">(optional)</span></td>
+                        <td style="padding:4px 8px;border:1px solid var(--gray-200);">Your Manager</td>
+                        <td style="padding:4px 8px;border:1px solid var(--gray-200);">Sets up the urgent request scenario. Mark as High Priority ❗</td>
+                      </tr>
+                      <tr style="background:var(--gray-50);">
+                        <td style="padding:4px 8px;border:1px solid var(--gray-200);">Email #2 — Messaging &amp; Creative</td>
+                        <td style="padding:4px 8px;border:1px solid var(--gray-200);">Colleague (Jason)</td>
+                        <td style="padding:4px 8px;border:1px solid var(--gray-200);">Priority #2 — Behind schedule</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:4px 8px;border:1px solid var(--gray-200);">Email #3 — MBR Priority Updates</td>
+                        <td style="padding:4px 8px;border:1px solid var(--gray-200);">Colleague (Ze V)</td>
+                        <td style="padding:4px 8px;border:1px solid var(--gray-200);">Launch, Digital, Customer Sell-In updates</td>
+                      </tr>
+                      <tr style="background:var(--gray-50);">
+                        <td style="padding:4px 8px;border:1px solid var(--gray-200);">Chat #1 — Media Update</td>
+                        <td style="padding:4px 8px;border:1px solid var(--gray-200);">Colleague (Scott M)</td>
+                        <td style="padding:4px 8px;border:1px solid var(--gray-200);">Media attention — on track, exceeding goals</td>
+                      </tr>
+                    </table>
+                  </div>
+
+                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;margin-top:4px;">Step 3 · Prime Copilot Memory</div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">!</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Run the <strong>V-Team Priming Prompt</strong> (Prompt 1 below) in Copilot Chat <strong>before the demo starts</strong>. This tells Copilot which names to look for when scanning emails. Without it, Agent Mode may miss updates.</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="row"><div class="row-label">📁 Files</div><div class="row-content"><span class="placeholder">Add required Word file link here.</span></div></div>
+
+            <!-- FILES -->
+            <div class="row">
+              <div class="row-label">📁 Files</div>
+              <div class="row-content">
+                <strong>Marketing MBR.docx</strong> — copy to your OneDrive before the demo<br>
+                <strong>Marketing MBR - Backup.docx</strong> — keep as your clean restore copy<br>
+                <span style="font-size:10px;color:var(--gray-400);margin-top:3px;display:block;">💡 Full email templates are in Section 4 of the source doc. Scroll to the Prompts section below for the copy/paste versions.</span>
+              </div>
+            </div>
+
+            <!-- THE MOMENT -->
+            <div class="row" style="border-color:#C8E6C9;">
+              <div class="row-label" style="background:#E8F5E9;color:#2E7D32;font-size:10px;">⚡ The Moment</div>
+              <div class="row-content" style="background:#F1FBF2;font-size:12px;color:#1B5E20;font-style:italic;line-height:1.6;">
+                You paste one prompt. Copilot reads 3 emails and a chat, figures out which update maps to which MBR priority, rewrites the entire report with tracked changes — in under two minutes. The exec realizes their team will never manually update a status report again.
+              </div>
+            </div>
+
+            <!-- STEPS -->
             <div class="row collapsible-row" onclick="toggleRow(this)">
               <div class="row-label">▶️ Steps <span class="row-chevron">▾</span><span class="row-hint">step by step</span></div>
-              <div class="row-content"><span class="placeholder">Add step-by-step agent mode flow here.</span></div>
+              <div class="row-content">
+                <div style="display:grid;gap:8px;">
+
+                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;">Part 1 — Optional Opener: Email Discovery via Copilot Chat</div>
+                  <div style="font-size:11px;color:var(--gray-600);font-style:italic;padding-left:4px;">Skip if time is limited — jump straight to Part 2 for the headline feature.</div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="background:#9AA0A6;color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Go to M365 Copilot Chat (desktop or mobile). Click <strong>Start a new voice chat</strong>.</div>
+                  </div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="background:#9AA0A6;color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Say: <em>"What is on my agenda today?"</em> Let Copilot respond, then naturally ask: <em>"Do I have any emails from my boss?"</em></div>
+                  </div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="background:#9AA0A6;color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Copilot surfaces Email #1 — the urgent MBR request. Narrate: <em>"My manager needs this MBR updated immediately for tomorrow's leadership sync. Let me jump into Word and use Agent Mode."</em></div>
+                  </div>
+
+                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;margin-top:4px;">Part 2 — Agent Mode in Word (Core Demo)</div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Switch to your Edge tab with <strong>Marketing MBR.docx</strong> open. Click the <strong>Copilot icon</strong> to open the Copilot pane.</div>
+                  </div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Click <strong>Tools</strong> → select <strong>Agent Mode</strong> from the menu.</div>
+                  </div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Paste <strong>Prompt 2</strong> (the main Agent Mode prompt) exactly into the input field. Hit Enter.</div>
+                  </div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">4</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;"><strong>Narrate while Copilot works:</strong> <em>"Watch it scan emails, read chat messages, identify which update maps to which priority, and prepare edits — all autonomously."</em> If Copilot pauses and asks "Should I update the document?" — respond: <em>"Go ahead and update the document."</em></div>
+                  </div>
+                  <div style="display:flex;gap:8px;align-items:flex-start;">
+                    <div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">5</div>
+                    <div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Click through the individual <strong>tracked changes</strong> — blue font highlights every edit. Show the <strong>Keep / Undo</strong> capability. When satisfied, click <strong>Keep All</strong>.</div>
+                  </div>
+
+                  <div style="background:var(--blue-light);border:1px solid #BDD7EE;border-radius:4px;padding:8px 10px;margin-top:4px;">
+                    <div style="font-size:10px;font-weight:700;color:var(--blue-dark);margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;">🎯 Key Talking Points</div>
+                    <ul style="padding-left:16px;margin:0;display:grid;gap:3px;">
+                      <li style="font-size:11px;color:var(--gray-800);">Agent Mode <strong>autonomously reads emails and chats</strong> — no copy-paste required</li>
+                      <li style="font-size:11px;color:var(--gray-800);">It <strong>understands context</strong>: knows which priorities map to which updates</li>
+                      <li style="font-size:11px;color:var(--gray-800);"><strong>Blue font</strong> highlights every change — review is fast and transparent</li>
+                      <li style="font-size:11px;color:var(--gray-800);"><strong>Status icons</strong> applied intelligently (green = on track; explained for delays)</li>
+                      <li style="font-size:11px;color:var(--gray-800);">Prompt to finished document: <strong>under two minutes</strong></li>
+                    </ul>
+                  </div>
+
+                  <div style="font-size:10px;font-weight:700;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;margin-top:4px;">Demo Reset (after each run)</div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+                    <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:4px;padding:8px 10px;">
+                      <div style="font-weight:700;color:var(--gray-800);margin-bottom:4px;">Option A — Version History</div>
+                      <ol style="padding-left:16px;margin:0;display:grid;gap:2px;color:var(--gray-800);">
+                        <li>Open Version History in Word</li>
+                        <li>Find the version saved before the demo</li>
+                        <li>Click Restore</li>
+                      </ol>
+                    </div>
+                    <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:4px;padding:8px 10px;">
+                      <div style="font-weight:700;color:var(--gray-800);margin-bottom:4px;">Option B — Restore from Backup</div>
+                      <ol style="padding-left:16px;margin:0;display:grid;gap:2px;color:var(--gray-800);">
+                        <li>Delete Marketing MBR.docx from OneDrive</li>
+                        <li>Duplicate Marketing MBR - Backup.docx</li>
+                        <li>Rename the copy to Marketing MBR.docx</li>
+                      </ol>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
             </div>
+
+            <!-- PROMPTS -->
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
-              <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div>
-            </div></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Copy / Paste Prompts — click any prompt to copy<span class="prompts-label-hint">click to expand</span></div>
+              <div class="prompts-body">
+
+                <div class="prompt-item" onclick="copyPrompt(this)">
+                  <span class="prompt-tag">PROMPT 1 — V-Team Priming (Copilot Chat · run BEFORE demo)</span>
+                  <span class="prompt-text">Please remember that my MBR V-Team is Nirja Trivedi, Josh Addison and Callie August.</span>
+                  <span class="copy-hint">Click to copy</span>
+                </div>
+
+                <div class="prompt-item" onclick="copyPrompt(this)">
+                  <span class="prompt-tag">PROMPT 2 — Agent Mode Main Prompt (paste into Word Agent Mode)</span>
+                  <span class="prompt-text">This is last month's MBR. Help me update it with January data, with the latest updates from my MBR v-team (look for emails and chats) and then update the entire report, including the table, removing the December updates, and replacing with the recent ones. Only edit the last 3 columns</span>
+                  <span class="copy-hint">Click to copy</span>
+                </div>
+
+                <div class="prompt-item" onclick="copyPrompt(this)">
+                  <span class="prompt-tag">PROMPT 3 — If Copilot Pauses Mid-Flow</span>
+                  <span class="prompt-text">Go ahead and update the document.</span>
+                  <span class="copy-hint">Click to copy</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- TROUBLESHOOTING -->
+            <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
+              <div class="row-label" style="font-size:10px;">🔧 Troubleshoot <span class="row-chevron">▾</span><span class="row-hint">if things go wrong</span></div>
+              <div class="row-content">
+                <table style="width:100%;font-size:11px;border-collapse:collapse;">
+                  <tr style="background:var(--blue-mid);">
+                    <th style="padding:5px 8px;text-align:left;font-weight:600;border:1px solid var(--gray-200);width:40%;">Issue</th>
+                    <th style="padding:5px 8px;text-align:left;font-weight:600;border:1px solid var(--gray-200);">Resolution</th>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px 8px;border:1px solid var(--gray-200);">Copilot pauses mid-flow</td>
+                    <td style="padding:5px 8px;border:1px solid var(--gray-200);">Type "Go ahead and update the document."</td>
+                  </tr>
+                  <tr style="background:var(--gray-50);">
+                    <td style="padding:5px 8px;border:1px solid var(--gray-200);">Emails older than 3 weeks</td>
+                    <td style="padding:5px 8px;border:1px solid var(--gray-200);">Resend all email and chat templates with updated dates for the current month</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px 8px;border:1px solid var(--gray-200);">Copilot misses an email update</td>
+                    <td style="padding:5px 8px;border:1px solid var(--gray-200);">Ensure the V-Team priming prompt (Prompt 1) was run and emails are in your inbox — not a subfolder</td>
+                  </tr>
+                  <tr style="background:var(--gray-50);">
+                    <td style="padding:5px 8px;border:1px solid var(--gray-200);">Wrong month shown in document</td>
+                    <td style="padding:5px 8px;border:1px solid var(--gray-200);">Advance all yellow-highlighted dates in the email templates and the MBR doc template</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px 8px;border:1px solid var(--gray-200);">Previous demo data appearing</td>
+                    <td style="padding:5px 8px;border:1px solid var(--gray-200);">Delete all old messages before resetting — use the Demo Reset steps above</td>
+                  </tr>
+                </table>
+                <div style="background:#FFF8E1;border:1px solid #FFE082;border-radius:4px;padding:6px 10px;font-size:11px;color:#5A4000;margin-top:8px;line-height:1.6;">
+                  💡 <strong>Pro Tip:</strong> Do a full dry run before going live. This ensures email timestamps are fresh, Copilot memory is primed, and you can narrate each step confidently.
+                </div>
+              </div>
+            </div>
+
+            <!-- SIM LINK -->
             <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
               <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo12" onkeydown="if(event.key==='Enter')openSim('demo12')">
               <button class="sim-link-go" onclick="openSim('demo12')">Open ↗</button>
             </div>
-            <div class="image-upload-area" data-demo="demo12"><button class="add-image-btn" onclick="triggerImageUpload('demo12')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo12')"><div class="uploaded-images" id="images-demo12"></div></div>
+
+            <!-- IMAGE UPLOAD -->
+            <div class="image-upload-area" data-demo="demo12">
+              <button class="add-image-btn" onclick="triggerImageUpload('demo12')">📷 Add Screenshot</button>
+              <input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo12')">
+              <div class="uploaded-images" id="images-demo12"></div>
+            </div>
+
           </div>
         </details>
       </div>
