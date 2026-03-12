@@ -813,6 +813,7 @@
     <h1>ABS EXECUTIVE DEMOS 101</h1>
   </div>
   <div style="display:flex;gap:8px;align-items:center;">
+    <button class="expand-all-btn" onclick="expandOneLevel(this)">Expand 1 Level</button>
     <button class="expand-all-btn" onclick="toggleAll(this)">Expand All</button>
     <button class="expand-all-btn edit-btn" id="edit-toggle-btn" onclick="toggleEditMode()">✏️ Edit</button>
     <button class="expand-all-btn word-btn" onclick="exportWord()">📄 Export to Word</button>
@@ -3107,6 +3108,18 @@ What do you know about me and my job here at Microsoft?</span>
   }
 
   // ── EXPAND / COLLAPSE ALL ──
+  function expandOneLevel(btn) {
+    // Open all category and demo <details>, but leave row collapsibles (Setup/Files/Steps) collapsed
+    const catDetails = document.querySelectorAll('details[id^="cat"], details[id^="demo"], details[id="demo-tools"]');
+    const anyOpen = Array.from(catDetails).some(d => d.open);
+    catDetails.forEach(d => d.open = !anyOpen);
+    // Keep all collapsible rows collapsed regardless
+    document.querySelectorAll('.collapsible-row').forEach(r => r.classList.add('collapsed'));
+    btn.textContent = anyOpen ? 'Expand 1 Level' : 'Collapse 1 Level';
+    // Reset Expand All button label
+    document.querySelector('[onclick="toggleAll(this)"]').textContent = 'Expand All';
+  }
+
   function toggleAll(btn) {
     const allDetails = document.querySelectorAll('details');
     const anyOpen = Array.from(allDetails).some(d => d.open);
