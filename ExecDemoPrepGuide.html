@@ -2766,7 +2766,7 @@ What do you know about me and my job here at Microsoft?</span>
       const wrapper = el.closest('.demo');
       if (selectedDemoIds.has(demo.id)) {
         wrapper && wrapper.classList.remove('demo-filtered-out');
-        el.open = true;
+        el.open = false;
       } else {
         wrapper && wrapper.classList.add('demo-filtered-out');
       }
