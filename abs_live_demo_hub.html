@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Disable Cloudflare email obfuscation -->
+  <meta name="cf-2fa-verify" content="disabled">
   <link rel="icon" href="https://copilot.microsoft.com/favicon.ico" type="image/x-icon">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2902,7 +2904,7 @@ What do you know about me and my job here at Microsoft?</span>
 
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+<script>
 function sendFeedback(el) {
   var summary = el.closest('summary');
   var num = summary ? (summary.querySelector('.demo-num') ? summary.querySelector('.demo-num').textContent.trim() : '') : '';
@@ -3053,6 +3055,8 @@ function toggleRow(el) {
       xmlns:w="urn:schemas-microsoft-com:office:word"
       xmlns="http://www.w3.org/TR/REC-html40">
 <head>
+  <!-- Disable Cloudflare email obfuscation -->
+  <meta name="cf-2fa-verify" content="disabled">
   <link rel="icon" href="https://copilot.microsoft.com/favicon.ico" type="image/x-icon"><meta charset="UTF-8"><meta name=ProgId content=Word.Document>
 <style>
   @page { size:8.5in 11in; margin:1in; }
@@ -3093,7 +3097,7 @@ function toggleRow(el) {
     lb.querySelector('img').src = src;
     lb.classList.add('open');
   }
-</script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+</script><script>
 function toggleHowTo(el) {
   const parent = el.closest('#how-to-use');
   const body = parent.querySelector('.how-body-collapsible');
