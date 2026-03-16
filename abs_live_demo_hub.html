@@ -95,65 +95,21 @@
   }
   .expand-all-btn:hover { background: var(--gray-50); border-color: var(--gray-400); }
 
-  .edit-btn { background: white !important; border-color: var(--gray-200) !important; color: var(--gray-800) !important; }
-  .edit-btn:hover { background: var(--gray-50) !important; border-color: var(--gray-400) !important; }
-  .edit-btn.active { background: var(--blue-light) !important; color: var(--blue-dark) !important; border-color: var(--blue) !important; font-weight: 600 !important; }
+  
+  
+  
 
-  /* ── EDIT MODE ── */
-  body.edit-mode .editable {
-    outline: 2px dashed #F0C800;
-    outline-offset: 2px;
-    border-radius: 2px;
-    cursor: text;
-    min-width: 40px;
-    min-height: 1em;
-    display: inline-block;
-  }
-  body.edit-mode .editable:focus {
-    outline: 2px solid #0078D4;
-    background: #FFFDE7;
-  }
-  body.edit-mode .editable.placeholder-field {
-    color: var(--gray-800);
-  }
-  .edit-banner {
-    display: none;
-    background: #D6E8F7;
-    border-bottom: 2px solid #5B9BD5;
-    padding: 7px 20px;
-    font-size: 11px;
-    color: #1A3A5C;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-  }
-  .edit-banner.visible { display: flex; }
-  .edit-banner strong { font-weight: 600; color: #0F2A45; }
-  .save-btn {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 600;
-    background: #0078D4;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 14px;
-    cursor: pointer;
-    transition: background .15s;
-    white-space: nowrap;
-  }
-  .save-btn:hover { background: #005A9E; }
-  .discard-btn {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: #1A3A5C;
-    background: none;
-    border: 1px solid #5B9BD5;
-    border-radius: 4px;
-    padding: 4px 10px;
-    cursor: pointer;
-  }
-  .discard-btn:hover { background: rgba(0,0,0,.05); }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   .word-btn { background: var(--blue) !important; border-color: var(--blue-dark) !important; color: white !important; font-weight: 600 !important; }
   .word-btn:hover { background: var(--blue-dark) !important; }
@@ -432,16 +388,16 @@
 
   /* ── PROMPTS ── */
   .prompts-section {
-    border: 1px solid var(--amber-border);
+    border: 1px solid var(--gray-200);
     border-radius: 4px;
     overflow: hidden;
   }
   .prompts-section > .prompts-label {
-    background: var(--amber);
+    background: var(--blue-light);
     padding: 5px 10px;
     font-size: 11px;
     font-weight: 600;
-    color: #7B5800;
+    color: var(--blue-dark);
     cursor: pointer;
     user-select: none;
     display: flex;
@@ -449,7 +405,7 @@
     justify-content: space-between;
     transition: background .1s;
   }
-  .prompts-section > .prompts-label:hover { background: #FFE680; }
+  .prompts-section > .prompts-label:hover { background: #DEEAF7; }
   .prompts-section > .prompts-label::after {
     content: "▾";
     font-size: 10px;
@@ -466,7 +422,7 @@
   .prompts-body { border-top: 1px solid var(--amber-border); }
   .prompt-item {
     padding: 6px 10px;
-    border-bottom: 1px solid #FDE68A;
+    border-bottom: 1px solid var(--gray-200);
     font-family: var(--mono);
     font-size: 11px;
     color: var(--gray-800);
@@ -570,8 +526,8 @@
   .vis-ref-caption { font-size: 9px; color: var(--gray-400); margin-top: 3px; font-style: italic; }
 
   /* ── SIM LINK ROW ── */
-  .sim-link-row { background: white; border: 1px solid var(--gray-200); border-top: none; border-radius: 0; padding: 6px 10px; display: flex; align-items: center; gap: 8px; margin: 0 6px 0 6px; }
-  .demo-card-cap { height: 1px; background: var(--gray-200); margin: 0 6px 0 6px; }
+  .sim-link-row { background: white; border-top: 1px solid var(--gray-200); padding: 6px 10px; display: flex; align-items: center; gap: 8px; margin: 0; }
+  .demo-card-cap { display: none; }
   .sim-link-label { font-size: 10px; font-weight: 700; color: var(--blue-dark); letter-spacing:.04em; white-space:nowrap; flex-shrink:0; }
   .sim-link-input { flex:1; font-family: var(--sans); font-size:11px; border: 1px solid var(--gray-200); border-radius:3px; padding:3px 7px; color: var(--blue); min-width:0; }
   .sim-link-input:focus { outline: 1px solid var(--blue); border-color: var(--blue); }
@@ -587,6 +543,7 @@
     flex-wrap: wrap;
   }
   .add-image-btn {
+    display: none !important;
     font-family: var(--sans);
     font-size: 10px;
     font-weight: 500;
@@ -976,19 +933,10 @@
     <span>M365 Copilot &amp; Agents</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center;">
-    <button class="expand-all-btn edit-btn" id="edit-toggle-btn" onclick="toggleEditMode()">✏️ Edit</button>
     <button class="expand-all-btn word-btn" onclick="exportWord()">📄 Export to Word</button>
   </div>
 </div>
 
-<!-- EDIT MODE BANNER -->
-<div class="edit-banner" id="edit-banner">
-  <span>✏️ <strong>Edit Mode ON</strong> — click any highlighted field to edit it directly. Changes are only saved when you export.</span>
-  <div style="display:flex;gap:8px;">
-    <button class="discard-btn" onclick="toggleEditMode()">Cancel</button>
-    <button class="save-btn" style="background:#2B579A" onclick="exportWord()">📄 Export to Word</button>
-    <button class="save-btn" onclick="exportHTML()">⬇ Download HTML</button>
-  </div>
 </div>
 <!-- SECTION NAV -->
 <div class="section-nav">
@@ -1122,7 +1070,7 @@
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
               <div class="row-content">Open <strong>Copilot Chat</strong> (M365.com or Teams). Sign in as the demo executive. No files needed — runs entirely as a 5-prompt conversation.</div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -1194,7 +1142,7 @@ What do you know about me and my job here at Microsoft?</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span></div>
               <div class="row-content"><span class="placeholder">Add setup instructions here.</span></div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)"><div class="row-label">📁 Files <span class="row-chevron">▾</span></div><div class="row-content"><span class="placeholder">Add required Word file link here.</span></div></div>
@@ -1212,7 +1160,7 @@ What do you know about me and my job here at Microsoft?</span>
               <button class="sim-link-go" onclick="openSim('demo5')">Open ↗</button>
             </div>
             <div class="demo-card-cap"></div>
-            <div class="image-upload-area" data-demo="demo5"><button class="add-image-btn" onclick="triggerImageUpload('demo5')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo5')"><div class="uploaded-images" id="images-demo5"></div></div>
+            <div class="image-upload-area" data-demo="demo5"><div class="uploaded-images" id="images-demo5"></div></div>
           </div>
         </details>
       </div>
@@ -1229,7 +1177,7 @@ What do you know about me and my job here at Microsoft?</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span></div>
               <div class="row-content"><span class="placeholder">Add setup instructions here.</span></div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)"><div class="row-label">📁 Files <span class="row-chevron">▾</span></div><div class="row-content"><span class="placeholder">Add required Excel file link here.</span></div></div>
@@ -1247,7 +1195,7 @@ What do you know about me and my job here at Microsoft?</span>
               <button class="sim-link-go" onclick="openSim('demo9')">Open ↗</button>
             </div>
             <div class="demo-card-cap"></div>
-            <div class="image-upload-area" data-demo="demo9"><button class="add-image-btn" onclick="triggerImageUpload('demo9')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo9')"><div class="uploaded-images" id="images-demo9"></div></div>
+            <div class="image-upload-area" data-demo="demo9"><div class="uploaded-images" id="images-demo9"></div></div>
           </div>
         </details>
       </div>
@@ -1264,7 +1212,7 @@ What do you know about me and my job here at Microsoft?</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span></div>
               <div class="row-content"><span class="placeholder">Add setup instructions here.</span></div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)"><div class="row-label">📁 Files <span class="row-chevron">▾</span></div><div class="row-content"><span class="placeholder">Add required PowerPoint file link here.</span></div></div>
@@ -1282,7 +1230,7 @@ What do you know about me and my job here at Microsoft?</span>
               <button class="sim-link-go" onclick="openSim('demo10')">Open ↗</button>
             </div>
             <div class="demo-card-cap"></div>
-            <div class="image-upload-area" data-demo="demo10"><button class="add-image-btn" onclick="triggerImageUpload('demo10')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo10')"><div class="uploaded-images" id="images-demo10"></div></div>
+            <div class="image-upload-area" data-demo="demo10"><div class="uploaded-images" id="images-demo10"></div></div>
           </div>
         </details>
       </div>
@@ -1299,7 +1247,7 @@ What do you know about me and my job here at Microsoft?</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span></div>
               <div class="row-content"><span class="placeholder">Add setup instructions here.</span></div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)"><div class="row-label">📁 Files <span class="row-chevron">▾</span></div><div class="row-content"><span class="placeholder">Add relevant email thread / Outlook account details here.</span></div></div>
@@ -1317,7 +1265,7 @@ What do you know about me and my job here at Microsoft?</span>
               <button class="sim-link-go" onclick="openSim('demo11')">Open ↗</button>
             </div>
             <div class="demo-card-cap"></div>
-            <div class="image-upload-area" data-demo="demo11"><button class="add-image-btn" onclick="triggerImageUpload('demo11')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo11')"><div class="uploaded-images" id="images-demo11"></div></div>
+            <div class="image-upload-area" data-demo="demo11"><div class="uploaded-images" id="images-demo11"></div></div>
           </div>
         </details>
       </div>
@@ -1340,7 +1288,7 @@ What do you know about me and my job here at Microsoft?</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
               <div class="row-content">
                 <p>Open the following files <strong>before the demo</strong> so they're available in Work IQ context:</p>
                 <ul class="bullets" style="margin-top:6px;">
@@ -1437,7 +1385,7 @@ What do you know about me and my job here at Microsoft?</span>
                         <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
                         <div class="demo-body">
                           <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-                            <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
+                            <div class="row-label">🔧 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
                             <div class="row-content">No pre-staging required — built entirely live from a public SharePoint URL. Just open <strong>Copilot Chat</strong> and have the prompts ready.</div>
                           </div>
                           <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -1504,7 +1452,7 @@ What do you know about me and my job here at Microsoft?</span>
                         <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
                         <div class="demo-body">
                           <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-                            <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
+                            <div class="row-label">🔧 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
                             <div class="row-content">
                               <strong>Do this before the demo:</strong>
                               <div style="display:grid;gap:6px;margin-top:8px;">
@@ -1592,10 +1540,11 @@ What do you know about me and my job here at Microsoft?</span>
 
             <!-- SETUP -->
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
               <div class="row-content">
                 <div style="background:#FFF8E1;border:1px solid #FFE082;border-radius:4px;padding:6px 10px;font-size:11px;color:#5A4000;margin-bottom:10px;line-height:1.6;">
                   ⚠️ <strong>Allow 15 minutes for first-time setup.</strong> This demo requires pre-staged emails and chat messages in your inbox. Update all yellow-highlighted dates in the email templates if running in a month other than February 2026.
+                  <br><br>📄 <strong>Full setup instructions and email templates:</strong> <a href="https://microsoft.sharepoint.com/:w:/s/ABSdemos/IQAqOHuMTOvhSKU8tTzZOyLhAUiQ9f-tZK8g6xvR1fgWdrE?e=Hadt76" target="_blank" style="color:#0078D4;">Agent Mode in Word MBR Demo Guide — INSTRUCTIONS.docx</a> — this document contains all the emails you need to pre-stage in your inbox.
                 </div>
                 <div style="display:grid;gap:7px;">
 
@@ -1814,8 +1763,6 @@ What do you know about me and my job here at Microsoft?</span>
 
             <!-- IMAGE UPLOAD -->
             <div class="image-upload-area" data-demo="demo12">
-              <button class="add-image-btn" onclick="triggerImageUpload('demo12')">📷 Add Screenshot</button>
-              <input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo12')">
               <div class="uploaded-images" id="images-demo12"></div>
             </div>
 
@@ -1835,7 +1782,7 @@ What do you know about me and my job here at Microsoft?</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
               <div class="row-content">
                 <div style="display:grid;gap:6px;">
                   <div style="display:flex;gap:8px;align-items:flex-start;"><div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div><div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Go to the <a href="https://microsoft.sharepoint.com/:f:/s/ABSdemos/IgAHtG6uwxVmQq5CZrcRiTx3ATGZyBRFYc0ZXXVR-iMkYL8?e=AXm5PH" target="_blank" style="color:var(--blue);font-weight:500;">Zava Enterprise Sales Data folder</a> on SharePoint — download the Excel file and copy it to your <strong>OneDrive</strong>.</div></div>
@@ -1880,7 +1827,7 @@ What do you know about me and my job here at Microsoft?</span>
               <button class="sim-link-go" onclick="openSim('demo13')">Open ↗</button>
             </div>
             <div class="demo-card-cap"></div>
-            <div class="image-upload-area" data-demo="demo13"><button class="add-image-btn" onclick="triggerImageUpload('demo13')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo13')"><div class="uploaded-images" id="images-demo13"></div></div>
+            <div class="image-upload-area" data-demo="demo13"><div class="uploaded-images" id="images-demo13"></div></div>
 
             <div class="vis-ref-section collapsed" id="excel-vis-panel">
               <div class="vis-ref-label" onclick="this.closest('.vis-ref-section').classList.toggle('collapsed')">📸 Visual References (A–C)</div>
@@ -1916,7 +1863,7 @@ What do you know about me and my job here at Microsoft?</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
               <div class="row-content">Open <strong>PowerPoint</strong> with a relevant deck pre-loaded. Enable <strong>Copilot Agent Mode</strong> in the ribbon before the session starts.</div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)"><div class="row-label">📁 Files <span class="row-chevron">▾</span></div><div class="row-content"><span class="placeholder">Add required PowerPoint file link here.</span></div></div>
@@ -1934,7 +1881,7 @@ What do you know about me and my job here at Microsoft?</span>
               <button class="sim-link-go" onclick="openSim('demo14')">Open ↗</button>
             </div>
             <div class="demo-card-cap"></div>
-            <div class="image-upload-area" data-demo="demo14"><button class="add-image-btn" onclick="triggerImageUpload('demo14')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo14')"><div class="uploaded-images" id="images-demo14"></div></div>
+            <div class="image-upload-area" data-demo="demo14"><div class="uploaded-images" id="images-demo14"></div></div>
           </div>
         </details>
       </div>
@@ -1951,7 +1898,7 @@ What do you know about me and my job here at Microsoft?</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
               <div class="row-content">Open <strong>Outlook</strong> with the demo inbox. Enable <strong>Copilot Agent Mode</strong> in the toolbar before the session starts.</div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)"><div class="row-label">📁 Files <span class="row-chevron">▾</span></div><div class="row-content"><span class="placeholder">Add demo Outlook account / inbox details here.</span></div></div>
@@ -1969,7 +1916,7 @@ What do you know about me and my job here at Microsoft?</span>
               <button class="sim-link-go" onclick="openSim('demo15')">Open ↗</button>
             </div>
             <div class="demo-card-cap"></div>
-            <div class="image-upload-area" data-demo="demo15"><button class="add-image-btn" onclick="triggerImageUpload('demo15')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo15')"><div class="uploaded-images" id="images-demo15"></div></div>
+            <div class="image-upload-area" data-demo="demo15"><div class="uploaded-images" id="images-demo15"></div></div>
           </div>
         </details>
             </div>
@@ -2000,7 +1947,7 @@ What do you know about me and my job here at Microsoft?</span>
 
             <!-- SETUP -->
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span></div>
               <div class="row-content">
                 <div style="background:#FFF8E1;border:1px solid #FFE082;border-radius:4px;padding:6px 10px;font-size:11px;color:#5A4000;margin-bottom:10px;line-height:1.6;">
                   ⚠️ <strong>This demo requires 4 live confederates on a pre-scheduled Teams meeting.</strong> Allow time to brief them on the script (Section 4 of the source doc) and rehearse at least once before going live.
@@ -2222,8 +2169,6 @@ What do you know about me and my job here at Microsoft?</span>
 
             <!-- IMAGE UPLOAD -->
             <div class="image-upload-area" data-demo="demo6">
-              <button class="add-image-btn" onclick="triggerImageUpload('demo6')">📷 Add Screenshot</button>
-              <input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo6')">
               <div class="uploaded-images" id="images-demo6"></div>
             </div>
 
@@ -2255,7 +2200,7 @@ What do you know about me and my job here at Microsoft?</span>
           <div class="demo-body">
             <div class="warning-bar">⚠️ <span>Replace with AON demo as soon as available. Confirm the latest clickthrough link before each session.</span></div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
               <div class="row-content">Open the <strong>Pets at Home clickthrough</strong> presentation. Advance to the starting slide before the session.</div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -2298,7 +2243,7 @@ What do you know about me and my job here at Microsoft?</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
               <div class="row-content">Open the <strong>A365 admin clickthrough</strong>. Set to the starting screen before the session begins.</div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -2344,7 +2289,7 @@ What do you know about me and my job here at Microsoft?</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span></div>
               <div class="row-content">
                 <div style="display:flex;flex-direction:column;gap:6px;">
                   <div style="display:flex;gap:8px;align-items:flex-start;"><div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div><div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Reboot your PC in the morning before the session.</div></div>
@@ -2376,7 +2321,7 @@ What do you know about me and my job here at Microsoft?</span>
               <button class="sim-link-go" onclick="openSim('demo16')">Open ↗</button>
             </div>
             <div class="demo-card-cap"></div>
-            <div class="image-upload-area" data-demo="demo16"><button class="add-image-btn" onclick="triggerImageUpload('demo16')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo16')"><div class="uploaded-images" id="images-demo16"></div></div>
+            <div class="image-upload-area" data-demo="demo16"><div class="uploaded-images" id="images-demo16"></div></div>
           </div>
         </details>
       </div>
@@ -2394,7 +2339,7 @@ What do you know about me and my job here at Microsoft?</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span></div>
               <div class="row-content">
                 <div style="display:flex;flex-direction:column;gap:6px;">
                   <div style="display:flex;gap:8px;align-items:flex-start;"><div style="background:var(--blue);color:white;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div><div style="font-size:11px;color:var(--gray-800);line-height:1.6;">Load the simulation link below in <strong>Tab 6</strong> before the session.</div></div>
@@ -2431,7 +2376,7 @@ What do you know about me and my job here at Microsoft?</span>
               <button class="sim-link-go" onclick="openSim('demo17')">Open ↗</button>
             </div>
             <div class="demo-card-cap"></div>
-            <div class="image-upload-area" data-demo="demo17"><button class="add-image-btn" onclick="triggerImageUpload('demo17')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo17')"><div class="uploaded-images" id="images-demo17"></div></div>
+            <div class="image-upload-area" data-demo="demo17"><div class="uploaded-images" id="images-demo17"></div></div>
           </div>
         </details>
       </div>
@@ -2449,7 +2394,7 @@ What do you know about me and my job here at Microsoft?</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span></div>
               <div class="row-content">Load the simulation link below in <strong>Tab 7</strong> before the session. This demo is for the sales leader persona.</div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)"><div class="row-label">📁 Files <span class="row-chevron">▾</span></div><div class="row-content">
@@ -2477,7 +2422,7 @@ What do you know about me and my job here at Microsoft?</span>
               <button class="sim-link-go" onclick="openSim('demo18')">Open ↗</button>
             </div>
             <div class="demo-card-cap"></div>
-            <div class="image-upload-area" data-demo="demo18"><button class="add-image-btn" onclick="triggerImageUpload('demo18')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo18')"><div class="uploaded-images" id="images-demo18"></div></div>
+            <div class="image-upload-area" data-demo="demo18"><div class="uploaded-images" id="images-demo18"></div></div>
           </div>
         </details>
       </div>
@@ -2495,7 +2440,7 @@ What do you know about me and my job here at Microsoft?</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
+              <div class="row-label">🔧 Setup <span class="row-chevron">▾</span></div>
               <div class="row-content">Load the simulation link below in <strong>Tab 8</strong> before the session. Animations in this demo are slow — have your talk track ready to fill the time.</div>
             </div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)"><div class="row-label">📁 Files <span class="row-chevron">▾</span></div><div class="row-content">
@@ -2525,7 +2470,7 @@ What do you know about me and my job here at Microsoft?</span>
               <button class="sim-link-go" onclick="openSim('demo19')">Open ↗</button>
             </div>
             <div class="demo-card-cap"></div>
-            <div class="image-upload-area" data-demo="demo19"><button class="add-image-btn" onclick="triggerImageUpload('demo19')">📷 Add Screenshot</button><input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(this,'demo19')"><div class="uploaded-images" id="images-demo19"></div></div>
+            <div class="image-upload-area" data-demo="demo19"><div class="uploaded-images" id="images-demo19"></div></div>
           </div>
         </details>
       </div>
@@ -3006,49 +2951,10 @@ What do you know about me and my job here at Microsoft?</span>
   }
 
   // ── EDIT MODE ──
-  const EDITABLE_SELECTORS = [
-    '.row-content', '.demo-title', '.demo-tagline', '.prompt-text',
-    '.warning-bar span', '.how-text', '.sim-table td', '.pm-table td', '.footer', 'h1',
-  ];
-  let editMode = false;
+  
+  
 
-  function toggleEditMode() {
-    editMode = !editMode;
-    const btn = document.getElementById('edit-toggle-btn');
-    const banner = document.getElementById('edit-banner');
-
-
-    if (editMode) {
-      document.body.classList.add('edit-mode');
-      btn.textContent = '✕ Exit Edit';
-      btn.classList.add('active');
-      banner.classList.add('visible');
-
-      EDITABLE_SELECTORS.forEach(sel => {
-        document.querySelectorAll(sel).forEach(el => {
-          el.contentEditable = 'true';
-          el.classList.add('editable');
-        });
-      });
-      document.querySelectorAll('details').forEach(d => d.open = true);
-    } else {
-      document.body.classList.remove('edit-mode');
-      btn.textContent = '✏️ Edit';
-      btn.classList.remove('active');
-      banner.classList.remove('visible');
-
-      EDITABLE_SELECTORS.forEach(sel => {
-        document.querySelectorAll(sel).forEach(el => {
-          el.contentEditable = 'false';
-          el.classList.remove('editable');
-        });
-      });
-      document.querySelectorAll('.prompt-item').forEach(el => {
-        el.onclick = function() { copyPrompt(this); };
-      });
-    }
-  }
-
+  
   // ── OPEN VIS REF ──
   function openVisRef(demoId, imgId) {
     // Expand the demo accordion
@@ -3385,6 +3291,36 @@ function toggleHowTo(el) {
   chevron.style.transform = isHidden ? 'rotate(90deg)' : '';
   if (hint) hint.textContent = isHidden ? 'click to collapse' : 'click to expand';
 }
+
+
+function initSmartRows() {
+  document.querySelectorAll('.collapsible-row').forEach(function(row) {
+    const label = row.querySelector('.row-label');
+    const content = row.querySelector('.row-content');
+    if (!label || !content) return;
+    const labelText = label.textContent.trim();
+    if (!labelText.includes('Setup') && !labelText.includes('Files')) return;
+    
+    const text = content.textContent.trim();
+    // If short (under ~100 chars and no HTML links/lists), show inline
+    const hasHTML = content.innerHTML.includes('<a ') || content.innerHTML.includes('<ul') || content.innerHTML.includes('<ol') || content.innerHTML.includes('<div');
+    const isShort = text.length < 100 && !hasHTML;
+    
+    if (isShort) {
+      // Show inline — remove collapsed class, hide chevron
+      row.classList.remove('collapsed');
+      row.style.cursor = 'default';
+      const chevron = label.querySelector('.row-chevron');
+      if (chevron) chevron.style.display = 'none';
+      const hint = label.querySelector('.row-hint');
+      if (hint) hint.style.display = 'none';
+      row.onclick = null;
+      row.removeAttribute('onclick');
+    }
+    // Long content stays collapsed with "click to expand" as normal
+  });
+}
+document.addEventListener('DOMContentLoaded', initSmartRows);
 
 </script>
 </body>
