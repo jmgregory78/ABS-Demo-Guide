@@ -278,12 +278,12 @@
 
   /* ── CATEGORY BLOCK ── */
   .category {
-    margin-bottom: 8px;
-    border-radius: 4px;
+    margin-bottom: 0;
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,0,0,.06);
-    border: 1px solid var(--gray-200);
+    border-bottom: 1px solid var(--gray-200);
   }
+  .category:last-child { border-bottom: none; }
 
   .cat-header {
     display: flex;
@@ -295,6 +295,7 @@
     cursor: pointer;
     user-select: none;
     list-style: none;
+    border-bottom: 1px solid var(--gray-200);
   }
   .cat-header::-webkit-details-marker { display: none; }
   .cat-title {
@@ -314,16 +315,14 @@
 
   .cat-body {
     background: white;
-    border: 1px solid var(--gray-200);
-    border-top: none;
-    border-radius: 0 0 4px 4px;
+    padding-bottom: 0;
   }
-  .main > details { margin-bottom: 8px; }
-  .part-header + details { margin-bottom: 8px; }
+  .main > details { margin-bottom: 0; }
+  .part-header + details { margin-bottom: 0; }
 
   /* ── DEMO BLOCK ── */
   .demo {
-    border-bottom: 2px solid var(--gray-200);
+    border-bottom: 1px solid var(--gray-200);
   }
   .demo:last-child { border-bottom: none; }
 
@@ -392,13 +391,11 @@
   details[open] > .demo-header .demo-chevron { transform: rotate(180deg); }
 
   .demo-body {
-    padding: 10px 12px 10px 12px;
+    padding: 10px 12px 6px 12px;
     display: grid;
     gap: 6px;
-    background: #FAFAFA;
-    border: 1px solid var(--gray-200);
-    border-top: none;
-    border-bottom: none;
+    background: white;
+    border: none;
     border-radius: 0;
     margin: 0 6px 0 6px;
   }
@@ -573,8 +570,8 @@
   .vis-ref-caption { font-size: 9px; color: var(--gray-400); margin-top: 3px; font-style: italic; }
 
   /* ── SIM LINK ROW ── */
-  .sim-link-row { background: #F0F7FF; border: 1px solid var(--gray-200); border-top: none; border-radius: 0; padding: 6px 10px; display: flex; align-items: center; gap: 8px; margin: 0 6px 0 6px; }
-  .demo-card-cap { height: 1px; background: var(--gray-200); margin: 0 6px 8px 6px; }
+  .sim-link-row { background: white; border: 1px solid var(--gray-200); border-top: none; border-radius: 0; padding: 6px 10px; display: flex; align-items: center; gap: 8px; margin: 0 6px 0 6px; }
+  .demo-card-cap { height: 1px; background: var(--gray-200); margin: 0 6px 0 6px; }
   .sim-link-label { font-size: 10px; font-weight: 700; color: var(--blue-dark); letter-spacing:.04em; white-space:nowrap; flex-shrink:0; }
   .sim-link-input { flex:1; font-family: var(--sans); font-size:11px; border: 1px solid var(--gray-200); border-radius:3px; padding:3px 7px; color: var(--blue); min-width:0; }
   .sim-link-input:focus { outline: 1px solid var(--blue); border-color: var(--blue); }
@@ -1182,35 +1179,8 @@ What do you know about me and my job here at Microsoft?</span>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
-          <div class="demo-body">
-            <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
-              <div class="row-content">Open <strong>Copilot Chat</strong>. Have relevant OneDrive documents ready for each agent you'll demo.</div>
-            </div>
-            <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">📁 Files <span class="row-chevron">▾</span></div>
-              <div class="row-content class="placeholder"">Copilot Chat + OneDrive files per agent scenario. <span class="placeholder">Add specific file links here.</span></div>
-            </div>
-            <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">▶️ Steps <span class="row-chevron">▾</span><span class="row-hint">step by step</span></div>
-              <div class="row-content"><span class="placeholder">Add step-by-step flow per agent scenario when confirmed.</span></div>
-            </div>
-            <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
-              <div class="prompts-body">
-              <div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts per agent here.</span></div>
-            </div></div>
-            <div class="sim-link-row">
-              <span class="sim-link-label">🔗 Simulation</span>
-              <input class="sim-link-input" type="url" placeholder="Paste simulation link here…" id="sim-demo2" onkeydown="if(event.key==='Enter')openSim('demo2')">
-              <button class="sim-link-go" onclick="openSim('demo2')">Open ↗</button>
-            </div>
-            <div class="demo-card-cap"></div>
-
-        </details>
-      </div>
-
-      <!-- WXPO AGENTS IN CHAT — nested under 1.2 -->
+          <div class="demo-body" style="padding:0;">
+            <!-- WXPO AGENTS IN CHAT — nested under 1.2 -->
 
       <div class="demo">
         <details id="demo5">
@@ -1353,7 +1323,12 @@ What do you know about me and my job here at Microsoft?</span>
       </div>
 
       <!-- DEMO 3 — COWORK -->
-      <div class="demo">
+
+          </div>
+        </details>
+      </div>
+
+            <div class="demo">
         <details id="demo3">
           <summary class="demo-header">
             <span class="demo-num">1.3</span>
@@ -1602,9 +1577,6 @@ What do you know about me and my job here at Microsoft?</span>
       <span class="cat-chevron">▾</span>
     </summary>
     <div class="cat-body">
-
-      <!-- SUBCATEGORY B -->
-      <div class="subcat-header">Agent Mode</div>
 
       <div class="demo">
         <details id="demo12">
@@ -2578,7 +2550,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-title" style="display:inline;">ZoomIt</div>
               <span class="demo-tagline" style="margin-left:8px;">Screen zoom and annotation tool for live demos.</span>
             </div>
-            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
+            <span class="demo-status complete" title="Content status">✓</span><span class="demo-chevron">▾</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div style="padding:12px 14px 10px;">
@@ -2679,7 +2651,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-title" style="display:inline;">Auto Hotkey</div>
               <span class="demo-tagline" style="margin-left:8px;">Custom keyboard shortcuts for writing prompts.</span>
             </div>
-            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
+            <span class="demo-status complete" title="Content status">✓</span><span class="demo-chevron">▾</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div style="padding:12px 14px 14px;">
@@ -2800,7 +2772,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-title" style="display:inline;">Windows Clipboard History</div>
               <span class="demo-tagline" style="margin-left:8px;">Pre-load longer prompts into clipboard history for instant paste.</span>
             </div>
-            <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
+            <span class="demo-status complete" title="Content status">✓</span><span class="demo-chevron">▾</span>
           <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="this demo" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div style="padding:12px 14px 14px;">
