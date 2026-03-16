@@ -29,6 +29,7 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  html { scroll-padding-top: 100px; }
   body {
     background: var(--gray-100);
     font-family: var(--sans);
@@ -278,6 +279,7 @@
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    border: 1px solid var(--gray-200);
   }
 
   .cat-header {
@@ -290,7 +292,6 @@
     cursor: pointer;
     user-select: none;
     list-style: none;
-    border-left: 3px solid var(--blue);
   }
   .cat-header::-webkit-details-marker { display: none; }
   .cat-title {
@@ -519,8 +520,9 @@
     text-transform: none;
     margin-top: 12px;
     margin-bottom: 0;
-    border-radius: 6px 6px 0 0;
+    border-radius: 0;
     border-bottom: none;
+    scroll-margin-top: 100px;
   }
   .part-header + details > summary.cat-header { border-radius: 0; }
   .part-header:first-child { margin-top: 0; }
@@ -765,7 +767,7 @@
   /* ── DEMO SET BUILDER ── */
   .demo-builder {
     background: white;
-    border: 1px solid var(--gray-200);
+    border: 2px solid #0078D4;
     border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0,0,0,.06);
     padding: 0;
@@ -1020,8 +1022,8 @@
   </div>
 
 <!-- DEMO SET BUILDER -->
-<div class="demo-builder" id="demo-planner">
-  <div class="part-header" style="margin-bottom:0;margin-top:0;border-radius:6px 6px 0 0;">Demo Planner</div>
+<div class="demo-builder" id="demo-planner" style="scroll-margin-top:100px;">
+  <div class="part-header" style="margin-bottom:0;margin-top:0;border-radius:0;">Demo Planner</div>
   <div class="builder-header" style="padding: 10px 20px 0 20px;">
     <div>
       <span class="builder-subtitle">Check the demos you're running — everything else hides. Then export your personalized guide.</span>
@@ -1095,7 +1097,7 @@
     <button onclick="resetDemoSet()" style="font-family:var(--sans);font-size:11px;background:none;border:1px solid var(--green-border);border-radius:3px;padding:2px 8px;color:#1B5E20;cursor:pointer;">Show All Demos</button>
   </div>
 
-  <div style="border-radius:6px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:12px;">
+  <div style="border-radius:6px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:12px;border:2px solid #0078D4;">
   <div class="part-header" id="demo-instructions"><div style="display:flex;align-items:center;justify-content:space-between;"><span>Demo Instructions</span><div style="display:flex;gap:6px;"><button class="expand-all-btn" style="color:white;border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.15);" onclick="expandAll()">Show More</button><button class="expand-all-btn" style="color:white;border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.15);" onclick="collapseAll()">Show Less</button></div></div></div>
   <!-- CATEGORY 1 — COPILOT CHAT -->
   <details id="cat1" open>
@@ -1115,7 +1117,7 @@
               <div class="demo-tagline">Land the value of Work IQ as the intelligence layer — Copilot knows you.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 1.1 - Work IQ Demo%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#de94bfadb1b0f099acbbb9b1aca79eb3b7bdacb1adb1b8aaf0bdb1b3e1adabbcb4bbbdaae39f9c8dfe92b7a8bbfe9abbb3b1fe96abbcfe98bbbbbabcbfbdb5f8bcb1baa7e39abbb3b1e4feeff0effef3fe89b1acb5fe978ffe9abbb3b1fbee9afbee9ff3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3fbee9afbee9ffbee9afbee9f97adadabbbfebabbadbdacb7aeaab7b1b0e4fbee9afbee9f858eb2bbbfadbbfebabbadbdacb7bcbbfea9b6bfaafeb7adfeb0b1aafea9b1acb5b7b0b983fbee9afbee9ffbee9afbee9f8daabbaeadfeaab1feacbbaeacb1baabbdbbe4fbee9afbee9f8591aeaab7b1b0bfb2e4febabbadbdacb7bcbbfea9b6bfaafea7b1abfea9bbacbbfebab1b7b0b9fea9b6bbb0feaab6bbfeb7adadabbbfeb1bdbdabacacbbba83fbee9afbee9f" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1174,7 +1176,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Most powerful example for each Word, Excel, PowerPoint &amp; Outlook agent.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 1.2 - WXPO Agents from Copilot Chat%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#83c9e2f0ecedadc4f1e6e4ecf1fac3eeeae0f1ecf0ece5f7ade0eceebcf0f6e1e9e6e0f7bec2c1d0a3cfeaf5e6a3c7e6eeeca3cbf6e1a3c5e6e6e7e1e2e0e8a5e1ece7fabec7e6eeecb9a3b2adb1a3aea3d4dbd3cca3c2e4e6edf7f0a3e5f1eceea3c0ecf3eaefecf7a3c0ebe2f7a6b3c7a6b3c2aeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaea6b3c7a6b3c2a6b3c7a6b3c2caf0f0f6e6a3e7e6f0e0f1eaf3f7eaecedb9a6b3c7a6b3c2d8d3efe6e2f0e6a3e7e6f0e0f1eae1e6a3f4ebe2f7a3eaf0a3edecf7a3f4ecf1e8eaede4dea6b3c7a6b3c2a6b3c7a6b3c2d0f7e6f3f0a3f7eca3f1e6f3f1ece7f6e0e6b9a6b3c7a6b3c2d8ccf3f7eaecede2efb9a3e7e6f0e0f1eae1e6a3f4ebe2f7a3faecf6a3f4e6f1e6a3e7eceaede4a3f4ebe6eda3f7ebe6a3eaf0f0f6e6a3ece0e0f6f1f1e6e7dea6b3c7a6b3c2" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1214,7 +1216,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Show how Copilot Chat can act on Word documents without leaving the chat interface.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#743e15071b1a5a330611131b060d34191d17061b071b12005a171b194b0701161e111700493011191b54321111101615171f4e54001c1d0752161b100d49201c110611541d0754151a541d0707011154031d001c54001c115453001c1d0753541011191b5a542418111507115410110717061d161154031c150051464307541a1b0054031b061f1d1a134e514430514435514430514435" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -1249,7 +1251,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Show how Copilot Chat can analyze, transform, and act on Excel data directly from chat.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#a2e8c3d1cdcc8ce5d0c7c5cdd0dbe2cfcbc1d0cdd1cdc4d68cc1cdcf9dd1d7c0c8c7c1d69fe6c7cfcd82e4c7c7c6c0c3c1c99882d6cacbd184c0cdc6db9ff6cac7d0c782cbd182c3cc82cbd1d1d7c782d5cbd6ca82d6cac78285d6cacbd18582c6c7cfcd8c82f2cec7c3d1c782c6c7d1c1d0cbc0c782d5cac3d6879095d182cccdd682d5cdd0c9cbccc5988792e68792e38792e68792e3" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -1284,7 +1286,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Show how Copilot Chat can build, redesign, or summarize PowerPoint presentations on command.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#98d2f9ebf7f6b6dfeafdfff7eae1d8f5f1fbeaf7ebf7feecb6fbf7f5a7ebedfaf2fdfbeca5dcfdf5f7b8defdfdfcfaf9fbf3a2b8ecf0f1ebbefaf7fce1a5ccf0fdeafdb8f1ebb8f9f6b8f1ebebedfdb8eff1ecf0b8ecf0fdb8bfecf0f1ebbfb8fcfdf5f7b6b8c8f4fdf9ebfdb8fcfdebfbeaf1fafdb8eff0f9ecbdaaafebb8f6f7ecb8eff7eaf3f1f6ffa2bda8dcbda8d9bda8dcbda8d9" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -1319,7 +1321,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Show how Copilot Chat can draft, summarize, and act on email directly from the chat pane.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#81cbe0f2eeefafc6f3e4e6eef3f8c1ece8e2f3eef2eee7f5afe2eeecbef2f4e3ebe4e2f5bcc5e4eceea1c7e4e4e5e3e0e2eabba1f5e9e8f2a7e3eee5f8bcd5e9e4f3e4a1e8f2a1e0efa1e8f2f2f4e4a1f6e8f5e9a1f5e9e4a1a6f5e9e8f2a6a1e5e4eceeafa1d1ede4e0f2e4a1e5e4f2e2f3e8e3e4a1f6e9e0f5a4b3b6f2a1efeef5a1f6eef3eae8efe6bba4b1c5a4b1c0a4b1c5a4b1c0" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -1355,7 +1357,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Orchestrate a multi-asset customer prep package — briefing doc, data Excel, and presentation — all from one prompt.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 1.3 - Cowork%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#92d8f3e1fdfcbcd5e0f7f5fde0ebd2fffbf1e0fde1fdf4e6bcf1fdffade1e7f0f8f7f1e6afd3d0c1b2defbe4f7b2d6f7fffdb2dae7f0b2d4f7f7f6f0f3f1f9b4f0fdf6ebafd6f7fffda8b2a3bca1b2bfb2d1fde5fde0f9b7a2d6b7a2d3bfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfb7a2d6b7a2d3b7a2d6b7a2d3dbe1e1e7f7b2f6f7e1f1e0fbe2e6fbfdfca8b7a2d6b7a2d3c9c2fef7f3e1f7b2f6f7e1f1e0fbf0f7b2e5faf3e6b2fbe1b2fcfde6b2e5fde0f9fbfcf5cfb7a2d6b7a2d3b7a2d6b7a2d3c1e6f7e2e1b2e6fdb2e0f7e2e0fdf6e7f1f7a8b7a2d6b7a2d3c9dde2e6fbfdfcf3fea8b2f6f7e1f1e0fbf0f7b2e5faf3e6b2ebfde7b2e5f7e0f7b2f6fdfbfcf5b2e5faf7fcb2e6faf7b2fbe1e1e7f7b2fdf1f1e7e0e0f7f6cfb7a2d6b7a2d3" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1439,7 +1441,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Show how anyone can create a no-code AI agent in minutes from Copilot Chat.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 1.4 - Agent Builder%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#cb81aab8a4a5e58cb9aeaca4b9b28ba6a2a8b9a4b8a4adbfe5a8a4a6f4b8bea9a1aea8bff68a8998eb87a2bdaeeb8faea6a4eb83bea9eb8daeaeafa9aaa8a0eda9a4afb2f68faea6a4f1ebfae5ffebe6eb8aacaea5bfeb89bea2a7afaeb9eefb8feefb8ae6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6e6eefb8feefb8aeefb8feefb8a82b8b8beaeebafaeb8a8b9a2bbbfa2a4a5f1eefb8feefb8a909ba7aeaab8aeebafaeb8a8b9a2a9aeebbca3aabfeba2b8eba5a4bfebbca4b9a0a2a5ac96eefb8feefb8aeefb8feefb8a98bfaebbb8ebbfa4ebb9aebbb9a4afbea8aef1eefb8feefb8a9084bbbfa2a4a5aaa7f1ebafaeb8a8b9a2a9aeebbca3aabfebb2a4beebbcaeb9aeebafa4a2a5acebbca3aea5ebbfa3aeeba2b8b8beaeeba4a8a8beb9b9aeaf96eefb8feefb8a" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body" style="padding:0;">
 
             <div class="subcat-header" style="border-top:none;">1.4.1 · CELA Marketing Agent — Easier</div>
@@ -1452,7 +1454,7 @@ What do you know about me and my job here at Microsoft?</span>
                             <div class="demo-tagline">Single-URL agent that reviews marketing copy for legal compliance — quick to build, great story.</div>
                           </div>
                           <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-                        <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 1.4.1 - CELA Marketing Agent Easier%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+                        <a class="feedback-btn" href="/cdn-cgi/l/email-protection#2963485a4647076e5b4c4e465b506944404a5b465a464f5d074a4644165a5c4b434c4a5d14686b7a0965405f4c096d4c444609615c4b096f4c4c4d4b484a420f4b464d50146d4c4446130918071d07180904096a6c65680964485b424c5d40474e09684e4c475d096c485a404c5b0c196d0c1968040404040404040404040404040404040404040404040404040404040404040404040404040404040c196d0c19680c196d0c1968605a5a5c4c094d4c5a4a5b40595d404647130c196d0c19687279454c485a4c094d4c5a4a5b404b4c095e41485d09405a0947465d095e465b4240474e740c196d0c19680c196d0c19687a5d4c595a095d46095b4c595b464d5c4a4c130c196d0c19687266595d404647484513094d4c5a4a5b404b4c095e41485d0950465c095e4c5b4c094d4640474e095e414c47095d414c09405a5a5c4c09464a4a5c5b5b4c4d740c196d0c1968" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
                         <div class="demo-body">
                           <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
                             <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1519,7 +1521,7 @@ What do you know about me and my job here at Microsoft?</span>
                             <div class="demo-tagline">Multi-source agent using Teams chat + Word doc as knowledge — rich, realistic scenario.</div>
                           </div>
                           <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-                        <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 1.4.2 - Customer Engagement Agent Advanced%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+                        <a class="feedback-btn" href="/cdn-cgi/l/email-protection#4a002b392524640d382f2d2538330a272329382539252c3e6429252775393f28202f293e770b08196a06233c2f6a0e2f27256a023f286a0c2f2f2e282b29216c28252e33770e2f2725706a7b647e64786a676a093f393e25272f386a0f242d2b2d2f272f243e6a0b2d2f243e6a0b2e3c2b24292f2e6f7a0e6f7a0b676767676767676767676767676767676767676767676767676767676767676767676767676767676f7a0e6f7a0b6f7a0e6f7a0b0339393f2f6a2e2f392938233a3e232524706f7a0e6f7a0b111a262f2b392f6a2e2f39293823282f6a3d222b3e6a23396a24253e6a3d25382123242d176f7a0e6f7a0b6f7a0e6f7a0b193e2f3a396a3e256a382f3a38252e3f292f706f7a0e6f7a0b11053a3e2325242b26706a2e2f39293823282f6a3d222b3e6a33253f6a3d2f382f6a2e2523242d6a3d222f246a3e222f6a2339393f2f6a2529293f38382f2e176f7a0e6f7a0b" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
                         <div class="demo-body">
                           <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
                             <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1608,7 +1610,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Copilot reads your emails &amp; chats, then rewrites your Monthly Business Review report in seconds — no copy-paste required.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#81cbe0f2eeefafc6f3e4e6eef3f8c1ece8e2f3eef2eee7f5afe2eeecbef2f4e3ebe4e2f5bcc5e4eceea1c7e4e4e5e3e0e2eabba1f5e9e8f2a7e3eee5f8bcd5e9e4f3e4a1e8f2a1e0efa1e8f2f2f4e4a1f6e8f5e9a1f5e9e4a1a6f5e9e8f2a6a1e5e4eceeafa1d1ede4e0f2e4a1e5e4f2e2f3e8e3e4a1f6e9e0f5a4b3b6f2a1efeef5a1f6eef3eae8efe6bba4b1c5a4b1c0a4b1c5a4b1c0" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
 
             <!-- SETUP -->
@@ -1853,7 +1855,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Autonomous data analysis, formula generation, and insight surfacing in Excel Agent Mode.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#b7fdd6c4d8d999f0c5d2d0d8c5cef7daded4c5d8c4d8d1c399d4d8da88c4c2d5ddd2d4c38af3d2dad897f1d2d2d3d5d6d4dc8d97c3dfdec491d5d8d3ce8ae3dfd2c5d297dec497d6d997dec4c4c2d297c0dec3df97c3dfd29790c3dfdec49097d3d2dad89997e7dbd2d6c4d297d3d2c4d4c5ded5d297c0dfd6c3928580c497d9d8c397c0d8c5dcded9d08d9287f39287f69287f39287f6" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1934,7 +1936,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Build, restructure, and design entire presentations using Copilot Agent Mode in PowerPoint.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#317b50425e5f1f764354565e4348715c5852435e425e57451f525e5c0e4244535b5452450c75545c5e11775454555350525a0b114559584217535e55480c655954435411584211505f115842424454114658455911455954111645595842161155545c5e1f11615d54504254115554425243585354114659504514030642115f5e4511465e435a585f560b140175140170140175140170" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1969,7 +1971,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Autonomous email drafting, triage, and scheduling using Copilot Agent Mode in Outlook.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#4c062d3f2322620b3e292b233e350c21252f3e233f232a38622f2321733f392e26292f3871082921236c0a2929282e2d2f27766c3824253f6a2e232835711824293e296c253f6c2d226c253f3f39296c3b2538246c3824296c6b3824253f6b6c28292123626c1c20292d3f296c28293f2f3e252e296c3b242d38697e7b3f6c2223386c3b233e2725222b76697c08697c0d697c08697c0d" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -2016,7 +2018,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">A live meeting with confederates — Copilot Facilitator tracks the agenda, assigns tasks, creates documents, and coordinates agents in real time.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 3.1 - Facilitator Agent in Teams%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#6e240f1d010040291c0b09011c172e03070d1c011d01081a400d0103511d1b0c040b0d1a532f2c3d4e2207180b4e2a0b03014e261b0c4e280b0b0a0c0f0d05480c010a17532a0b0301544e5d405f4e434e280f0d0702071a0f1a011c4e2f090b001a4e07004e3a0b0f031d4b5e2a4b5e2f434343434343434343434343434343434343434343434343434343434343434343434343434343434b5e2a4b5e2f4b5e2a4b5e2f271d1d1b0b4e0a0b1d0d1c071e1a070100544b5e2a4b5e2f353e020b0f1d0b4e0a0b1d0d1c070c0b4e19060f1a4e071d4e00011a4e19011c05070009334b5e2a4b5e2f4b5e2a4b5e2f3d1a0b1e1d4e1a014e1c0b1e1c010a1b0d0b544b5e2a4b5e2f35211e1a0701000f02544e0a0b1d0d1c070c0b4e19060f1a4e17011b4e190b1c0b4e0a010700094e19060b004e1a060b4e071d1d1b0b4e010d0d1b1c1c0b0a334b5e2a4b5e2f" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
 
             <!-- SETUP -->
@@ -2272,7 +2274,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline" style="color:#E97316;font-style:normal;font-weight:500;">⚠️ Temporary · To be replaced with AON demo ASAP</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 4.1 - Pets at Home — PowerPoint Clickthrough%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#82c8e3f1edecacc5f0e7e5edf0fbc2efebe1f0edf1ede4f6ace1edefbdf1f7e0e8e7e1f6bfc3c0d1a2ceebf4e7a2c6e7efeda2caf7e0a2c4e7e7e6e0e3e1e9a4e0ede6fbbfc6e7efedb8a2b6acb3a2afa2d2e7f6f1a2e3f6a2caedefe7a2600216a2d2edf5e7f0d2edebecf6a2c1eeebe1e9f6eaf0edf7e5eaa7b2c6a7b2c3afafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafa7b2c6a7b2c3a7b2c6a7b2c3cbf1f1f7e7a2e6e7f1e1f0ebf2f6ebedecb8a7b2c6a7b2c3d9d2eee7e3f1e7a2e6e7f1e1f0ebe0e7a2f5eae3f6a2ebf1a2ecedf6a2f5edf0e9ebece5dfa7b2c6a7b2c3a7b2c6a7b2c3d1f6e7f2f1a2f6eda2f0e7f2f0ede6f7e1e7b8a7b2c6a7b2c3d9cdf2f6ebedece3eeb8a2e6e7f1e1f0ebe0e7a2f5eae3f6a2fbedf7a2f5e7f0e7a2e6edebece5a2f5eae7eca2f6eae7a2ebf1f1f7e7a2ede1e1f7f0f0e7e6dfa7b2c6a7b2c3" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="warning-bar">⚠️ <span>Replace with AON demo as soon as available. Confirm the latest clickthrough link before each session.</span></div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -2316,7 +2318,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Show centralized AI governance, deployment, and control for IT &amp; admin personas.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 5.1 - A365 Clickthrough%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#8bc1eaf8e4e5a5ccf9eeece4f9f2cbe6e2e8f9e4f8e4edffa5e8e4e6b4f8fee9e1eee8ffb6cac9d8abc7e2fdeeabcfeee6e4abc3fee9abcdeeeeefe9eae8e0ade9e4eff2b6cfeee6e4b1abbea5baaba6abcab8bdbeabc8e7e2e8e0ffe3f9e4feece3aebbcfaebbcaa6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6a6aebbcfaebbcaaebbcfaebbcac2f8f8feeeabefeef8e8f9e2fbffe2e4e5b1aebbcfaebbcad0dbe7eeeaf8eeabefeef8e8f9e2e9eeabfce3eaffabe2f8abe5e4ffabfce4f9e0e2e5ecd6aebbcfaebbcaaebbcfaebbcad8ffeefbf8abffe4abf9eefbf9e4effee8eeb1aebbcfaebbcad0c4fbffe2e4e5eae7b1abefeef8e8f9e2e9eeabfce3eaffabf2e4feabfceef9eeabefe4e2e5ecabfce3eee5abffe3eeabe2f8f8feeeabe4e8e8fef9f9eeefd6aebbcfaebbca" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -2362,7 +2364,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Show how Copilot surfaces rich sales context and accelerates seller productivity — all within M365.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 6.1 - Sales Agent in Microsoft 365%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#a4eec5d7cbca8ae3d6c1c3cbd6dde4c9cdc7d6cbd7cbc2d08ac7cbc99bd7d1c6cec1c7d099e5e6f784e8cdd2c184e0c1c9cb84ecd1c684e2c1c1c0c6c5c7cf82c6cbc0dd99e0c1c9cb9e84928a95848984f7c5c8c1d784e5c3c1cad084cdca84e9cdc7d6cbd7cbc2d0849792918194e08194e5898989898989898989898989898989898989898989898989898989898989898989898989898989898194e08194e58194e08194e5edd7d7d1c184c0c1d7c7d6cdd4d0cdcbca9e8194e08194e5fff4c8c1c5d7c184c0c1d7c7d6cdc6c184d3ccc5d084cdd784cacbd084d3cbd6cfcdcac3f98194e08194e58194e08194e5f7d0c1d4d784d0cb84d6c1d4d6cbc0d1c7c19e8194e08194e5ffebd4d0cdcbcac5c89e84c0c1d7c7d6cdc6c184d3ccc5d084ddcbd184d3c1d6c184c0cbcdcac384d3ccc1ca84d0ccc184cdd7d7d1c184cbc7c7d1d6d6c1c0f98194e08194e5" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -2412,7 +2414,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">AI agent automatically enriches and qualifies inbound leads — no lead falls through the cracks.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 6.2 - D365 Sales Qualification Agent%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#4c062d3f2322620b3e292b233e350c21252f3e233f232a38622f2321733f392e26292f38710d0e1f6c00253a296c082921236c04392e6c0a2929282e2d2f276a2e2328357108292123766c7a627e6c616c087f7a796c1f2d20293f6c1d392d20252a252f2d382523226c0d2b292238697c08697c0d61616161616161616161616161616161616161616161616161616161616161616161616161616161697c08697c0d697c08697c0d053f3f39296c28293f2f3e253c3825232276697c08697c0d171c20292d3f296c28293f2f3e252e296c3b242d386c253f6c2223386c3b233e2725222b11697c08697c0d697c08697c0d1f38293c3f6c38236c3e293c3e2328392f2976697c08697c0d17033c382523222d20766c28293f2f3e252e296c3b242d386c3523396c3b293e296c282325222b6c3b2429226c3824296c253f3f39296c232f2f393e3e292811697c08697c0d" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -2467,7 +2469,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">For sales leaders — AI agent builds dynamic research blueprints from D365 data and surfaces pipeline insights in real time.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 6.3 - D365 Sales Research Agent%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#b7fdd6c4d8d999f0c5d2d0d8c5cef7daded4c5d8c4d8d1c399d4d8da88c4c2d5ddd2d4c38af6f5e497fbdec1d297f3d2dad897ffc2d597f1d2d2d3d5d6d4dc91d5d8d3ce8af3d2dad88d97819984979a97f384818297e4d6dbd2c497e5d2c4d2d6c5d4df97f6d0d2d9c39287f39287f69a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9287f39287f69287f39287f6fec4c4c2d297d3d2c4d4c5dec7c3ded8d98d9287f39287f6ece7dbd2d6c4d297d3d2c4d4c5ded5d297c0dfd6c397dec497d9d8c397c0d8c5dcded9d0ea9287f39287f69287f39287f6e4c3d2c7c497c3d897c5d2c7c5d8d3c2d4d28d9287f39287f6ecf8c7c3ded8d9d6db8d97d3d2c4d4c5ded5d297c0dfd6c397ced8c297c0d2c5d297d3d8ded9d097c0dfd2d997c3dfd297dec4c4c2d297d8d4d4c2c5c5d2d3ea9287f39287f6" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -2513,7 +2515,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">For service agents — Copilot surfaces full case context, sentiment tracking, and AI-suggested resolutions in real time.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 6.4 - D365 Service Agent%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#632902100c0d4d241106040c111a230e0a00110c100c05174d000c0e5c101601090600175e222130432f0a15064327060e0c432b160143250606070102000845010c071a5e27060e0c5943554d57434e432750555643300611150a0006432204060d174653274653224e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4653274653224653274653222a101016064307061000110a13170a0c0d5946532746532238330f060210064307061000110a010643140b0217430a10430d0c1743140c11080a0d043e465327465322465327465322301706131043170c43110613110c0716000659465327465322382c13170a0c0d020f594307061000110a010643140b0217431a0c16431406110643070c0a0d0443140b060d43170b06430a10101606430c000016111106073e465327465322" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -2559,13 +2561,9 @@ What do you know about me and my job here at Microsoft?</span>
   <!-- ══════════════════════════════════ -->
   </div>
 
-  <div class="part-header" id="demo-tools-section" style="margin-top:20px;">Demo Tools</div>
-  <details id="demo-tools">
-    <summary class="cat-header">
-      <span class="cat-title">Demo Tools</span>
-      <span class="cat-chevron">▾</span>
-    </summary>
-    <div class="cat-body">
+  <div style="border-radius:6px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:12px;margin-top:12px;border:2px solid #0078D4;">
+  <div class="part-header" id="demo-tools-section" style="margin-top:0;">Demo Tools</div>
+  <div class="cat-body" style="display:block;">
 
       <div class="demo">
         <details id="tool1">
@@ -2576,7 +2574,7 @@ What do you know about me and my job here at Microsoft?</span>
               <span class="demo-tagline" style="margin-left:8px;">Screen zoom and annotation tool for live demos.</span>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#4e042f3d212060093c2b29213c370e23272d3c213d21283a602d2123713d3b2c242b2d3a730a2b23216e082b2b2a2c2f2d25746e3a26273d682c212a37731a262b3c2b6e273d6e2f206e273d3d3b2b6e39273a266e3a262b6e693a26273d696e2a2b2321606e1e222b2f3d2b6e2a2b3d2d3c272c2b6e39262f3a6b7c793d6e20213a6e39213c25272029746b7e0a6b7e0f6b7e0a6b7e0f" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div style="padding:12px 14px 10px;">
 
@@ -2677,7 +2675,7 @@ What do you know about me and my job here at Microsoft?</span>
               <span class="demo-tagline" style="margin-left:8px;">Custom keyboard shortcuts for writing prompts.</span>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#b3f9d2c0dcdd9df4c1d6d4dcc1caf3dedad0c1dcc0dcd5c79dd0dcde8cc0c6d1d9d6d0c78ef7d6dedc93f5d6d6d7d1d2d0d88993c7dbdac095d1dcd7ca8ee7dbd6c1d693dac093d2dd93dac0c0c6d693c4dac7db93c7dbd69394c7dbdac09493d7d6dedc9d93e3dfd6d2c0d693d7d6c0d0c1dad1d693c4dbd2c7968184c093dddcc793c4dcc1d8daddd4899683f79683f29683f79683f2" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div style="padding:12px 14px 14px;">
 
@@ -2798,7 +2796,7 @@ What do you know about me and my job here at Microsoft?</span>
               <span class="demo-tagline" style="margin-left:8px;">Pre-load longer prompts into clipboard history for instant paste.</span>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
+          <a class="feedback-btn" href="/cdn-cgi/l/email-protection#d399b2a0bcbdfd94a1b6b4bca1aa93bebab0a1bca0bcb5a7fdb0bcbeeca0a6b1b9b6b0a7ee97b6bebcf395b6b6b7b1b2b0b8e9f3a7bbbaa0f5b1bcb7aaee87bbb6a1b6f3baa0f3b2bdf3baa0a0a6b6f3a4baa7bbf3a7bbb6f3f4a7bbbaa0f4f3b7b6bebcfdf383bfb6b2a0b6f3b7b6a0b0a1bab1b6f3a4bbb2a7f6e1e4a0f3bdbca7f3a4bca1b8babdb4e9f6e397f6e392f6e397f6e392" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div style="padding:12px 14px 14px;">
 
@@ -2875,7 +2873,8 @@ What do you know about me and my job here at Microsoft?</span>
 
   </div>
 
-  <div class="part-header" id="support-section" style="margin-top:20px;">Support</div>
+  <div style="border-radius:6px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:12px;border:2px solid #0078D4;">
+  <div class="part-header" id="support-section" style="margin-top:0;">Support</div>
   <details id="pm">
     <summary class="cat-header">
       <span class="cat-title">Support &amp; Escalation Contacts</span>
@@ -2903,7 +2902,7 @@ What do you know about me and my job here at Microsoft?</span>
 
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
 function toggleHowTo(el) {
   const parent = el.closest('#how-to-use');
   const body = parent.querySelector('.how-body-collapsible');
@@ -3129,139 +3128,4 @@ function toggleHowTo(el) {
         img.onclick = () => openLightbox(e.target.result);
         const rm = document.createElement('button');
         rm.className = 'remove-image-btn';
-        rm.textContent = '×';
-        rm.onclick = () => wrap.remove();
-        wrap.appendChild(img);
-        wrap.appendChild(rm);
-        container.appendChild(wrap);
-      };
-      reader.readAsDataURL(file);
-    });
-    input.value = '';
-  }
-
-  function openLightbox(src) {
-    const lb = document.getElementById('lightbox');
-    lb.querySelector('img').src = src;
-    lb.classList.add('open');
-  }
-
-  // ── TOGGLE VIS REF ──
-  // Handled inline via classList.toggle — no extra function needed
-
-  // ── TOGGLE PROMPTS ──
-  function togglePrompts(labelEl) {
-    const section = labelEl.closest('.prompts-section');
-    const isCollapsed = section.classList.toggle('collapsed');
-    const hint = labelEl.querySelector('.prompts-label-hint');
-    if (hint) hint.textContent = isCollapsed ? 'click to expand' : 'click to collapse';
-  }
-
-  // ── TOGGLE COLLAPSIBLE ROW ──
-  function toggleRow(el) {
-    el.classList.toggle('collapsed');
-  }
-
-  // ── EXPORT TO WORD (respects filter) ──
-  function exportWord() {
-    // Expand all details and collapsed rows
-    document.querySelectorAll('details').forEach(d => d.open = true);
-    document.querySelectorAll('.collapsible-row.collapsed').forEach(r => r.classList.remove('collapsed'));
-    document.querySelectorAll('.prompts-section.collapsed').forEach(r => r.classList.remove('collapsed'));
-
-    const selectedDemoIds = filterApplied
-      ? new Set(getChecked().map(c => c.id))
-      : new Set(DEMOS.map(d => d.id));
-
-    const cats = [
-      { id: 'cat1', title: '1. Copilot App' },
-      { id: 'cat2', title: '2. Core Apps' },
-      { id: 'cat3', title: '3. Copilot for Teamwork' },
-      { id: 'cat4', title: '4. Studio' },
-      { id: 'cat5', title: '5. Agent 365' },
-      { id: 'cat6', title: '6. Biz Apps' },
-    ];
-
-    function esc(str) {
-      return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    }
-    function getContent(sel, el) {
-      const found = el.querySelector(sel);
-      return found ? found.innerText.trim() : '';
-    }
-
-    const selectedList = DEMOS.filter(d => selectedDemoIds.has(d.id)).map(d => d.title);
-    const isFiltered = filterApplied && selectedDemoIds.size < DEMOS.length;
-
-    let body = `<h1 style="font-family:Calibri;font-size:22pt;color:#005A9E;border-bottom:2pt solid #0078D4;padding-bottom:6pt;">
-      M365 Copilot &amp; Agent — Executive Demo Prep Guide
-    </h1>
-    <p style="font-family:Calibri;font-size:10pt;color:#767676;margin-bottom:4pt;">
-      Generated: ${new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}
-      ${isFiltered ? ` &nbsp;·&nbsp; <strong>Custom set: ${selectedList.length} demo${selectedList.length!==1?'s':''} selected</strong>` : ''}
-    </p>`;
-
-    // Flow summary — only selected
-    body += `<h2 style="font-family:Calibri;font-size:13pt;color:#005A9E;margin-bottom:4pt;page-break-before:avoid;">Your Demo Flow</h2>
-    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse:collapse;width:100%;font-family:Calibri;font-size:10pt;margin-bottom:16pt;">
-      <tr style="background:#0078D4;color:white;"><th>#</th><th>Demo</th><th>Category</th></tr>`;
-    selectedList.forEach((title, i) => {
-      const demo = DEMOS.find(d => d.title === title);
-      const catLabel = cats.find(c => c.id === demo?.cat)?.title.split(' · ')[1] || '';
-      body += `<tr style="${i%2===0?'':'background:#F8F9FA'}"><td style="width:24pt;text-align:center;">${i+1}</td><td>${esc(title)}</td><td>${esc(catLabel)}</td></tr>`;
-    });
-    body += `</table>`;
-
-    // Demo sections
-    cats.forEach(cat => {
-      const catEl = document.getElementById(cat.id);
-      if (!catEl) return;
-      const demosInCat = DEMOS.filter(d => d.cat === cat.id && selectedDemoIds.has(d.id));
-      if (demosInCat.length === 0) return;
-
-      body += `<h2 style="font-family:Calibri;font-size:14pt;color:white;background:#0078D4;padding:6pt 8pt;margin-top:16pt;margin-bottom:0;page-break-before:always;">${esc(cat.title)}</h2>`;
-
-      demosInCat.forEach(demoMeta => {
-        const demo = document.getElementById(demoMeta.id);
-        if (!demo) return;
-        const title = getContent('.demo-title', demo);
-        const tagline = getContent('.demo-tagline', demo);
-
-        body += `<h3 style="font-family:Calibri;font-size:12pt;color:#005A9E;margin-top:10pt;margin-bottom:2pt;">${esc(title)}</h3>`;
-        if (tagline) body += `<p style="font-family:Calibri;font-size:9pt;color:#767676;font-style:italic;margin-bottom:6pt;">${esc(tagline)}</p>`;
-
-        body += `<table border="1" cellpadding="5" cellspacing="0" style="border-collapse:collapse;width:100%;font-family:Calibri;font-size:10pt;margin-bottom:6pt;">`;
-        demo.querySelectorAll('.row').forEach(row => {
-          const label = getContent('.row-label', row);
-          const content = getContent('.row-content', row);
-          const bg = row.classList.contains('moment-row') ? '#E6F4EA' : '#F8F9FA';
-          body += `<tr><td style="background:${bg};font-weight:bold;width:80pt;vertical-align:top;">${esc(label)}</td><td style="vertical-align:top;">${esc(content)}</td></tr>`;
-        });
-        body += `</table>`;
-
-        const prompts = demo.querySelectorAll('.prompt-item');
-        if (prompts.length) {
-          body += `<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;width:100%;font-family:Courier New;font-size:9pt;background:#FFF9E6;margin-bottom:10pt;">`;
-          prompts.forEach(p => {
-            const tag = getContent('.prompt-tag', p);
-            const text = getContent('.prompt-text', p);
-            if (text && !text.includes('Add copy/paste')) {
-              body += `<tr><td style="border-bottom:1pt solid #F0C800;vertical-align:top;">
-                <strong style="font-family:Calibri;font-size:9pt;color:#7B5800;">${esc(tag)}</strong><br>
-                <span style="white-space:pre-wrap;">${esc(text)}</span>
-              </td></tr>`;
-            }
-          });
-          body += `</table>`;
-        }
-      });
-    });
-
-    const footerText = document.querySelector('.footer')?.innerText || '';
-    body += `<p style="font-family:Calibri;font-size:8pt;color:#9AA0A6;border-top:1pt solid #E8EAED;padding-top:8pt;">${esc(footerText)}</p>`;
-
-    const wordDoc = `<html xmlns:o="urn:schemas-microsoft-com:office:office"
-      xmlns:w="urn:schemas-microsoft-com:office:word"
-      xmlns="http://www.w3.org/TR/REC-html40">
-<head>
-  <link rel="icon" href="https://copilot.microsoft.com/favicon.ico" type="image/x-icon"><meta charset="UTF-8"><meta name=ProgId content=Wo
+        rm.textContent = 
