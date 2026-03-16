@@ -30,6 +30,7 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
+    background: var(--gray-100);
     font-family: var(--sans);
     font-size: 13px;
     color: var(--gray-800);
@@ -45,17 +46,11 @@
     background: white;
     color: var(--gray-800);
     padding: 0 20px;
-    height: 48px;
-    border-bottom: 1px solid var(--gray-200);
-  .site-header-inner {
-    max-width: 900px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 48px;
-    width: 100%;
-  }
+    border-bottom: 1px solid var(--gray-200);
     box-shadow: 0 1px 4px rgba(0,0,0,.08);
   }
   .header-left {
@@ -192,8 +187,90 @@
     margin-right: 4px;
   }
 
+
+  /* ── FEEDBACK BUTTON ── */
+  .feedback-btn {
+    margin-left: 6px;
+    flex-shrink: 0;
+    background: none;
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 10px;
+    color: var(--gray-400);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    transition: border-color .15s, color .15s;
+  }
+  .feedback-btn:hover {
+    border-color: #D83B01;
+    color: #D83B01;
+  }
+
+
+  /* ── SECTION NAV ── */
+  .section-nav {
+    background: #005A9E;
+    display: flex;
+    padding: 0 20px;
+    position: sticky;
+    top: 48px;
+    z-index: 99;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .section-nav-link {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 9px 24px;
+    display: inline-block;
+    transition: background .15s, color .15s;
+    border-bottom: 2px solid transparent;
+  }
+  .section-nav-link:hover {
+    background: rgba(255,255,255,0.12);
+    color: white;
+  }
+
+
+  /* ── HOW TO USE TOGGLE ── */
+  .how-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 14px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: background .1s;
+  }
+  .how-toggle:hover { background: var(--gray-100); }
+  .how-body-collapsible {
+    display: none;
+    padding: 12px 14px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+  }
+
+
+  /* ── PRE-MAIN WRAPPER ── */
+  .pre-main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px 16px 0;
+    background: #F3F2F1;
+  }
+
   /* ── MAIN LAYOUT ── */
-  .main { max-width: 900px; margin: 0 auto; padding: 16px 16px 40px; }
+  .main { max-width: 900px; margin: 0 auto; padding: 16px 16px 40px; background: var(--gray-100); }
 
   /* ── CATEGORY BLOCK ── */
   .category {
@@ -435,15 +512,15 @@
     background-color: #0078D4;
     color: white;
     font-family: 'Segoe UI', sans-serif;
-    padding: 8px 16px;
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-    margin-top: 8px;
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-top: 12px;
     margin-bottom: 0;
-    border-radius: 0;
-    border-bottom: 2px solid var(--blue);
+    border-radius: 6px 6px 0 0;
+    border-bottom: none;
   }
   .part-header + details > summary.cat-header { border-radius: 0; }
   .part-header:first-child { margin-top: 0; }
@@ -688,13 +765,12 @@
   /* ── DEMO SET BUILDER ── */
   .demo-builder {
     background: white;
-    border-bottom: 1px solid var(--gray-200);
-    padding: 12px 20px;
-    box-shadow: 0 1px 4px rgba(0,0,0,.04);
-  }
-  .demo-builder-inner {
-    max-width: 900px;
-    margin: 0 auto;
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    padding: 0;
+    margin-bottom: 12px;
+    overflow: hidden;
   }
   .builder-header {
     display: flex;
@@ -758,7 +834,7 @@
   .builder-cat-label {
     background: var(--blue);
     color: white;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 600;
     letter-spacing: .05em;
     text-transform: uppercase;
@@ -783,8 +859,8 @@
     display: flex;
     align-items: flex-start;
     gap: 6px;
-    padding: 5px 8px;
-    font-size: 11px;
+    padding: 4px 8px;
+    font-size: 10px;
     color: var(--gray-800);
     cursor: pointer;
     border-bottom: 1px solid var(--gray-100);
@@ -863,7 +939,7 @@
   /* ── HOW TO USE ── */
   .how-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 8px;
     margin-bottom: 10px;
   }
@@ -881,7 +957,6 @@
 
 <!-- STICKY HEADER -->
 <div class="site-header">
-  <div class="site-header-inner">
   <div class="header-left">
     <div class="header-logo">
       <!-- Microsoft logo squares -->
@@ -897,8 +972,6 @@
     <span>M365 Copilot &amp; Agents</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center;">
-    <button class="expand-all-btn" onclick="expandAll()">Show More</button>
-    <button class="expand-all-btn" onclick="collapseAll()">Show Less</button>
     <button class="expand-all-btn edit-btn" id="edit-toggle-btn" onclick="toggleEditMode()">✏️ Edit</button>
     <button class="expand-all-btn word-btn" onclick="exportWord()">📄 Export to Word</button>
   </div>
@@ -912,15 +985,45 @@
     <button class="save-btn" style="background:#2B579A" onclick="exportWord()">📄 Export to Word</button>
     <button class="save-btn" onclick="exportHTML()">⬇ Download HTML</button>
   </div>
-  </div>
+</div>
+<!-- SECTION NAV -->
+<div class="section-nav">
+  <a href="#demo-planner" class="section-nav-link">Demo Planner</a>
+  <a href="#demo-instructions" class="section-nav-link">Demo Instructions</a>
+  <a href="#demo-tools-section" class="section-nav-link">Demo Tools</a>
+  <a href="#support-section" class="section-nav-link">Support</a>
 </div>
 
+<div class="pre-main">
+
+  <!-- HOW TO USE -->
+  <div id="how-to-use" style="margin-bottom:8px;">
+    <div class="how-toggle" onclick="toggleHowTo(this)">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:13px">ℹ️</span>
+        <span style="font-size:13px;font-weight:500;color:var(--gray-800);">How to Use This Guide</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span class="how-hint" style="font-size:11px;color:var(--gray-400)">click to expand</span>
+        <span class="how-chevron" style="font-size:10px;color:var(--gray-400);transition:transform .2s;">▶</span>
+      </div>
+    </div>
+    <div class="how-body-collapsible" style="display:none;">
+      <div class="how-grid">
+        <div class="how-item"><div class="how-num">1 · Demo Planner</div><div class="how-text">Build your demo set by checking the demos you're running. Hit <strong>Apply Filter</strong> to hide everything else, or use <strong>Exec Shortlist</strong> for a curated short set.</div></div>
+        <div class="how-item"><div class="how-num">2 · Demo Instructions</div><div class="how-text">Follow the guide for each demo — Setup, Files, Prompts, and a backup Simulation link if anything goes wrong on stage.</div></div>
+        <div class="how-item"><div class="how-num">3 · Feedback</div><div class="how-text">Use the feedback button on any demo that isn't working so we can fix it ASAP. Every demo card has a 🚩 flag button — one click sends an email.</div></div>
+        <div class="how-item"><div class="how-num">4 · Demo Tools</div><div class="how-text">Master the art of delivering demos on stage. ZoomIt, AutoHotkey, and Clipboard History are your best friends.</div></div>
+      </div>
+      <div style="font-size:11px;color:var(--gray-600);padding-top:8px;">💡 <strong>Tip:</strong> Sections are collapsed by default. Use <strong>Show More / Show Less</strong> in the Demo Instructions banner to expand or collapse everything at once.</div>
+    </div>
+  </div>
+
 <!-- DEMO SET BUILDER -->
-<div class="demo-builder" id="demo-builder">
-  <div class="demo-builder-inner">
-  <div class="builder-header">
+<div class="demo-builder" id="demo-planner">
+  <div class="part-header" style="margin-bottom:0;margin-top:0;border-radius:6px 6px 0 0;">Demo Planner</div>
+  <div class="builder-header" style="padding: 10px 20px 0 20px;">
     <div>
-      <span class="builder-title">🎯 Build My Demo Set</span>
       <span class="builder-subtitle">Check the demos you're running — everything else hides. Then export your personalized guide.</span>
     </div>
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
@@ -932,7 +1035,7 @@
     </div>
   </div>
 
-  <div class="builder-grid">
+  <div class="builder-grid" style="padding: 0 16px 16px 16px;">
 
     <div class="builder-cat">
       <div class="builder-cat-label">1. Copilot App</div>
@@ -992,23 +1095,8 @@
     <button onclick="resetDemoSet()" style="font-family:var(--sans);font-size:11px;background:none;border:1px solid var(--green-border);border-radius:3px;padding:2px 8px;color:#1B5E20;cursor:pointer;">Show All Demos</button>
   </div>
 
-  <!-- HOW TO USE -->
-  <details class="section-card" id="how-to-use">
-    <summary class="section-card-header">
-      <h2>ℹ️ &nbsp;How to Use This Guide</h2>
-      <span style="font-size:10px;color:var(--gray-400)">▾</span>
-    </summary>
-    <div class="section-card-body">
-      <div class="how-grid">
-        <div class="how-item"><div class="how-num">1 · Orient</div><div class="how-text">Review the flow bar above. Know which demos you're running before the customer walks in.</div></div>
-        <div class="how-item"><div class="how-num">2 · Prep</div><div class="how-text">Open required files and apps before the demo starts. Each section lists exactly what you need.</div></div>
-        <div class="how-item"><div class="how-num">3 · Execute</div><div class="how-text">Follow the steps. Click any prompt to copy it — don't retype. Paste directly into Copilot Chat.</div></div>
-      </div>
-      <div style="font-size:11px;color:var(--gray-600)">💡 <strong>Tip:</strong> Sections are collapsed by default. Open only what you need. Click "Expand All" to open everything at once.</div>
-    </div>
-  </details>
-
-  <div class="part-header">1 — DEMOS</div>
+  <div style="border-radius:6px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:12px;">
+  <div class="part-header" id="demo-instructions"><div style="display:flex;align-items:center;justify-content:space-between;"><span>Demo Instructions</span><div style="display:flex;gap:6px;"><button class="expand-all-btn" style="color:white;border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.15);" onclick="expandAll()">Show More</button><button class="expand-all-btn" style="color:white;border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.15);" onclick="collapseAll()">Show Less</button></div></div></div>
   <!-- CATEGORY 1 — COPILOT CHAT -->
   <details id="cat1" open>
     <summary class="cat-header">
@@ -1027,7 +1115,7 @@
               <div class="demo-tagline">Land the value of Work IQ as the intelligence layer — Copilot knows you.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 1.1 - Work IQ Demo%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1086,7 +1174,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Most powerful example for each Word, Excel, PowerPoint &amp; Outlook agent.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 1.2 - WXPO Agents from Copilot Chat%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1126,7 +1214,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Show how Copilot Chat can act on Word documents without leaving the chat interface.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -1161,7 +1249,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Show how Copilot Chat can analyze, transform, and act on Excel data directly from chat.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -1196,7 +1284,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Show how Copilot Chat can build, redesign, or summarize PowerPoint presentations on command.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -1231,7 +1319,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Show how Copilot Chat can draft, summarize, and act on email directly from the chat pane.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -1267,7 +1355,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Orchestrate a multi-asset customer prep package — briefing doc, data Excel, and presentation — all from one prompt.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 1.3 - Cowork%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1351,7 +1439,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Show how anyone can create a no-code AI agent in minutes from Copilot Chat.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 1.4 - Agent Builder%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body" style="padding:0;">
 
             <div class="subcat-header" style="border-top:none;">1.4.1 · CELA Marketing Agent — Easier</div>
@@ -1364,7 +1452,7 @@ What do you know about me and my job here at Microsoft?</span>
                             <div class="demo-tagline">Single-URL agent that reviews marketing copy for legal compliance — quick to build, great story.</div>
                           </div>
                           <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-                        </summary>
+                        <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 1.4.1 - CELA Marketing Agent Easier%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
                         <div class="demo-body">
                           <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
                             <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1431,7 +1519,7 @@ What do you know about me and my job here at Microsoft?</span>
                             <div class="demo-tagline">Multi-source agent using Teams chat + Word doc as knowledge — rich, realistic scenario.</div>
                           </div>
                           <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-                        </summary>
+                        <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 1.4.2 - Customer Engagement Agent Advanced%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
                         <div class="demo-body">
                           <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
                             <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1520,7 +1608,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Copilot reads your emails &amp; chats, then rewrites your Monthly Business Review report in seconds — no copy-paste required.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
 
             <!-- SETUP -->
@@ -1765,7 +1853,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Autonomous data analysis, formula generation, and insight surfacing in Excel Agent Mode.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1846,7 +1934,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Build, restructure, and design entire presentations using Copilot Agent Mode in PowerPoint.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1881,7 +1969,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Autonomous email drafting, triage, and scheduling using Copilot Agent Mode in Outlook.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -1928,7 +2016,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">A live meeting with confederates — Copilot Facilitator tracks the agenda, assigns tasks, creates documents, and coordinates agents in real time.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 3.1 - Facilitator Agent in Teams%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
 
             <!-- SETUP -->
@@ -2184,7 +2272,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline" style="color:#E97316;font-style:normal;font-weight:500;">⚠️ Temporary · To be replaced with AON demo ASAP</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 4.1 - Pets at Home — PowerPoint Clickthrough%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="warning-bar">⚠️ <span>Replace with AON demo as soon as available. Confirm the latest clickthrough link before each session.</span></div>
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
@@ -2228,7 +2316,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Show centralized AI governance, deployment, and control for IT &amp; admin personas.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 5.1 - A365 Clickthrough%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span><span class="row-hint">prep notes</span></div>
@@ -2274,7 +2362,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">Show how Copilot surfaces rich sales context and accelerates seller productivity — all within M365.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 6.1 - Sales Agent in Microsoft 365%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -2324,7 +2412,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">AI agent automatically enriches and qualifies inbound leads — no lead falls through the cracks.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 6.2 - D365 Sales Qualification Agent%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -2379,7 +2467,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">For sales leaders — AI agent builds dynamic research blueprints from D365 data and surfaces pipeline insights in real time.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 6.3 - D365 Sales Research Agent%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -2425,7 +2513,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="demo-tagline">For service agents — Copilot surfaces full case context, sentiment tracking, and AI-suggested resolutions in real time.</div>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=ABS Live Demo Hub Feedback&body=Demo: 6.4 - D365 Service Agent%0D%0A----------------------------------------%0D%0A%0D%0AIssue description:%0D%0A[Please describe what is not working]%0D%0A%0D%0ASteps to reproduce:%0D%0A[Optional: describe what you were doing when the issue occurred]%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
               <div class="row-label">🎯 Setup <span class="row-chevron">▾</span></div>
@@ -2469,7 +2557,9 @@ What do you know about me and my job here at Microsoft?</span>
   <!-- ══════════════════════════════════ -->
   <!-- DEMO TOOLS                         -->
   <!-- ══════════════════════════════════ -->
-  <div class="part-header" style="margin-top:20px;">2 — DEMO TOOLS</div>
+  </div>
+
+  <div class="part-header" id="demo-tools-section" style="margin-top:20px;">Demo Tools</div>
   <details id="demo-tools">
     <summary class="cat-header">
       <span class="cat-title">Demo Tools</span>
@@ -2486,7 +2576,7 @@ What do you know about me and my job here at Microsoft?</span>
               <span class="demo-tagline" style="margin-left:8px;">Screen zoom and annotation tool for live demos.</span>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div style="padding:12px 14px 10px;">
 
@@ -2587,7 +2677,7 @@ What do you know about me and my job here at Microsoft?</span>
               <span class="demo-tagline" style="margin-left:8px;">Custom keyboard shortcuts for writing prompts.</span>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div style="padding:12px 14px 14px;">
 
@@ -2708,7 +2798,7 @@ What do you know about me and my job here at Microsoft?</span>
               <span class="demo-tagline" style="margin-left:8px;">Pre-load longer prompts into clipboard history for instant paste.</span>
             </div>
             <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-          </summary>
+          <a class="feedback-btn" href="mailto:Jason.Gregory@microsoft.com?subject=Demo Feedback: this&body=There is an issue with the 'this' demo. Please describe what%27s not working:%0D%0A%0D%0A" onclick="event.stopPropagation()" title="Report an issue with this demo">🚩 Flag</a></summary>
           <div class="demo-body">
             <div style="padding:12px 14px 14px;">
 
@@ -2783,7 +2873,9 @@ What do you know about me and my job here at Microsoft?</span>
     </div>
   </details>
 
-  <div class="part-header" style="margin-top:20px;">3 — SUPPORT</div>
+  </div>
+
+  <div class="part-header" id="support-section" style="margin-top:20px;">Support</div>
   <details id="pm">
     <summary class="cat-header">
       <span class="cat-title">Support &amp; Escalation Contacts</span>
@@ -2811,7 +2903,19 @@ What do you know about me and my job here at Microsoft?</span>
 
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+function toggleHowTo(el) {
+  const parent = el.closest('#how-to-use');
+  const body = parent.querySelector('.how-body-collapsible');
+  const chevron = el.querySelector('.how-chevron');
+  const hint = el.querySelector('.how-hint');
+  const isHidden = window.getComputedStyle(body).display === 'none';
+  body.style.display = isHidden ? 'block' : 'none';
+  chevron.style.transform = isHidden ? 'rotate(90deg)' : '';
+  if (hint) hint.textContent = isHidden ? 'click to collapse' : 'click to expand';
+}
+
+</script><script>
   // ── DEMO REGISTRY ──
   const DEMOS = [
     { id: 'demo1',  cat: 'cat1', title: 'Work IQ Demo' },
@@ -3160,143 +3264,4 @@ What do you know about me and my job here at Microsoft?</span>
       xmlns:w="urn:schemas-microsoft-com:office:word"
       xmlns="http://www.w3.org/TR/REC-html40">
 <head>
-  <link rel="icon" href="https://copilot.microsoft.com/favicon.ico" type="image/x-icon"><meta charset="UTF-8"><meta name=ProgId content=Word.Document>
-<style>
-  @page { size:8.5in 11in; margin:1in; }
-  body { font-family:Calibri; font-size:11pt; }
-  h2:first-of-type { page-break-before:avoid; }
-  table { border-collapse:collapse; width:100%; }
-  td,th { padding:5pt; }
-</style></head>
-<body>${body}</body></html>`;
-
-    const filename = isFiltered
-      ? `DemoGuide_Custom_${selectedList.length}demos.doc`
-      : 'ExecDemoPrepGuide.doc';
-
-    const blob = new Blob([wordDoc], { type: 'application/msword' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = filename;
-    a.click();
-    URL.revokeObjectURL(a.href);
-  }
-
-  // ── EXPORT HTML ──
-  function exportHTML() {
-    const editables = document.querySelectorAll('[contenteditable="true"]');
-    editables.forEach(el => el.removeAttribute('contenteditable'));
-    const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-    editables.forEach(el => el.setAttribute('contenteditable', 'true'));
-    const blob = new Blob([html], { type: 'text/html' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'ExecDemoPrepGuide.html';
-    a.click();
-    URL.revokeObjectURL(a.href);
-  }
-
-  // ── JUMP AND OPEN ──
-  function jumpAndOpen(catId, demoId) {
-    const cat = document.getElementById(catId);
-    if (cat) cat.open = true;
-    if (demoId) {
-      const demo = document.getElementById(demoId);
-      if (demo) { demo.open = true; setTimeout(() => demo.scrollIntoView({ behavior:'smooth', block:'start' }), 50); return; }
-    }
-    if (cat) setTimeout(() => cat.scrollIntoView({ behavior:'smooth', block:'start' }), 50);
-  }
-
-  // ── COPY PROMPT ──
-  function copyPrompt(el) {
-    if (editMode) return;
-    const text = el.querySelector('.prompt-text').textContent.trim();
-    navigator.clipboard.writeText(text).then(() => {
-      const hint = el.querySelector('.copy-hint');
-      hint.textContent = 'Copied!';
-      hint.style.color = '#1B5E20';
-      hint.style.background = '#E6F4EA';
-      hint.style.opacity = '1';
-      setTimeout(() => { hint.textContent = 'Click to copy'; hint.style.color=''; hint.style.background=''; hint.style.opacity=''; }, 1800);
-    });
-  }
-
-  // ── SHOW MORE / SHOW LESS (layer by layer) ──
-  // Levels: 0 = all collapsed, 1 = sections open, 2 = demos open, 3 = rows open
-  let expandLevel = 0;
-
-  function expandAll() {
-    expandLevel = Math.min(expandLevel + 1, 3);
-    applyExpandLevel();
-  }
-
-  function collapseAll() {
-    expandLevel = Math.max(expandLevel - 1, 0);
-    applyExpandLevel();
-  }
-
-  function applyExpandLevel() {
-    // Level 1+: open category sections
-    document.querySelectorAll('details[id^="cat"]').forEach(d => d.open = expandLevel >= 1);
-    // Level 2+: open demo details
-    document.querySelectorAll('details[id^="demo"], details[id="demo-tools"]').forEach(d => d.open = expandLevel >= 2);
-    // Level 3: open collapsible rows
-    document.querySelectorAll('.collapsible-row').forEach(r => {
-      if (expandLevel >= 3) r.classList.remove('collapsed');
-      else r.classList.add('collapsed');
-    });
-  }
-
-  // ── SCROLL TO ──
-  function scrollTo(id) {
-    const el = document.getElementById(id);
-    if (el) { el.open = true; el.scrollIntoView({ behavior:'smooth', block:'start' }); }
-  }
-
-  // ── DEMO STATUS BADGES ──
-  function updateDemoStatusBadges() {
-    document.querySelectorAll('.demo details[id^="demo"]').forEach(demoEl => {
-      const badge = demoEl.querySelector('.demo-status');
-      if (!badge) return;
-      const body = demoEl.querySelector('.demo-body');
-      if (!body) return;
-
-      // Count placeholder elements in this demo body
-      const placeholders = body.querySelectorAll('.placeholder');
-      // Count prompt items that are real (have prompt-text with actual content)
-      const promptItems = body.querySelectorAll('.prompt-item .prompt-text');
-      const hasRealPrompts = [...promptItems].some(p => p.textContent.trim().length > 5);
-      // Count steps
-      const steps = body.querySelectorAll('ol.steps li');
-      const hasSteps = steps.length > 0;
-
-      if (placeholders.length === 0 && (hasRealPrompts || hasSteps)) {
-        badge.classList.add('complete');
-        badge.classList.remove('partial');
-        badge.textContent = '✓';
-        badge.title = 'Content complete';
-      } else if (placeholders.length > 0 && (hasRealPrompts || hasSteps)) {
-        badge.classList.add('partial');
-        badge.classList.remove('complete');
-        badge.textContent = '~';
-        badge.title = 'Partially complete';
-      } else {
-        badge.classList.remove('complete', 'partial');
-        badge.textContent = '';
-        badge.title = 'No content yet';
-      }
-    });
-  }
-
-  // Init
-  onCheckChange();
-  updateDemoStatusBadges();
-</script>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
-  <img src="" alt="Screenshot">
-</div>
-
-</body>
-</html>
+  <link rel="icon" href="https://copilot.microsoft.com/favicon.ico" type="image/x-icon"><meta charset="UTF-8"><meta name=ProgId content=Wo
