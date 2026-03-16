@@ -45,11 +45,17 @@
     background: white;
     color: var(--gray-800);
     padding: 0 20px;
+    height: 48px;
+    border-bottom: 1px solid var(--gray-200);
+  .site-header-inner {
+    max-width: 900px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 48px;
-    border-bottom: 1px solid var(--gray-200);
+    width: 100%;
+  }
     box-shadow: 0 1px 4px rgba(0,0,0,.08);
   }
   .header-left {
@@ -686,6 +692,10 @@
     padding: 12px 20px;
     box-shadow: 0 1px 4px rgba(0,0,0,.04);
   }
+  .demo-builder-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
   .builder-header {
     display: flex;
     align-items: center;
@@ -871,6 +881,7 @@
 
 <!-- STICKY HEADER -->
 <div class="site-header">
+  <div class="site-header-inner">
   <div class="header-left">
     <div class="header-logo">
       <!-- Microsoft logo squares -->
@@ -901,10 +912,12 @@
     <button class="save-btn" style="background:#2B579A" onclick="exportWord()">📄 Export to Word</button>
     <button class="save-btn" onclick="exportHTML()">⬇ Download HTML</button>
   </div>
+  </div>
 </div>
 
 <!-- DEMO SET BUILDER -->
 <div class="demo-builder" id="demo-builder">
+  <div class="demo-builder-inner">
   <div class="builder-header">
     <div>
       <span class="builder-title">🎯 Build My Demo Set</span>
@@ -968,6 +981,7 @@
     </div>
 
   </div>
+</div>
 </div>
 
 <div class="main">
