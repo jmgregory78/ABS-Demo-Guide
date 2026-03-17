@@ -210,7 +210,6 @@
     user-select: none;
     transition: background .1s;
   }
-  .how-toggle::after { display: none !important; }
   .how-toggle:hover { background: var(--gray-100); }
   .how-body-collapsible {
     display: none;
@@ -380,7 +379,7 @@
     line-height: 1.4;
   }
   .row-content {
-    padding: 7px 40px 7px 10px;
+    padding: 7px 10px;
     background: white;
     color: var(--gray-800);
     line-height: 1.5;
@@ -407,14 +406,18 @@
     transition: background .1s;
   }
   .prompts-section > .prompts-label:hover { background: #DEEAF7; }
-
+  .prompts-section > .prompts-label::after {
+    content: "▾";
+    font-size: 10px;
+    transition: transform .2s;
+  }
+  .prompts-section.collapsed > .prompts-label::after { transform: rotate(-90deg); }
   .prompts-section.collapsed .prompts-body { display: none; }
   .prompts-label-hint {
-    font-size: 14px;
-    font-weight: 700;
-    opacity: 1;
-    margin-left: auto;
-    color: var(--blue-dark);
+    font-size: 9px;
+    font-weight: 400;
+    opacity: .7;
+    margin-left: 6px;
   }
   .prompts-body { border-top: 1px solid var(--amber-border); }
   .prompt-item {
@@ -603,35 +606,20 @@
   /* ── COLLAPSIBLE ROWS ── */
   .collapsible-row { cursor: pointer; user-select: none; }
   .collapsible-row:hover .row-label { background: var(--gray-200); }
-  .row-chevron { display: none; }
-
+  .row-chevron { font-size: 9px; opacity: .6; transition: transform .2s; display: inline-block; }
+  .collapsible-row.collapsed .row-chevron { transform: rotate(-90deg); }
   .collapsible-row.collapsed .row-content { display: none; }
   .collapsible-row.collapsed { grid-template-columns: 1fr; }
   .collapsible-row.collapsed .row-label { border-right: none; border-radius: 4px; width: 100%; }
-
+  .collapsible-row.collapsed .row-label::after {
+    content: "click to expand";
+    font-size: 9px;
+    font-weight: 400;
+    color: var(--gray-400);
+    margin-left: 8px;
+    font-style: italic;
+  }
   .row-hint { display: none; }
-
-
-  .collapsible-row {
-    position: relative;
-  }
-  .collapsible-row::after {
-    content: "▲";
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--blue-dark);
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
-  .collapsible-row.collapsed::after {
-    content: "▼";
-  }
-  .collapsible-row.no-expand::after {
-    display: none;
-  }
 
   /* ── WARNING BAR ── */
   .warning-bar {
@@ -945,7 +933,7 @@
     <span>M365 Copilot &amp; Agents</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center;">
-    <button class="expand-all-btn word-btn" onclick="openExportDialog()">📄 Export to Word</button>
+    <button class="expand-all-btn word-btn" onclick="exportWord()">📄 Export to Word</button>
   </div>
 </div>
 
@@ -967,7 +955,10 @@
         <span style="font-size:13px">ℹ️</span>
         <span style="font-size:13px;font-weight:500;color:var(--gray-800);">How to Use This Guide</span>
       </div>
-      <span class="how-chevron" style="font-size:14px;font-weight:700;color:var(--blue-dark);">▼</span>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span class="how-hint" style="font-size:11px;color:var(--gray-400)">click to expand</span>
+        <span class="how-chevron" style="font-size:10px;color:var(--gray-400);transition:transform .2s;">▶</span>
+      </div>
     </div>
     <div class="how-body-collapsible" style="display:none;">
       <div class="how-grid">
@@ -1087,7 +1078,7 @@
               <div class="row-content">Copilot Chat only — no files required.</div>
             </div>
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Copy / Paste Prompts — click any prompt to copy<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body">
               <div class="prompt-item" onclick="copyPrompt(this)">
                 <span class="prompt-tag">PROMPT 1</span>
@@ -1160,7 +1151,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="row-content"><span class="placeholder">Add step-by-step flow here.</span></div>
             </div>
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div>
             </div></div>
             <div class="sim-link-row">
@@ -1195,7 +1186,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="row-content"><span class="placeholder">Add step-by-step flow here.</span></div>
             </div>
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div>
             </div></div>
             <div class="sim-link-row">
@@ -1230,7 +1221,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="row-content"><span class="placeholder">Add step-by-step flow here.</span></div>
             </div>
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div>
             </div></div>
             <div class="sim-link-row">
@@ -1265,7 +1256,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="row-content"><span class="placeholder">Add step-by-step flow here.</span></div>
             </div>
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div>
             </div></div>
             <div class="sim-link-row">
@@ -1342,7 +1333,7 @@ What do you know about me and my job here at Microsoft?</span>
               </div>
             </div>
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Copy / Paste Prompts — click any prompt to copy<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body">
                 <div class="prompt-item" onclick="copyPrompt(this)"><span class="copy-hint">copy</span>
                   <span class="prompt-tag">MAIN PROMPT (with Excel)</span>
@@ -1417,7 +1408,7 @@ What do you know about me and my job here at Microsoft?</span>
                             </div>
                           </div>
                           <div class="prompts-section collapsed">
-                            <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+                            <div class="prompts-label" onclick="togglePrompts(this)">💬 Copy / Paste Prompts — click any prompt to copy<span class="prompts-label-hint">click to expand</span></div>
                             <div class="prompts-body">
                               <div class="prompt-item" onclick="copyPrompt(this)">
                                 <span class="prompt-tag">PROMPT 1 — Create agent</span>
@@ -1490,7 +1481,7 @@ What do you know about me and my job here at Microsoft?</span>
                             </div>
                           </div>
                           <div class="prompts-section collapsed">
-                            <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+                            <div class="prompts-label" onclick="togglePrompts(this)">💬 Copy / Paste Prompts — click any prompt to copy<span class="prompts-label-hint">click to expand</span></div>
                             <div class="prompts-body">
                               <div class="prompt-item" onclick="copyPrompt(this)">
                                 <span class="prompt-tag">PROMPT 1 — Create agent</span>
@@ -1702,7 +1693,7 @@ What do you know about me and my job here at Microsoft?</span>
 
             <!-- PROMPTS -->
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Copy / Paste Prompts — click any prompt to copy<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body">
 
                 <div class="prompt-item" onclick="copyPrompt(this)">
@@ -1817,7 +1808,7 @@ What do you know about me and my job here at Microsoft?</span>
               </div>
             </div>
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Copy / Paste Prompts — click any prompt to copy<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body">
                 <div class="prompt-item" onclick="copyPrompt(this)">
                   <span class="prompt-tag">PROMPT 1 — Filter &amp; Highlight</span>
@@ -1881,7 +1872,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="row-content"><span class="placeholder">Add step-by-step agent mode flow here.</span></div>
             </div>
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div>
             </div></div>
             <div class="sim-link-row">
@@ -1916,7 +1907,7 @@ What do you know about me and my job here at Microsoft?</span>
               <div class="row-content"><span class="placeholder">Add step-by-step agent mode flow here.</span></div>
             </div>
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div>
             </div></div>
             <div class="sim-link-row">
@@ -2062,7 +2053,7 @@ What do you know about me and my job here at Microsoft?</span>
 
             <!-- PROMPTS -->
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Copy / Paste Prompts — click any prompt to copy<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body">
 
                 <div class="prompt-item" onclick="copyPrompt(this)">
@@ -2322,7 +2313,7 @@ What do you know about me and my job here at Microsoft?</span>
               </div>
             </div>
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div></div>
               <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
@@ -2377,7 +2368,7 @@ What do you know about me and my job here at Microsoft?</span>
               </div>
             </div>
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div></div>
               <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
@@ -2423,7 +2414,7 @@ What do you know about me and my job here at Microsoft?</span>
               </div>
             </div>
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div></div>
               <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
@@ -2471,7 +2462,7 @@ What do you know about me and my job here at Microsoft?</span>
               </div>
             </div>
             <div class="prompts-section collapsed">
-              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">▼</span></div>
+              <div class="prompts-label" onclick="togglePrompts(this)">💬 Prompts<span class="prompts-label-hint">click to expand</span></div>
               <div class="prompts-body"><div class="prompt-item"><span class="placeholder" style="font-family:var(--sans)">Add copy/paste prompts here.</span></div></div>
               <div class="sim-link-row">
               <span class="sim-link-label">🔗 Simulation</span>
@@ -2799,74 +2790,6 @@ What do you know about me and my job here at Microsoft?</span>
         </details>
       </div>
 
-      <div class="demo">
-        <details id="tool4">
-          <summary class="demo-header">
-            <span class="demo-num">7.4</span>
-            <div style="flex:1">
-              <div class="demo-title" style="display:inline;">Simulations</div>
-              <span class="demo-tagline" style="margin-left:8px;">Best practices and keyboard shortcuts for delivering simulations on stage.</span>
-            </div>
-            <span class="demo-status complete" title="Content status">✓</span><span class="demo-chevron">▾</span>
-          <a class="feedback-btn" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" data-demo="Simulations" title="Report an issue with this demo">🚩 Flag</a></summary>
-          <div class="demo-body">
-            <div class="row collapsible-row collapsed" onclick="toggleRow(this)">
-              <div class="row-label">📋 Planning</div>
-              <div class="row-content">
-                <ul>
-                  <li>Verify which simulations you want to use before your engagement</li>
-                  <li>Rehearse the demo flow — know your click path before you're on stage</li>
-                  <li>Go to the sim (e.g. <a href="https://demos.microsoft.com" target="_blank" style="color:var(--blue);">demos.microsoft.com</a>), use ZoomIt as appropriate</li>
-                </ul>
-              </div>
-            </div>
-            <div class="row">
-              <div class="row-label" style="font-weight:700;background:var(--blue);color:white;min-width:140px;">Function</div>
-              <div class="row-content" style="padding:0;">
-                <table style="width:100%;border-collapse:collapse;font-size:11px;">
-                  <thead>
-                    <tr style="background:var(--blue);color:white;">
-                      <th style="padding:6px 10px;text-align:left;width:30%;">Shortcut</th>
-                      <th style="padding:6px 10px;text-align:left;">What it does</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr style="background:var(--blue-light);">
-                      <td style="padding:6px 10px;font-weight:600;border-bottom:1px solid var(--gray-200);">ALT + P</td>
-                      <td style="padding:6px 10px;border-bottom:1px solid var(--gray-200);">Presenter Notes — see the talk track. Click <strong>Exit</strong> to return to the demo.</td>
-                    </tr>
-                    <tr>
-                      <td style="padding:6px 10px;font-weight:600;border-bottom:1px solid var(--gray-200);">ALT + Right Arrow</td>
-                      <td style="padding:6px 10px;border-bottom:1px solid var(--gray-200);">Go Forward one step — move forward without clicking</td>
-                    </tr>
-                    <tr style="background:var(--blue-light);">
-                      <td style="padding:6px 10px;font-weight:600;border-bottom:1px solid var(--gray-200);">ALT + Left Arrow</td>
-                      <td style="padding:6px 10px;border-bottom:1px solid var(--gray-200);">Go Back one step — move backward</td>
-                    </tr>
-                    <tr>
-                      <td style="padding:6px 10px;font-weight:600;border-bottom:1px solid var(--gray-200);">ALT + B</td>
-                      <td style="padding:6px 10px;border-bottom:1px solid var(--gray-200);">Beacons — toggle yellow beacons showing where to click (training mode)</td>
-                    </tr>
-                    <tr style="background:var(--blue-light);">
-                      <td style="padding:6px 10px;font-weight:600;border-bottom:1px solid var(--gray-200);">Fn + F11</td>
-                      <td style="padding:6px 10px;border-bottom:1px solid var(--gray-200);">Full Screen — best way to show the demo authentically on stage</td>
-                    </tr>
-                    <tr>
-                      <td style="padding:6px 10px;font-weight:600;border-bottom:1px solid var(--gray-200);">ALT + H</td>
-                      <td style="padding:6px 10px;border-bottom:1px solid var(--gray-200);">Shortcut Menu — brings up a splash screen with all available shortcuts</td>
-                    </tr>
-                    <tr style="background:var(--blue-light);">
-                      <td style="padding:6px 10px;font-weight:600;">Tab</td>
-                      <td style="padding:6px 10px;">Highlight next step — puts a black box around the next click target if you lose your place</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </details>
-      </div>
-
     </div>
   </details>
 
@@ -3103,7 +3026,7 @@ What do you know about me and my job here at Microsoft?</span>
     const section = labelEl.closest('.prompts-section');
     const isCollapsed = section.classList.toggle('collapsed');
     const hint = labelEl.querySelector('.prompts-label-hint');
-    if (hint) hint.textContent = isCollapsed ? '▼' : '▲';
+    if (hint) hint.textContent = isCollapsed ? 'click to expand' : 'click to collapse';
   }
 
   // ── TOGGLE COLLAPSIBLE ROW ──
@@ -3112,7 +3035,7 @@ What do you know about me and my job here at Microsoft?</span>
   }
 
   // ── EXPORT TO WORD (respects filter) ──
-  function exportWord(incSetup=true, incFiles=true, incPrompts=true, incSim=true) {
+  function exportWord() {
     // Expand all details and collapsed rows
     document.querySelectorAll('details').forEach(d => d.open = true);
     document.querySelectorAll('.collapsible-row.collapsed').forEach(r => r.classList.remove('collapsed'));
@@ -3181,18 +3104,15 @@ What do you know about me and my job here at Microsoft?</span>
 
         body += `<table border="1" cellpadding="5" cellspacing="0" style="border-collapse:collapse;width:100%;font-family:Calibri;font-size:10pt;margin-bottom:6pt;">`;
         demo.querySelectorAll('.row').forEach(row => {
-          const rowLabelText = (row.querySelector('.row-label') || {}).innerText || '';
-          if (!incSetup && rowLabelText.includes('Setup')) return;
-          if (!incFiles && rowLabelText.includes('Files')) return;
           const label = getContent('.row-label', row);
-          const rowContent = getContent('.row-content', row);
+          const content = getContent('.row-content', row);
           const bg = row.classList.contains('moment-row') ? '#E6F4EA' : '#F8F9FA';
-          body += `<tr><td style="background:${bg};font-weight:bold;width:80pt;vertical-align:top;">${esc(label)}</td><td style="vertical-align:top;">${esc(rowContent)}</td></tr>`;
+          body += `<tr><td style="background:${bg};font-weight:bold;width:80pt;vertical-align:top;">${esc(label)}</td><td style="vertical-align:top;">${esc(content)}</td></tr>`;
         });
         body += `</table>`;
 
         const prompts = demo.querySelectorAll('.prompt-item');
-        if (prompts.length && incPrompts) {
+        if (prompts.length) {
           body += `<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;width:100%;font-family:Courier New;font-size:9pt;background:#FFF9E6;margin-bottom:10pt;">`;
           prompts.forEach(p => {
             const tag = getContent('.prompt-tag', p);
@@ -3224,59 +3144,7 @@ What do you know about me and my job here at Microsoft?</span>
   table { border-collapse:collapse; width:100%; }
   td,th { padding:5pt; }
 </style></head>
-<body>${body}
-<!-- EXPORT DIALOG -->
-<div id="export-dialog" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;">
-  <div style="background:white;border-radius:8px;padding:0;width:480px;box-shadow:0 8px 32px rgba(0,0,0,0.2);overflow:hidden;">
-    <div style="background:#0078D4;color:white;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;">
-      <span style="font-size:14px;font-weight:600;">📄 Export to Word</span>
-      <button onclick="closeExportDialog()" style="background:none;border:none;color:white;font-size:18px;cursor:pointer;line-height:1;">×</button>
-    </div>
-    <div style="padding:20px;">
-
-      <div style="margin-bottom:16px;">
-        <div style="font-size:11px;font-weight:600;color:#005A9E;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Detail Level</div>
-        <div style="display:flex;gap:8px;">
-          <label id="full-label" style="flex:1;border:2px solid #0078D4;border-radius:6px;padding:10px 12px;cursor:pointer;background:#EFF6FC;">
-            <input type="radio" name="export-level" value="full" checked style="margin-right:6px;" onchange="onExportLevelChange('full')">
-            <strong style="font-size:12px;">Full Detail</strong>
-            <div style="font-size:11px;color:#605E5C;margin-top:3px;">Setup, Files, Steps, Prompts, Sim link</div>
-          </label>
-          <label style="flex:1;border:1px solid #EDEBE9;border-radius:6px;padding:10px 12px;cursor:pointer;" id="exec-label">
-            <input type="radio" name="export-level" value="exec" style="margin-right:6px;" onchange="onExportLevelChange('exec')">
-            <strong style="font-size:12px;">Exec Summary</strong>
-            <div style="font-size:11px;color:#605E5C;margin-top:3px;">Prompts + Sim link only</div>
-          </label>
-        </div>
-      </div>
-
-      <div style="margin-bottom:16px;">
-        <div style="font-size:11px;font-weight:600;color:#005A9E;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Include Sections</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-          <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;">
-            <input type="checkbox" id="inc-setup" checked> 🔧 Setup notes
-          </label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;">
-            <input type="checkbox" id="inc-files" checked> 📁 Files
-          </label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;">
-            <input type="checkbox" id="inc-prompts" checked> 💬 Prompts
-          </label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;">
-            <input type="checkbox" id="inc-sim" checked> 🔗 Simulation link
-          </label>
-        </div>
-      </div>
-
-      <div style="display:flex;gap:8px;justify-content:flex-end;border-top:1px solid #EDEBE9;padding-top:14px;">
-        <button onclick="closeExportDialog()" style="padding:7px 16px;border:1px solid #EDEBE9;border-radius:4px;background:white;cursor:pointer;font-size:12px;">Cancel</button>
-        <button onclick="runExport()" style="padding:7px 16px;background:#0078D4;color:white;border:none;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600;">Export →</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-</body></html>`;
+<body>${body}</body></html>`;
 
     const filename = isFiltered
       ? `DemoGuide_Custom_${selectedList.length}demos.doc`
@@ -3286,10 +3154,8 @@ What do you know about me and my job here at Microsoft?</span>
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = filename;
-    a.style.display = 'none';
-    document.body.appendChild(a);
     a.click();
-    setTimeout(() => { URL.revokeObjectURL(a.href); document.body.removeChild(a); }, 100);
+    URL.revokeObjectURL(a.href);
   }
 
   // ── EXPORT HTML ──
@@ -3422,7 +3288,8 @@ function toggleHowTo(el) {
   const hint = el.querySelector('.how-hint');
   const isHidden = window.getComputedStyle(body).display === 'none';
   body.style.display = isHidden ? 'block' : 'none';
-  chevron.textContent = isHidden ? '▲' : '▼';
+  chevron.style.transform = isHidden ? 'rotate(90deg)' : '';
+  if (hint) hint.textContent = isHidden ? 'click to collapse' : 'click to expand';
 }
 
 
@@ -3449,246 +3316,12 @@ function initSmartRows() {
       if (hint) hint.style.display = 'none';
       row.onclick = null;
       row.removeAttribute('onclick');
-      row.classList.add('no-expand');
     }
     // Long content stays collapsed with "click to expand" as normal
   });
 }
 document.addEventListener('DOMContentLoaded', initSmartRows);
 
-
-function openExportDialog() {
-  const dlg = document.getElementById('export-dialog');
-  dlg.style.display = 'flex';
-}
-
-function onExportLevelChange(val) {
-  const fullLabel = document.getElementById('full-label');
-  const execLabel = document.getElementById('exec-label');
-  if (val === 'exec') {
-    document.getElementById('inc-setup').checked = false;
-    document.getElementById('inc-files').checked = false;
-    document.getElementById('inc-prompts').checked = true;
-    document.getElementById('inc-sim').checked = true;
-    if (execLabel) { execLabel.style.border = '2px solid #0078D4'; execLabel.style.background = '#EFF6FC'; }
-    if (fullLabel) { fullLabel.style.border = '1px solid #EDEBE9'; fullLabel.style.background = 'white'; }
-  } else {
-    document.getElementById('inc-setup').checked = true;
-    document.getElementById('inc-files').checked = true;
-    document.getElementById('inc-prompts').checked = true;
-    document.getElementById('inc-sim').checked = true;
-    if (fullLabel) { fullLabel.style.border = '2px solid #0078D4'; fullLabel.style.background = '#EFF6FC'; }
-    if (execLabel) { execLabel.style.border = '1px solid #EDEBE9'; execLabel.style.background = 'white'; }
-  }
-}
-
-function closeExportDialog() {
-  document.getElementById('export-dialog').style.display = 'none';
-}
-
-async function runExport() {
-  const incSetup = document.getElementById('inc-setup').checked;
-  const incFiles = document.getElementById('inc-files').checked;
-  const incPrompts = document.getElementById('inc-prompts').checked;
-  const incSim = document.getElementById('inc-sim').checked;
-  const isExec = document.querySelector('input[name="export-level"]:checked').value === 'exec';
-  closeExportDialog();
-
-  if (isExec) {
-    await exportWordExecAI(incSetup, incFiles, incPrompts, incSim);
-  } else {
-    exportWord(incSetup, incFiles, incPrompts, incSim);
-  }
-}
-
-async function exportWordExecAI(incSetup, incFiles, incPrompts, incSim) {
-  // Collect raw demo data
-  document.querySelectorAll('details').forEach(d => d.open = true);
-  document.querySelectorAll('.collapsible-row.collapsed').forEach(r => r.classList.remove('collapsed'));
-  document.querySelectorAll('.prompts-section.collapsed').forEach(r => r.classList.remove('collapsed'));
-
-  const selectedDemoIds = filterApplied
-    ? new Set(getChecked().map(c => c.id))
-    : new Set(DEMOS.map(d => d.id));
-
-  const cats = [
-    { id: 'cat1', title: '1. Copilot App' },
-    { id: 'cat2', title: '2. Core Apps' },
-    { id: 'cat3', title: '3. Copilot for Teamwork' },
-    { id: 'cat4', title: '4. Studio' },
-    { id: 'cat5', title: '5. Agent 365' },
-    { id: 'cat6', title: '6. Biz Apps' },
-  ];
-
-  // Build raw content object
-  let demoData = [];
-  cats.forEach(cat => {
-    const demosInCat = DEMOS.filter(d => d.cat === cat.id && selectedDemoIds.has(d.id));
-    demosInCat.forEach(demoMeta => {
-      const demo = document.getElementById(demoMeta.id);
-      if (!demo) return;
-      const title = (demo.querySelector('.demo-title') || {}).innerText || '';
-      const tagline = (demo.querySelector('.demo-tagline') || {}).innerText || '';
-      const setupEl = Array.from(demo.querySelectorAll('.row')).find(r => (r.querySelector('.row-label')||{}).innerText?.includes('Setup'));
-      const filesEl = Array.from(demo.querySelectorAll('.row')).find(r => (r.querySelector('.row-label')||{}).innerText?.includes('Files'));
-      const setup = setupEl ? (setupEl.querySelector('.row-content')||{}).innerText?.trim() : '';
-      const files = filesEl ? (filesEl.querySelector('.row-content')||{}).innerText?.trim() : '';
-      const fileLinks = filesEl ? Array.from(filesEl.querySelectorAll('a')).map(a => ({text: a.innerText, href: a.href})) : [];
-      const prompts = Array.from(demo.querySelectorAll('.prompt-text')).map(p => p.innerText?.trim()).filter(Boolean);
-      const simInput = demo.querySelector('.sim-link-input');
-      const simLink = simInput ? simInput.value : '';
-      demoData.push({ cat: cat.title, title, tagline, setup, files, fileLinks, prompts, simLink });
-    });
-  });
-
-  // Show loading state
-  const exportBtn = document.querySelector('.word-btn');
-  if (exportBtn) { exportBtn.textContent = '⏳ Generating...'; exportBtn.disabled = true; }
-
-  // Build prompt for Claude
-  const rawContent = demoData.map(d => 'DEMO: ' + d.title + ' | TAGLINE: ' + d.tagline + ' | SETUP: ' + d.setup + ' | PROMPTS: ' + d.prompts.join(' / ') + ' | SIM: ' + d.simLink).join('\n---\n');
-
-  const systemPrompt = 'You are helping a Microsoft executive prepare a quick-reference cheat sheet for customer demos. ' +
-    'Rewrite each demo section into a clean exec-ready format. ' +
-    'For each demo: keep the title, write ONE punchy sentence on what it shows, condense setup to max 1-2 plain English sentences, list prompts verbatim, and include the sim link. ' +
-    'Remove all technical jargon. Write as if briefing someone smart but busy. ' +
-    'Return JSON array with fields: title, oneLiner, setup, prompts (array), simLink.';
-
-  try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 4000,
-        system: systemPrompt,
-        messages: [{ role: 'user', content: 'Here are the demos to rewrite:\n\n' + rawContent + '\n\nReturn only a JSON array, no markdown fences.' }]
-      })
-    });
-    const data = await response.json();
-    const text = data.content[0].text;
-    const cleaned = text.replace(/```json|```/g, '').trim();
-    const demos = JSON.parse(cleaned);
-    buildExecWordDoc(demos, demoData);
-  } catch(e) {
-    console.error('AI export failed, falling back:', e);
-    exportWord(incSetup, incFiles, incPrompts, incSim);
-  } finally {
-    if (exportBtn) { exportBtn.textContent = '📄 Export to Word'; exportBtn.disabled = false; }
-  }
-}
-
-function buildExecWordDoc(aiDemos, rawDemos) {
-  function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-  let body = `<h1 style="font-family:Calibri;font-size:22pt;color:#005A9E;border-bottom:2pt solid #0078D4;padding-bottom:6pt;">
-    M365 Copilot — Executive Demo Reference
-  </h1>
-  <p style="font-family:Calibri;font-size:10pt;color:#767676;margin-bottom:16pt;">
-    Generated: ${new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})} &nbsp;·&nbsp; ${aiDemos.length} demo${aiDemos.length!==1?'s':''}
-  </p>`;
-
-  aiDemos.forEach((demo, i) => {
-    const raw = rawDemos[i] || {};
-    body += `
-    <div style="page-break-inside:avoid;margin-bottom:20pt;">
-      <h2 style="font-family:Calibri;font-size:14pt;color:white;background:#0078D4;padding:6pt 10pt;margin-bottom:0;">${esc(demo.title)}</h2>
-      <p style="font-family:Calibri;font-size:11pt;color:#323130;background:#EFF6FC;padding:6pt 10pt;margin:0;font-style:italic;">${esc(demo.oneLiner)}</p>
-      <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;width:100%;font-family:Calibri;font-size:10pt;">`;
-
-    if (demo.setup) {
-      body += `<tr><td style="background:#F3F2F1;font-weight:bold;width:80pt;vertical-align:top;">🔧 Setup</td>
-        <td style="vertical-align:top;">${esc(demo.setup)}</td></tr>`;
-    }
-
-    // File links from raw data
-    if (raw.fileLinks && raw.fileLinks.length > 0) {
-      const links = raw.fileLinks.map(l => `<a href="${l.href}" style="color:#0078D4;">${esc(l.text)}</a>`).join('<br>');
-      body += `<tr><td style="background:#F3F2F1;font-weight:bold;vertical-align:top;">📁 Files</td>
-        <td style="vertical-align:top;">${links}</td></tr>`;
-    }
-
-    if (demo.prompts && demo.prompts.length > 0) {
-      const promptRows = demo.prompts.map((p, idx) =>
-        `<tr style="background:${idx%2===0?'#F0F7FF':'white'};"><td style="font-family:Courier New;font-size:9pt;padding:5pt 8pt;">${esc(p)}</td></tr>`
-      ).join('');
-      body += `<tr><td style="background:#F3F2F1;font-weight:bold;vertical-align:top;">💬 Prompts</td>
-        <td style="padding:0;"><table style="width:100%;border-collapse:collapse;">${promptRows}</table></td></tr>`;
-    }
-
-    if (demo.simLink) {
-      body += `<tr><td style="background:#F3F2F1;font-weight:bold;vertical-align:top;">🔗 Sim</td>
-        <td><a href="${esc(demo.simLink)}" style="color:#0078D4;">${esc(demo.simLink)}</a></td></tr>`;
-    }
-
-    body += `</table></div>`;
-  });
-
-  const wordDoc = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word">
-    <head><meta charset="utf-8"></head><body>${body}</body></html>`;
-  const filename = `ExecDemoGuide_${new Date().toISOString().slice(0,10)}.doc`;
-  const blob = new Blob([wordDoc], { type: 'application/msword' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = filename;
-  a.style.display = 'none';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(() => { URL.revokeObjectURL(a.href); document.body.removeChild(a); }, 100);
-}
-
 </script>
-
-<!-- EXPORT DIALOG -->
-<div id="export-dialog" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;">
-  <div style="background:white;border-radius:8px;padding:0;width:480px;box-shadow:0 8px 32px rgba(0,0,0,0.2);overflow:hidden;">
-    <div style="background:#0078D4;color:white;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;">
-      <span style="font-size:14px;font-weight:600;">📄 Export to Word</span>
-      <button onclick="closeExportDialog()" style="background:none;border:none;color:white;font-size:18px;cursor:pointer;line-height:1;">×</button>
-    </div>
-    <div style="padding:20px;">
-
-      <div style="margin-bottom:16px;">
-        <div style="font-size:11px;font-weight:600;color:#005A9E;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Detail Level</div>
-        <div style="display:flex;gap:8px;">
-          <label id="full-label" style="flex:1;border:2px solid #0078D4;border-radius:6px;padding:10px 12px;cursor:pointer;background:#EFF6FC;">
-            <input type="radio" name="export-level" value="full" checked style="margin-right:6px;" onchange="onExportLevelChange('full')">
-            <strong style="font-size:12px;">Full Detail</strong>
-            <div style="font-size:11px;color:#605E5C;margin-top:3px;">Setup, Files, Steps, Prompts, Sim link</div>
-          </label>
-          <label style="flex:1;border:1px solid #EDEBE9;border-radius:6px;padding:10px 12px;cursor:pointer;" id="exec-label">
-            <input type="radio" name="export-level" value="exec" style="margin-right:6px;" onchange="onExportLevelChange('exec')">
-            <strong style="font-size:12px;">Exec Summary</strong>
-            <div style="font-size:11px;color:#605E5C;margin-top:3px;">Prompts + Sim link only</div>
-          </label>
-        </div>
-      </div>
-
-      <div style="margin-bottom:16px;">
-        <div style="font-size:11px;font-weight:600;color:#005A9E;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Include Sections</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-          <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;">
-            <input type="checkbox" id="inc-setup" checked> 🔧 Setup notes
-          </label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;">
-            <input type="checkbox" id="inc-files" checked> 📁 Files
-          </label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;">
-            <input type="checkbox" id="inc-prompts" checked> 💬 Prompts
-          </label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;">
-            <input type="checkbox" id="inc-sim" checked> 🔗 Simulation link
-          </label>
-        </div>
-      </div>
-
-      <div style="display:flex;gap:8px;justify-content:flex-end;border-top:1px solid #EDEBE9;padding-top:14px;">
-        <button onclick="closeExportDialog()" style="padding:7px 16px;border:1px solid #EDEBE9;border-radius:4px;background:white;cursor:pointer;font-size:12px;">Cancel</button>
-        <button onclick="runExport()" style="padding:7px 16px;background:#0078D4;color:white;border:none;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600;">Export →</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 </body>
 </html>
