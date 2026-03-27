@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \":*)",
+      "Bash(ls /c/Python*/python.exe)",
+      "Read(//c/Users/asongre/AppData/Local/Programs/**)",
+      "Bash(where.exe node:*)",
+      "Bash(where.exe python:*)",
+      "Bash(where.exe py:*)",
+      "Bash(where.exe powershell:*)"
+    ]
+  }
+}
