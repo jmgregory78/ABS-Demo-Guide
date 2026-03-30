@@ -1084,6 +1084,7 @@
 <label class="demo-check"><input checked="" data-cat="cat1" data-demo="demo1" onchange="onCheckChange()" type="checkbox"/><span>Copilot Chat + Work IQ</span></label>
 <label class="demo-check"><input checked="" data-cat="cat1" data-demo="demo2" onchange="onCheckChange()" type="checkbox"/><span>WXPO Agents</span></label>
 <div class="builder-subcat-indent">
+<div class="builder-subcat-label">Agents in Chat</div>
 <label class="demo-check"><input checked="" data-cat="cat1" data-demo="demo5" onchange="onCheckChange()" type="checkbox"/><span>Word</span></label>
 <label class="demo-check"><input checked="" data-cat="cat1" data-demo="demo9" onchange="onCheckChange()" type="checkbox"/><span>Excel</span></label>
 <label class="demo-check"><input checked="" data-cat="cat1" data-demo="demo10" onchange="onCheckChange()" type="checkbox"/><span>PowerPoint</span></label>
@@ -1145,7 +1146,7 @@
 <div class="demo-title">Copilot Chat + Work IQ</div>
 </div>
 <span class="demo-status" title="Content status"></span><span class="demo-chevron">▾</span>
-<a class="feedback-btn" data-demo="this demo" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" title="Report an issue with this demo">🚩 Flag</a></div><div class="tab-bar" style="display:none"><button class="tab-btn" data-tab="setup" onclick="switchTab('demo1','setup')">🔧 Setup</button><button class="tab-btn" data-tab="files" onclick="switchTab('demo1','files')">📁 Files</button><button class="tab-btn" data-tab="prompts" onclick="switchTab('demo1','prompts')">💬 Prompts</button><button class="tab-btn tab-disabled" data-tab="steps">📋 Steps</button><button class="tab-btn" data-tab="video" onclick="switchTab('demo1','video')">🎬 Video</button><button class="tab-btn" data-tab="sim" onclick="switchTab('demo1','sim')">▶ Simulation</button></div><div class="tab-panel" style="display:none" data-tab="setup">Open <strong>Copilot Chat</strong> (M365.com or Teams). Sign in as the demo executive. No files needed — runs entirely as a 5-prompt conversation.</div><div class="tab-panel" style="display:none" data-tab="files">Copilot Chat only — no files required.</div><div class="tab-panel" style="display:none" data-tab="prompts"><div class="prompt-item" onclick="copyPrompt(this)">
+<a class="feedback-btn" data-demo="this demo" href="javascript:void(0)" onclick="sendFeedback(this);event.preventDefault();event.stopPropagation();" title="Report an issue with this demo">🚩 Flag</a></div><div class="tab-bar" style="display:none"><button class="tab-btn" data-tab="setup" onclick="switchTab('demo1','setup')">🔧 Setup</button><button class="tab-btn" data-tab="files" onclick="switchTab('demo1','files')">📁 Files</button><button class="tab-btn" data-tab="prompts" onclick="switchTab('demo1','prompts')">💬 Prompts</button><button class="tab-btn tab-disabled" data-tab="steps">📋 Steps</button><button class="tab-btn tab-disabled" data-tab="video">🎬 Video</button><button class="tab-btn" data-tab="sim" onclick="switchTab('demo1','sim')">▶ Simulation</button></div><div class="tab-panel" style="display:none" data-tab="setup">Open <strong>Copilot Chat</strong> (M365.com or Teams). Sign in as the demo executive. No files needed — runs entirely as a 5-prompt conversation.</div><div class="tab-panel" style="display:none" data-tab="files">Copilot Chat only — no files required.</div><div class="tab-panel" style="display:none" data-tab="prompts"><div class="prompt-item" onclick="copyPrompt(this)">
 <span class="prompt-tag">PROMPT 1</span>
 <span class="prompt-text">For the next 5 questions, please keep answers reasonably concise.
 What do you know about me and my job here at Microsoft?</span>
@@ -1170,9 +1171,7 @@ What do you know about me and my job here at Microsoft?</span>
 <span class="prompt-tag">PROMPT 5</span>
 <span class="prompt-text">What do you know about my manager and my direct reports? Give me a sentence with the latest on each.</span>
 <span class="copy-hint">Click to copy</span>
-</div></div><div class="tab-panel" style="display:none" data-tab="steps"><div class="tab-empty">No content added yet.</div></div><div class="tab-panel" style="display:none" data-tab="video"><span class="sim-link-label">🎬 Reference Video</span>
-<input class="sim-link-input" id="vid-demo1" onkeydown="if(event.key==='Enter')openVideo('demo1')" type="url" value="https://microsoft.sharepoint.com/:v:/s/ABSdemos/cQopbgVEBJ0tQZVe5Lhr2zfEEgUCEsZzdBgSNYFdO_YYvbt06A"/>
-<button class="sim-link-go" onclick="openVideo('demo1')">Open ↗</button></div><div class="tab-panel" style="display:none" data-tab="sim"><span class="sim-link-label">🔗 Simulation</span>
+</div></div><div class="tab-panel" style="display:none" data-tab="steps"><div class="tab-empty">No content added yet.</div></div><div class="tab-panel" style="display:none" data-tab="video"><div class="tab-empty">No content added yet.</div></div><div class="tab-panel" style="display:none" data-tab="sim"><span class="sim-link-label">🔗 Simulation</span>
 <input class="sim-link-input" id="sim-demo1" onkeydown="if(event.key==='Enter')openSim('demo1')" placeholder="Paste simulation link here…" type="url"/>
 <button class="sim-link-go" onclick="openSim('demo1')">Open ↗</button></div></div></div>
 <!-- DEMO 2 — WXPO AGENTS -->
@@ -1933,6 +1932,17 @@ What do you know about me and my job here at Microsoft?</span>
 <div style="background:#FFF8E1;border:1px solid #FFE082;border-radius:4px;padding:7px 10px;font-size:11px;color:#5A4000;line-height:1.6;margin-bottom:8px;">
                 💡 <strong>Pro Tip:</strong> Use physical <a href="https://www.amazon.com/dp/B07DQBY5MY?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_3" style="color:#7B5800;font-weight:600;" target="_blank">tape labels</a> on your F-keys to remember which shortcut triggers which demo prompt. <a href="javascript:void(0)" onclick="openVisRef('tool2','ahk-img-A')" style="font-family:var(--sans);font-size:9px;font-weight:700;background:var(--blue);color:white;border-radius:3px;padding:1px 5px;text-decoration:none;vertical-align:middle;margin-left:4px;">A</a>
 </div>
+<div style="font-size:11px;font-weight:700;color:var(--blue-dark);margin-bottom:8px;letter-spacing:.02em;text-transform:uppercase;border-bottom:1px solid var(--gray-200);padding-bottom:4px;">Your Hotkey Mapping</div>
+<table class="pm-table">
+<thead><tr><th>F-Key</th><th>Demo / Prompt</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td class="placeholder">F1</td><td class="placeholder">Add prompt / demo name</td><td class="placeholder">Add note</td></tr>
+<tr><td class="placeholder">F2</td><td class="placeholder">Add prompt / demo name</td><td class="placeholder">Add note</td></tr>
+<tr><td class="placeholder">F3</td><td class="placeholder">Add prompt / demo name</td><td class="placeholder">Add note</td></tr>
+<tr><td class="placeholder">F4</td><td class="placeholder">Add prompt / demo name</td><td class="placeholder">Add note</td></tr>
+<tr><td colspan="3" style="font-style:italic;color:var(--gray-400);font-size:10px;">Add more rows as needed — fill in during Edit mode</td></tr>
+</tbody>
+</table>
 <div class="vis-ref-section collapsed" id="ahk-vis-panel">
 <div class="vis-ref-label" onclick="this.closest('.vis-ref-section').classList.toggle('collapsed')">📸 Visual References (A–D)</div>
 <div class="vis-ref-body" style="padding:10px 12px;">
@@ -2285,14 +2295,6 @@ What do you know about me and my job here at Microsoft?</span>
     else { input.focus(); input.style.borderColor='#E07000'; setTimeout(()=>input.style.borderColor='',1500); }
   }
 
-  function openVideo(demoId) {
-    const input = document.getElementById('vid-' + demoId);
-    if (!input) return;
-    const url = input.value.trim();
-    if (url) { window.open(url, '_blank'); }
-    else { input.focus(); input.style.borderColor='#E07000'; setTimeout(()=>input.style.borderColor='',1500); }
-  }
-
   // ── IMAGE UPLOAD ──
   function triggerImageUpload(demoId) {
     const area = document.querySelector(`.image-upload-area[data-demo="${demoId}"]`);
@@ -2375,34 +2377,25 @@ What do you know about me and my job here at Microsoft?</span>
       return found ? found.innerText.trim() : '';
     }
 
-    const selectedDemoList = DEMOS.filter(d => selectedDemoIds.has(d.id));
+    const selectedList = DEMOS.filter(d => selectedDemoIds.has(d.id)).map(d => d.title);
     const isFiltered = filterApplied && selectedDemoIds.size < DEMOS.length;
 
-    let body = `
-    <table cellpadding="0" cellspacing="0" style="width:100%;background:#0078D4;margin-bottom:18pt;">
-      <tr><td style="padding:16pt 20pt;">
-        <div style="font-family:Calibri;font-size:20pt;font-weight:700;color:white;line-height:1.2;">M365 Copilot &amp; Agents</div>
-        <div style="font-family:Calibri;font-size:12pt;color:#BFD9F2;margin-top:2pt;">Executive Demo Prep Guide</div>
-      </td><td style="padding:16pt 20pt;text-align:right;vertical-align:top;">
-        <div style="font-family:Calibri;font-size:9pt;color:#BFD9F2;">Generated: ${new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}</div>
-        ${isFiltered ? `<div style="font-family:Calibri;font-size:9pt;color:#BFD9F2;margin-top:2pt;">${selectedDemoList.length} demo${selectedDemoList.length!==1?'s':''} selected</div>` : ''}
-      </td></tr>
-    </table>`;
+    let body = `<h1 style="font-family:Calibri;font-size:22pt;color:#005A9E;border-bottom:2pt solid #0078D4;padding-bottom:6pt;">
+      M365 Copilot &amp; Agent — Executive Demo Prep Guide
+    </h1>
+    <p style="font-family:Calibri;font-size:10pt;color:#767676;margin-bottom:4pt;">
+      Generated: ${new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}
+      ${isFiltered ? ` &nbsp;·&nbsp; <strong>Custom set: ${selectedList.length} demo${selectedList.length!==1?'s':''} selected</strong>` : ''}
+    </p>`;
 
-    // Clean compact demo flow list grouped by category
-    body += `<div style="font-family:Calibri;font-size:13pt;font-weight:700;color:#005A9E;border-bottom:1.5pt solid #0078D4;padding-bottom:3pt;margin-bottom:10pt;">Demo Flow</div>`;
-    body += `<table cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:20pt;font-family:Calibri;font-size:10pt;">`;
-    let prevCat = '';
-    selectedDemoList.forEach((demoMeta, i) => {
-      const catTitle = cats.find(c => c.id === demoMeta.cat)?.title || '';
-      if (catTitle !== prevCat) {
-        body += `<tr><td colspan="2" style="padding:${i===0?'0':'8pt'} 0 2pt 0;font-size:8pt;font-weight:700;color:#0078D4;text-transform:uppercase;letter-spacing:.06em;border-bottom:1pt solid #DDEEFF;">${esc(catTitle)}</td></tr>`;
-        prevCat = catTitle;
-      }
-      body += `<tr style="${i%2===0?'':'background:#F3F8FF'}">
-        <td style="padding:3pt 8pt 3pt 4pt;width:18pt;color:#767676;font-size:9pt;">${i+1}.</td>
-        <td style="padding:3pt 0;">${esc(demoMeta.title)}</td>
-      </tr>`;
+    // Flow summary — only selected
+    body += `<h2 style="font-family:Calibri;font-size:13pt;color:#005A9E;margin-bottom:4pt;page-break-before:avoid;">Your Demo Flow</h2>
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse:collapse;width:100%;font-family:Calibri;font-size:10pt;margin-bottom:16pt;">
+      <tr style="background:#0078D4;color:white;"><th>#</th><th>Demo</th><th>Category</th></tr>`;
+    selectedList.forEach((title, i) => {
+      const demo = DEMOS.find(d => d.title === title);
+      const catLabel = cats.find(c => c.id === demo?.cat)?.title.split(' · ')[1] || '';
+      body += `<tr style="${i%2===0?'':'background:#F8F9FA'}"><td style="width:24pt;text-align:center;">${i+1}</td><td>${esc(title)}</td><td>${esc(catLabel)}</td></tr>`;
     });
     body += `</table>`;
 
@@ -2413,56 +2406,43 @@ What do you know about me and my job here at Microsoft?</span>
       const demosInCat = DEMOS.filter(d => d.cat === cat.id && selectedDemoIds.has(d.id));
       if (demosInCat.length === 0) return;
 
-      body += `<div style="font-family:Calibri;font-size:13pt;font-weight:700;color:white;background:#005A9E;padding:6pt 10pt;margin-top:20pt;margin-bottom:0;page-break-before:always;">${esc(cat.title)}</div>`;
+      body += `<h2 style="font-family:Calibri;font-size:14pt;color:white;background:#0078D4;padding:6pt 8pt;margin-top:16pt;margin-bottom:0;page-break-before:always;">${esc(cat.title)}</h2>`;
 
-      demosInCat.forEach((demoMeta, idx) => {
+      demosInCat.forEach(demoMeta => {
         const demo = document.getElementById(demoMeta.id);
         if (!demo) return;
         const title = getContent('.demo-title', demo);
         const tagline = getContent('.demo-tagline', demo);
 
-        body += `<table cellpadding="0" cellspacing="0" style="width:100%;margin-top:${idx===0?'0':'14pt'};">
-          <tr><td style="background:#EFF6FC;border-left:3pt solid #0078D4;padding:6pt 10pt;">
-            <div style="font-family:Calibri;font-size:12pt;font-weight:700;color:#005A9E;">${esc(title)}</div>
-            ${tagline ? `<div style="font-family:Calibri;font-size:9pt;color:#767676;margin-top:2pt;">${esc(tagline)}</div>` : ''}
-          </td></tr>
-        </table>`;
+        body += `<h3 style="font-family:Calibri;font-size:12pt;color:#005A9E;margin-top:10pt;margin-bottom:2pt;">${esc(title)}</h3>`;
+        if (tagline) body += `<p style="font-family:Calibri;font-size:9pt;color:#767676;font-style:italic;margin-bottom:6pt;">${esc(tagline)}</p>`;
 
+        body += `<table border="1" cellpadding="5" cellspacing="0" style="border-collapse:collapse;width:100%;font-family:Calibri;font-size:10pt;margin-bottom:6pt;">`;
         demo.querySelectorAll('.row').forEach(row => {
           const rowLabelText = (row.querySelector('.row-label') || {}).innerText || '';
           if (!incSetup && rowLabelText.includes('Setup')) return;
           if (!incFiles && rowLabelText.includes('Files')) return;
           const label = getContent('.row-label', row);
           const rowContent = getContent('.row-content', row);
-          if (!label && !rowContent) return;
-          const isMoment = row.classList.contains('moment-row');
-          body += `<table cellpadding="0" cellspacing="0" style="width:100%;border-bottom:1pt solid #E8EAED;">
-            <tr>
-              <td style="width:70pt;padding:5pt 8pt;vertical-align:top;background:${isMoment?'#E6F4EA':'#F8F9FA'};font-family:Calibri;font-size:9pt;font-weight:700;color:#323130;">${esc(label)}</td>
-              <td style="padding:5pt 8pt;vertical-align:top;font-family:Calibri;font-size:10pt;color:#323130;">${esc(rowContent)}</td>
-            </tr>
-          </table>`;
+          const bg = row.classList.contains('moment-row') ? '#E6F4EA' : '#F8F9FA';
+          body += `<tr><td style="background:${bg};font-weight:bold;width:80pt;vertical-align:top;">${esc(label)}</td><td style="vertical-align:top;">${esc(rowContent)}</td></tr>`;
         });
+        body += `</table>`;
 
         const prompts = demo.querySelectorAll('.prompt-item');
         if (prompts.length && incPrompts) {
-          const validPrompts = [...prompts].filter(p => {
+          body += `<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;width:100%;font-family:Courier New;font-size:9pt;background:#FFF9E6;margin-bottom:10pt;">`;
+          prompts.forEach(p => {
+            const tag = getContent('.prompt-tag', p);
             const text = getContent('.prompt-text', p);
-            return text && !text.includes('Add copy/paste');
+            if (text && !text.includes('Add copy/paste')) {
+              body += `<tr><td style="border-bottom:1pt solid #F0C800;vertical-align:top;">
+                <strong style="font-family:Calibri;font-size:9pt;color:#7B5800;">${esc(tag)}</strong><br>
+                <span style="white-space:pre-wrap;">${esc(text)}</span>
+              </td></tr>`;
+            }
           });
-          if (validPrompts.length) {
-            body += `<div style="font-family:Calibri;font-size:8pt;font-weight:700;color:#7B5800;text-transform:uppercase;letter-spacing:.06em;background:#FFF3CD;padding:4pt 8pt;border-top:1pt solid #F0C800;">Prompts</div>`;
-            validPrompts.forEach((p, pi) => {
-              const tag = getContent('.prompt-tag', p);
-              const text = getContent('.prompt-text', p);
-              body += `<table cellpadding="0" cellspacing="0" style="width:100%;background:${pi%2===0?'#FFFDF0':'#FFFBE0'};border-bottom:1pt solid #F5E6A0;">
-                <tr><td style="padding:5pt 8pt;">
-                  ${tag ? `<div style="font-family:Calibri;font-size:8pt;font-weight:700;color:#7B5800;margin-bottom:3pt;">${esc(tag)}</div>` : ''}
-                  <div style="font-family:Consolas,Courier New;font-size:9pt;color:#1A1A1A;white-space:pre-wrap;">${esc(text)}</div>
-                </td></tr>
-              </table>`;
-            });
-          }
+          body += `</table>`;
         }
       });
     });
